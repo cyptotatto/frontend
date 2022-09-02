@@ -1,0 +1,67 @@
+{
+	"id": "48a2f5487c8b45b30ca02e5a683e9055",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.7",
+	"solcLongVersion": "0.8.7+commit.e28d00a7",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"MintTattoToken.sol": {
+				"content": "// SPDX-License-Identifier: MIT\r\n// SPDX-License-Identifier: MIT\r\npragma solidity ^0;"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"sources": {
+			"MintTattoToken.sol": {
+				"ast": {
+					"absolutePath": "MintTattoToken.sol",
+					"exportedSymbols": {},
+					"id": 2,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [
+						{
+							"id": 1,
+							"literals": [
+								"solidity",
+								"^",
+								"0"
+							],
+							"nodeType": "PragmaDirective",
+							"src": "66:19:0"
+						}
+					],
+					"src": "66:19:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}
