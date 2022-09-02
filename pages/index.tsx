@@ -1,9 +1,11 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import styles from "../styles/Home.module.css";
-declare var window: any;
+
+declare global {
+  interface Window {
+    ethereum: any;
+  }
+}
 
 const Home: NextPage = () => {
   const [account, setAccount] = useState<string>("");
