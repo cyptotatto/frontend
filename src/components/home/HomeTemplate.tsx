@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Ranking from "./block/Ranking";
 
 function HomeTemplate() {
   return (
@@ -8,7 +9,7 @@ function HomeTemplate() {
         <div className="_text">글글글</div>
         <div className="_image">이미지이미지</div>
       </MainImg>
-      <Ranking>랭킹 자리</Ranking>
+      <Ranking />
     </Wrap>
   );
 }
@@ -35,5 +36,3 @@ const MainImg = styled.div`
     display: block;
   }
 `;
-
-const Ranking = styled.div``;
