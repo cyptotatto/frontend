@@ -36,17 +36,26 @@ function AppBar() {
         <input></input>
         <div>검색</div>
       </Search>
-      <Explore onClick={() => router.push("/explore")}>탐색</Explore>
-      <Create onClick={() => router.push("/minting")}>민팅</Create>
-      {render && (
-        <>
-          {account ? (
-            <Mypage onClick={() => router.push("/mypage")}>마이페이지</Mypage>
-          ) : (
-            <Login onClick={getAccount}>로그인</Login>
+      <Responsive>
+        <div className="when-wide">
+          <Explore onClick={() => router.push("/explore")}>탐색</Explore>
+          <Create onClick={() => router.push("/minting")}>민팅</Create>
+          {render && (
+            <>
+              {account ? (
+                <Mypage onClick={() => router.push("/mypage")}>
+                  마이페이지
+                </Mypage>
+              ) : (
+                <Login onClick={getAccount}>로그인</Login>
+              )}
+            </>
           )}
-        </>
-      )}
+        </div>
+        <div className="when-narrow">
+          <TapButton>메뉴</TapButton>
+        </div>
+      </Responsive>
     </Wrap>
   );
 }
@@ -65,10 +74,37 @@ const Search = styled.div`
   background-color: gray;
 `;
 
-const Explore = styled.div``;
+const Explore = styled.div`
+  margin-left: 20px;
+`;
 
-const Create = styled.div``;
+const Create = styled.div`
+  margin-left: 20px;
+`;
 
-const Mypage = styled.div``;
+const Mypage = styled.div`
+  margin-left: 20px;
+`;
 
-const Login = styled.div``;
+const Login = styled.div`
+  margin-left: 20px;
+`;
+
+const TapButton = styled.div``;
+
+const Responsive = styled.div`
+  .when-wide {
+    display: flex;
+  }
+  .when-narrow {
+    display: none;
+  }
+  @media screen and (max-width: 750px) {
+    .when-wide {
+      display: none;
+    }
+    .when-narrow {
+      display: block;
+    }
+  }
+`;
