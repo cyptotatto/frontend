@@ -9,6 +9,10 @@ function AppBar() {
   const [account, setAccount] = useRecoilState(accountAtom);
   const [render, setRender] = useState("");
 
+  useEffect(() => {
+    setRender("render");
+  }, []);
+
   const getAccount = useCallback(async () => {
     try {
       if (window.ethereum) {
@@ -25,18 +29,20 @@ function AppBar() {
     }
   }, [setAccount, router]);
 
-  useEffect(() => {
-    setRender("render");
-  }, []);
-
   return (
     <Wrap>
-      <Logo>로고</Logo>
+      <Logo onClick={() => router.push("/")}>로고</Logo>
       <Search>검색창</Search>
-      <Explore>탐색</Explore>
-      <Create>민팅</Create>
+      <Explore onClick={() => router.push("/explore")}>탐색</Explore>
+      <Create onClick={() => router.push("/minting")}>민팅</Create>
       {render && (
-        <Login onClick={getAccount}>{account ? "마이페이지" : "로그인"}</Login>
+        <>
+          {account ? (
+            <Mypage onClick={() => router.push("/mypage")}>마이페이지</Mypage>
+          ) : (
+            <Login onClick={getAccount}>로그인</Login>
+          )}
+        </>
       )}
     </Wrap>
   );
@@ -56,5 +62,7 @@ const Search = styled.div``;
 const Explore = styled.div``;
 
 const Create = styled.div``;
+
+const Mypage = styled.div``;
 
 const Login = styled.div``;
