@@ -32,7 +32,10 @@ function AppBar() {
   return (
     <Wrap>
       <Logo onClick={() => router.push("/")}>로고</Logo>
-      <Search>검색창</Search>
+      <Search>
+        <input></input>
+        <div>검색</div>
+      </Search>
       <Explore onClick={() => router.push("/explore")}>탐색</Explore>
       <Create onClick={() => router.push("/minting")}>민팅</Create>
       {render && (
@@ -57,7 +60,10 @@ const Wrap = styled.div`
 
 const Logo = styled.div``;
 
-const Search = styled.div``;
+const Search = styled.div`
+  display: flex;
+  background-color: gray;
+`;
 
 const Explore = styled.div``;
 
