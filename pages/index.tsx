@@ -1,9 +1,10 @@
 import type { NextPage } from "next";
+import HomeTemplate from "../src/components/home/HomeTemplate";
 
 const Home: NextPage = () => {
   return (
     <>
-      <div>크립토 타투 메인페이지입니다</div>
+      <HomeTemplate />
     </>
   );
 };
