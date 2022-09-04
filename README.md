@@ -1,6 +1,6 @@
 # Cryto-tattoo 서비스 front단 코드입니다
 
-[사이트 바로가기](https://cryto-tatto-front.vercel.app)
+[https://cryto-tatto-front.vercel.app](https://cryto-tatto-front.vercel.app)
 
 ## 사용기술
 
