@@ -3,15 +3,22 @@ import React, { useEffect, useCallback, useState } from "react";
 import { useRecoilState } from "recoil";
 import { accountAtom } from "../../recoil/user";
 import styled from "styled-components";
+import Menu from "./Menu";
+import { menuAtom } from "../../recoil/menu";
 
 function AppBar() {
   const router = useRouter();
   const [account, setAccount] = useRecoilState(accountAtom);
   const [render, setRender] = useState("");
+  const [menu, setMenu] = useRecoilState(menuAtom);
 
   useEffect(() => {
     setRender("render");
   }, []);
+
+  useEffect(() => {
+    setMenu("");
+  }, [setMenu, router]);
 
   const getAccount = useCallback(async () => {
     try {
@@ -31,29 +38,28 @@ function AppBar() {
 
   return (
     <Wrap>
-      <Logo onClick={() => router.push("/")}>로고</Logo>
+      {menu && <Menu />}
+      <Logo onClick={() => router.push("/")}>Logo</Logo>
       <Search>
         <input></input>
-        <div>검색</div>
+        <div>search</div>
       </Search>
       <Responsive>
         <div className="when-wide">
-          <Explore onClick={() => router.push("/explore")}>탐색</Explore>
-          <Create onClick={() => router.push("/minting")}>민팅</Create>
+          <Explore onClick={() => router.push("/explore")}>explore</Explore>
+          <Create onClick={() => router.push("/minting")}>minting</Create>
           {render && (
             <>
               {account ? (
-                <Mypage onClick={() => router.push("/mypage")}>
-                  마이페이지
-                </Mypage>
+                <Mypage onClick={() => router.push("/mypage")}>mypage</Mypage>
               ) : (
-                <Login onClick={getAccount}>로그인</Login>
+                <Login onClick={getAccount}>login</Login>
               )}
             </>
           )}
         </div>
         <div className="when-narrow">
-          <TapButton>메뉴</TapButton>
+          <TapButton onClick={() => setMenu("show")}>menu</TapButton>
         </div>
       </Responsive>
     </Wrap>
@@ -65,6 +71,8 @@ export default AppBar;
 const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
+  height: 60px;
+  line-height: 60px;
 `;
 
 const Logo = styled.div``;

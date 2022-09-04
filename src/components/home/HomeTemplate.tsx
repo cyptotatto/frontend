@@ -23,7 +23,7 @@ const MainImg = styled.div`
   display: flex;
   justify-content: space-around;
   ._text {
-    height: 300px;
+    height: 150px;
     text-align: center;
     line-height: 300px;
   }
@@ -34,5 +34,8 @@ const MainImg = styled.div`
   }
   @media screen and (max-width: 750px) {
     display: block;
+    ._text {
+      line-height: 150px;
+    }
   }
 `;
