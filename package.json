@@ -16,7 +16,9 @@
     "react-dom": "18.2.0",
     "recoil": "^0.7.5",
     "recoil-persist": "^4.2.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "web3": "^1.7.5",
+    "web3-utils": "^1.7.5"
   },
   "devDependencies": {
     "@types/node": "18.7.13",
