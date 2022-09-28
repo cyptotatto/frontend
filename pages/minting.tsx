@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 
+//minting
 function Minting() {
   const Ref = useRef<any>();
   const [img, setImage] = useState<any>();
