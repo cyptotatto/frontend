@@ -46,8 +46,8 @@ function AppBar() {
       </Search>
       <Responsive>
         <div className="when-wide">
+          <Create onClick={() => router.push("/minting")}>create</Create>
           <Explore onClick={() => router.push("/explore")}>explore</Explore>
-          <Create onClick={() => router.push("/minting")}>minting</Create>
           {render && (
             <>
               {account ? (
@@ -71,7 +71,7 @@ export default AppBar;
 const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
-  height: 60px;
+  height: 80px;
   line-height: 60px;
 `;
 

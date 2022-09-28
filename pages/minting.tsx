@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import styled from "styled-components";
 
 function Minting() {
   const Ref = useRef<any>();
@@ -33,7 +34,7 @@ function Minting() {
   }, [img]);
 
   return (
-    <>
+    <Wrap>
       <button onClick={clickInput}>사진업로드</button>
       <input
         ref={Ref}
@@ -48,8 +49,12 @@ function Minting() {
       ) : (
         <div>미리보기</div>
       )}
-    </>
+    </Wrap>
   );
 }
 
 export default Minting;
+
+const Wrap = styled.div`
+  padding-top: 80px;
+`;
