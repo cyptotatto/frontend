@@ -72,7 +72,7 @@ const Wrap = styled.div`
   display: flex;
   justify-content: space-around;
   height: 80px;
-  line-height: 60px;
+  line-height: 80px;
 `;
 
 const Logo = styled.div``;
