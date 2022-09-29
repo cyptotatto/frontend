@@ -13,12 +13,14 @@ function Title() {
       />
       <div className="artist-text">아티스트 </div>
       <div className="top100-text">&nbsp;Top 100 🔥</div>
-      <Image
-        src="/assets/Icon_next.svg"
-        alt="next"
-        width="13px"
-        height="24px"
-      />
+      <div className="img-wrap">
+        <Image
+          src="/assets/Icon_next.svg"
+          alt="next"
+          width="13px"
+          height="24px"
+        />
+      </div>
     </Wrap>
   );
 }
@@ -27,12 +29,8 @@ export default Title;
 
 const Wrap = styled.div`
   font-size: 34px;
-
+  display: flex;
   margin-bottom: 20px;
-
-  .logo {
-    margin-left: 61px;
-  }
   .artist-text {
     font-weight: 700;
     margin-top: 2px;
@@ -41,5 +39,8 @@ const Wrap = styled.div`
     font-weight: 600;
     margin-top: -1px;
   }
-  display: flex;
+  .img-wrap {
+    margin-left: 9px;
+    margin-top: 3px;
+  }
 `;
