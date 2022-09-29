@@ -1,12 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import Card from "../src/components/common/Card/templates/CardTemplate";
 
 function explore() {
-  return <Wrap>explore</Wrap>;
+  return (
+    <Wrap>
+      <Card />
+    </Wrap>
+  );
 }
 
 export default explore;
 
 const Wrap = styled.div`
-  padding-top: 80px;
+  margin-top: 80px;
 `;

@@ -26,5 +26,5 @@ export default MyApp;
 const ComponentWrap = styled.div`
   position: relative;
   top: -80px;
-  z-index: -1;
+  //z-index: -1;
 `;
