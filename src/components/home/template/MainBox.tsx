@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import SelectButton from "../block/SelectButton";
-import Text from "../block/Text";
-import Title from "../block/Title";
+import SelectButton from "../block/MainBox/SelectButton";
+import Text from "../block/MainBox/Text";
+import Title from "../block/MainBox/Title";
 
 function MainBox() {
   return (
@@ -19,4 +19,5 @@ export default MainBox;
 const Wrap = styled.div`
   margin-top: 234px;
   margin-left: 14%;
+  margin-bottom: 266px;
 `;
