@@ -1,18 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import Image from "next/image";
+import HeartIcon from "../../../../../public/assets/heart.svg";
 
 function HeartBox() {
   return (
     <Box>
-      <Image
-        id="heartIcon"
-        src="/assets/heart.svg"
-        width="20"
-        height="20"
-        alt="heartIcon"
-      />
+      <StyledHeartIcon />
       <Cnt>96</Cnt>
     </Box>
   );
@@ -31,4 +25,10 @@ const Cnt = styled.span`
   font-size: 16px;
   padding-bottom: 1px;
   margin-left: 5px;
+`;
+
+const StyledHeartIcon = styled(HeartIcon)`
+  fill: white;
+  width: 20px;
+  height: 20px;
 `;

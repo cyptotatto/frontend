@@ -1,17 +1,14 @@
-import React from "react";
-import styled from "styled-components";
-import Image from "next/image";
+import React, { useState } from "react";
+import styled, { css } from "styled-components";
+
+import HeartIcon from "../../../../../public/assets/heart.svg";
 
 function HeartBtn() {
+  const [isActive, setIsActive] = useState(false);
+
   return (
-    <StyledBtn>
-      <Image
-        id="heartIcon"
-        src="/assets/heart.svg"
-        width="30"
-        height="30"
-        alt="heartIcon"
-      />
+    <StyledBtn onClick={() => setIsActive((prev) => !prev)}>
+      <StyledHeartIcon isActive={isActive} />
     </StyledBtn>
   );
 }
@@ -29,4 +26,9 @@ const StyledBtn = styled.button`
   border-radius: 20px;
   border: none;
   cursor: pointer;
+`;
+
+const StyledHeartIcon = styled(HeartIcon)`
+  fill: ${(props) => (props.isActive ? "red" : "white")};
+  width: 30px;
 `;

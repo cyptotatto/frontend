@@ -6,8 +6,9 @@ import ImgBox from "../../Card/blocks/ImgBox";
 import TattooInfoBox from "../../Card/blocks/TattooInfoBox";
 import PriceBox from "../../Card/blocks/PriceBox";
 import HeartBox from "../blocks/HeartBox";
+import Link from "next/link";
 
-function Card() {
+function CardTemplate() {
   return (
     <Container>
       <ImgBox />
@@ -18,14 +19,18 @@ function Card() {
         </TopContent>
         <BottomContent>
           <HeartBox />
-          <CustomButton active="true">Buy Now</CustomButton>
+          <Link href="/">
+            <a>
+              <CustomButton active="true">Buy Now</CustomButton>
+            </a>
+          </Link>
         </BottomContent>
       </Content>
     </Container>
   );
 }
 
-export default Card;
+export default CardTemplate;
 
 const Container = styled.div`
   display: inline-block;
