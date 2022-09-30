@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import CustomButton from "../../CustomButton";
-import ImgBox from "../../Card/blocks/ImgBox";
-import TattooInfoBox from "../../Card/blocks/TattooInfoBox";
-import PriceBox from "../../Card/blocks/PriceBox";
-import HeartBox from "../blocks/HeartBox";
+import CustomButton from "../CustomButton";
+import ImgBox from "../Card/blocks/ImgBox";
+import TattooInfoBox from "../Card/blocks/TattooInfoBox";
+import PriceBox from "../Card/blocks/PriceBox";
+import HeartBox from "./blocks/HeartBox";
 import Link from "next/link";
 
 type InfoType = {
@@ -34,7 +34,7 @@ const tattooInfo: InfoType = {
   detailUrl: "/",
 };
 
-function CardTemplate() {
+function Card() {
   return (
     <Container>
       <ImgBox imgUrl={tattooInfo.tattooImgUrl} isHeart={tattooInfo.isHeart} />
@@ -64,7 +64,7 @@ function CardTemplate() {
   );
 }
 
-export default CardTemplate;
+export default Card;
 
 const Container = styled.div`
   display: inline-block;

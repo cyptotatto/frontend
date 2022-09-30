@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "../src/components/common/Card/templates/CardTemplate";
+import Card from "../src/components/common/Card";
 
 function explore() {
   return (
