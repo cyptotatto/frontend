@@ -16,6 +16,6 @@ export default Home;
 
 const Wrap = styled.div`
   padding-top: 80px;
-  background-image: url("assets/main_img.svg");
+  background-image: url("/assets/main_img.svg");
   height: 980px;
 `;

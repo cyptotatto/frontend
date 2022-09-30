@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import CustomButton from "../../common/CustomButton";
+import CustomButton from "../../../common/CustomButton";
 
 function SelectButton() {
   return (
