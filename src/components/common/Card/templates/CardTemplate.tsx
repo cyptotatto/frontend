@@ -8,18 +8,52 @@ import PriceBox from "../../Card/blocks/PriceBox";
 import HeartBox from "../blocks/HeartBox";
 import Link from "next/link";
 
+type InfoType = {
+  name: string;
+  artist: string;
+  artistImgUrl: string;
+  tattooImgUrl: string;
+  price: number;
+  percentage: number;
+  heartCnt: number;
+  isHeart: boolean;
+  sign: string;
+  detailUrl: "/";
+};
+
+const tattooInfo: InfoType = {
+  name: "수선화 타투",
+  artist: "그레이트",
+  artistImgUrl: "/assets/user_img.png",
+  tattooImgUrl: "/assets/tattoo_img.png",
+  price: 3331.9,
+  percentage: 168.5,
+  heartCnt: 96,
+  isHeart: true,
+  sign: "down",
+  detailUrl: "/",
+};
+
 function CardTemplate() {
   return (
     <Container>
-      <ImgBox />
+      <ImgBox imgUrl={tattooInfo.tattooImgUrl} isHeart={tattooInfo.isHeart} />
       <Content>
         <TopContent>
-          <TattooInfoBox />
-          <PriceBox />
+          <TattooInfoBox
+            name={tattooInfo.name}
+            artist={tattooInfo.artist}
+            artistImgUrl={tattooInfo.artistImgUrl}
+          />
+          <PriceBox
+            sign={tattooInfo.sign}
+            price={tattooInfo.price}
+            percentage={tattooInfo.percentage}
+          />
         </TopContent>
         <BottomContent>
-          <HeartBox />
-          <Link href="/">
+          <HeartBox cnt={tattooInfo.heartCnt} />
+          <Link href={tattooInfo.detailUrl}>
             <a>
               <CustomButton active="true">Buy Now</CustomButton>
             </a>

@@ -3,11 +3,21 @@ import styled from "styled-components";
 
 import UserProfile from "./UserProfile";
 
-function TattooInfoBox() {
+interface IProps {
+  name: string;
+  artist: string;
+  artistImgUrl: string;
+}
+
+function TattooInfoBox({ name, artist, artistImgUrl }: IProps) {
   return (
     <Container>
-      <TattooName>수선화 타투</TattooName>
-      <UserProfile />
+      <TattooName>{name}</TattooName>
+      <UserProfile
+        labelText="Artist"
+        userName={artist}
+        userImgUrl={artistImgUrl}
+      />
     </Container>
   );
 }

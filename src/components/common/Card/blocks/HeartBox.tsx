@@ -1,13 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-import HeartIcon from "../../../../../public/assets/heart.svg";
+import OutlineHeartIcon from "../../../../../public/assets/outline_heart.svg";
 
-function HeartBox() {
+interface IProps {
+  cnt: number;
+}
+
+function HeartBox({ cnt }: IProps) {
   return (
     <Box>
-      <StyledHeartIcon />
-      <Cnt>96</Cnt>
+      <OutlineHeartIcon width="20" />
+      <Cnt>{cnt}</Cnt>
     </Box>
   );
 }
@@ -25,10 +29,4 @@ const Cnt = styled.span`
   font-size: 16px;
   padding-bottom: 1px;
   margin-left: 5px;
-`;
-
-const StyledHeartIcon = styled(HeartIcon)`
-  fill: white;
-  width: 20px;
-  height: 20px;
 `;

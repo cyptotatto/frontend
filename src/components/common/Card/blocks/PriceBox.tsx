@@ -1,10 +1,21 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-import Image from "next/image";
+import EthereumIcon from "../../../../../public/assets/ethereum.svg";
+import TriangleIcon from "../../../../../public/assets/triangle.svg";
 import Label from "../atoms/Label";
 
-function PriceBox() {
+interface IProps {
+  sign: string;
+  price: number;
+  percentage: number;
+}
+
+interface IStyledPercentage {
+  sign: string;
+}
+
+function PriceBox({ sign, price, percentage }: IProps) {
   return (
     <Wrap>
       <Container>
@@ -12,19 +23,13 @@ function PriceBox() {
           <Label>Price</Label>
         </LabelWrap>
         <Price>
-          <Image
-            id="ethereumIcon"
-            src="/assets/ethereum.svg"
-            width="18"
-            height="18"
-            alt="ethereumIcon"
-          />
-          <Num>3,331.9</Num>
+          <EthereumIcon />
+          <Num>{price}</Num>
         </Price>
-        <div>
-          <Percentage>168.5%</Percentage>
-          <Image id="arrowIcon" src="" alt="arrowIcon" />
-        </div>
+        <PercentageBox sign={sign}>
+          <Percentage>{percentage}%</Percentage>
+          <StyledTriangleIcon />
+        </PercentageBox>
       </Container>
     </Wrap>
   );
@@ -57,6 +62,29 @@ const Percentage = styled.span`
   display: inline-block;
   width: 100%;
   text-align: right;
-  color: #78e490;
   font-size: 20px;
+`;
+
+const StyledTriangleIcon = styled(TriangleIcon)`
+  margin: 3px 0 0 8px;
+`;
+
+const PercentageBox = styled.div<IStyledPercentage>`
+  display: flex;
+  align-items: center;
+
+  ${Percentage} {
+    color: ${(props) => (props.sign === "up" ? "#78e490" : "#E2193A")};
+  }
+  ${StyledTriangleIcon} {
+    ${(props) =>
+      props.sign === "up"
+        ? css`
+            fill: #78e490;
+            transform: rotate(180deg);
+          `
+        : css`
+            fill: #e2193a;
+          `};
+  }
 `;

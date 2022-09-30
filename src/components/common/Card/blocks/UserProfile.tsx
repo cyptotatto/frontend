@@ -4,19 +4,25 @@ import styled from "styled-components";
 import Image from "next/image";
 import Label from "../atoms/Label";
 
-function UserProfile() {
+interface IProps {
+  labelText: string;
+  userName: string;
+  userImgUrl: string;
+}
+
+function UserProfile({ labelText, userName, userImgUrl }: IProps) {
   return (
     <Container>
       <Image
         id="userImg"
-        src="/assets/user_img.png"
+        src={userImgUrl}
         width="50"
         height="50"
         alt="userImg"
       />
       <InfoBox>
-        <Label>Artist</Label>
-        <Name>그레이트</Name>
+        <Label>{labelText}</Label>
+        <Name>{userName}</Name>
       </InfoBox>
     </Container>
   );
