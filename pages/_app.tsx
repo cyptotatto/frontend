@@ -13,7 +13,9 @@ declare global {
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <AppBar />
+      <AppBarWrap>
+        <AppBar />
+      </AppBarWrap>
       <ComponentWrap>
         <Component {...pageProps} />
       </ComponentWrap>
@@ -23,8 +25,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 export default MyApp;
 
+const AppBarWrap = styled.div`
+  position: relative;
+  z-index: 2;
+`;
+
 const ComponentWrap = styled.div`
   position: relative;
   top: -80px;
-  //z-index: -1;
 `;
