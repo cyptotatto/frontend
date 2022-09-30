@@ -1,11 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import Card from "../src/components/common/Card";
+
+import ExploreTemplate from "../src/components/explore/templates/ExploreTemplate";
 
 function explore() {
   return (
     <Wrap>
-      <Card />
+      <ExploreTemplate />
     </Wrap>
   );
 }
