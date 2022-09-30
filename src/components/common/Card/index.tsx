@@ -30,7 +30,7 @@ const tattooInfo: InfoType = {
   percentage: 168.5,
   heartCnt: 96,
   isHeart: true,
-  sign: "down",
+  sign: "up",
   detailUrl: "/",
 };
 

@@ -63,10 +63,11 @@ const Percentage = styled.span`
   width: 100%;
   text-align: right;
   font-size: 20px;
+  margin-right: 8px;
 `;
 
 const StyledTriangleIcon = styled(TriangleIcon)`
-  margin: 3px 10px 0 8px;
+  margin: 4px 10px 0 0px;
 `;
 
 const PercentageBox = styled.div<IStyledPercentage>`
