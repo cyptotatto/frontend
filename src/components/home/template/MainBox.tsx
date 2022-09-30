@@ -18,6 +18,6 @@ export default MainBox;
 
 const Wrap = styled.div`
   margin-top: 234px;
-  margin-left: 14%;
+  margin-left: 10%;
   margin-bottom: 266px;
 `;

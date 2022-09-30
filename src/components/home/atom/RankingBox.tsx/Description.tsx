@@ -14,6 +14,7 @@ function Description() {
 export default Description;
 
 const Wrap = styled.div`
+  width: 100%;
   margin-top: 20px;
   display: flex;
   color: #7a7a7a;
@@ -21,12 +22,13 @@ const Wrap = styled.div`
   font-size: 20px;
   line-height: 24px;
   .rank {
-    margin-left: 38px;
+    width: 20%;
+    padding-left: 38px;
   }
   .artist {
-    margin-left: 79px;
+    width: 50%;
   }
   .type {
-    margin-left: 359px;
+    width: 30%;
   }
 `;
