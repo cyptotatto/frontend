@@ -70,11 +70,12 @@ const Container = styled.div`
   display: inline-block;
   background: black;
   color: white;
+  padding: 16px;
   border-radius: 22px;
 `;
 
 const Content = styled.div`
-  padding: 24px;
+  padding: 22px 0;
 `;
 
 const TopContent = styled.div`

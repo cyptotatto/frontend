@@ -12,7 +12,7 @@ interface IProps {
 function ImgBox({ imgUrl, isHeart }: IProps) {
   return (
     <Box>
-      <Image id="mainImg" src={imgUrl} width="444" height="310" alt="mainImg" />
+      <Image id="mainImg" src={imgUrl} width="331" height="232" alt="mainImg" />
       <HeartBtn isHeart={isHeart} />
     </Box>
   );
