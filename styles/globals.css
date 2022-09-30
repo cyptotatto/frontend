@@ -3,6 +3,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Acumin Pro";
+  background: black;
+  color: white;
 }
 
 a {
