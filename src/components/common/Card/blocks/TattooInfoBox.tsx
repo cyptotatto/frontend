@@ -29,6 +29,6 @@ const Container = styled.div`
 `;
 
 const TattooName = styled.h2`
-  font-size: 24px;
+  font-size: 20px;
   margin: 0 0 15px 0;
 `;
