@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import TabMenu from "../atoms/TabMenu";
+import TabMenu from "../atoms/NavBar/TabMenu";
 import FilterIcon from "../../../../public/assets/filter.svg";
 
 type UnderLinePropsType = {
