@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-import ExploreTemplate from "../src/components/explore/templates/ExploreTemplate";
+import CreateTemplate from "../src/components/create/templates/CreateTemplate";
 
-function explore() {
+function create() {
   return (
     <Wrap>
-      <ExploreTemplate />
+      <CreateTemplate />
     </Wrap>
   );
 }
 
-export default explore;
+export default create;
 
 const Wrap = styled.div`
   margin-top: 80px;
