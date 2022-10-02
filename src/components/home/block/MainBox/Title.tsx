@@ -35,4 +35,10 @@ const Wrap = styled.div`
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
+  @media screen and (max-width: 500px) {
+    font-size: 45px;
+    .gradient {
+      font-size: 70px;
+    }
+  }
 `;

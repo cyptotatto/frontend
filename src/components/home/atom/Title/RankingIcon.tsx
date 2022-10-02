@@ -9,12 +9,14 @@ interface IconType {
 function RankingIcon({ IconType }: IconType) {
   if (IconType === "rank") {
     return (
-      <Image
-        src="/assets/artist_top100.svg"
-        alt="next"
-        width="62px"
-        height="56px"
-      />
+      <IconWrap>
+        <Image
+          src="/assets/top100_icon.svg"
+          alt="next"
+          width="58px"
+          height="50px"
+        />
+      </IconWrap>
     );
   } else if (IconType == "next") {
     return (
@@ -32,7 +34,11 @@ function RankingIcon({ IconType }: IconType) {
 
 export default RankingIcon;
 
+const IconWrap = styled.div`
+  margin-right: 10px;
+`;
+
 const ImgWrap = styled.div`
   margin-left: 9px;
-  margin-top: 3px;
+  margin-top: 15px;
 `;

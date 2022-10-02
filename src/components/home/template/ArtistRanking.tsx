@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import Title from "../block/Ranking/Title";
-import RankingBox from "../block/Ranking/RankingBox";
+import HomeTitle from "../../common/HomeTitle";
+import RankingBox from "../block/ArtistRanking/RankingBox";
 import Description from "../atom/RankingBox.tsx/Description";
 
 // 8개 데이터 받아와서 4개씩 나눠서 넣기
-function Ranking() {
+function ArtistRanking() {
   return (
     <Wrap>
-      <Title />
+      <HomeTitle>아티스트 Top 100 🔥</HomeTitle>
       <DescriptionWrap>
         <Description />
         <Responsive>
@@ -23,7 +23,7 @@ function Ranking() {
   );
 }
 
-export default Ranking;
+export default ArtistRanking;
 
 const Wrap = styled.div`
   margin: 0 10%;
