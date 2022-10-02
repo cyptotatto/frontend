@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import ArrowDownIcon from "../../../../public/assets/arrow_down.svg";
+import ArrowDownIcon from "../../../../../public/assets/arrow_down.svg";
 
 function ComboBox() {
   const [selectedMenu, setSelectedMenu] = useState("정렬");
@@ -42,6 +42,7 @@ const Box = styled.div`
   border-radius: 10px;
   color: white;
   font-size: 12px;
+  z-index: 5;
   cursor: pointer;
 `;
 

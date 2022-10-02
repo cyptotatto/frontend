@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import ComboBox from "./ComboBox";
+import ComboBox from "./TabBar/ComboBox";
 
 function TabBar() {
   return (
