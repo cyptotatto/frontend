@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import PageTitle from "../../common/PageTitle";
-import NavBar from "../blocks/NavBar";
+
+import Header from "../blocks/Header";
 import TabBar from "../blocks/TabBar";
 import TattoBox from "../blocks/TattooBox";
 
 function ExploreTemplate() {
   return (
     <Wrap>
-      <PageTitle>Explore</PageTitle>
-      <NavBar />
+      <Header />
       <TabBar />
       <TattoBox />
     </Wrap>
