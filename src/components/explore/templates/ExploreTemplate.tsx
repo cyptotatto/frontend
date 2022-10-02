@@ -17,4 +17,6 @@ function ExploreTemplate() {
 
 export default ExploreTemplate;
 
-const Wrap = styled.div``;
+const Wrap = styled.div`
+  padding: 24px;
+`;

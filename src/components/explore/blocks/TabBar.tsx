@@ -1,7 +1,19 @@
 import React from "react";
+import styled from "styled-components";
+
+import ComboBox from "./ComboBox";
 
 function TabBar() {
-  return <div>정렬/추가적인 UI생겼을때</div>;
+  return (
+    <Bar>
+      <ComboBox />
+    </Bar>
+  );
 }
 
 export default TabBar;
+
+const Bar = styled.div`
+  position: relative;
+  height: 50px;
+`;
