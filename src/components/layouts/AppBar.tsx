@@ -52,7 +52,7 @@ function AppBar() {
       </Search>
       <Responsive>
         <div className="when-wide">
-          <Create onClick={() => router.push("/minting")}>create</Create>
+          <Create onClick={() => router.push("/create")}>create</Create>
           <Explore onClick={() => router.push("/explore")}>explore</Explore>
           <Mypage onClick={account ? () => router.push("/mypage") : getAccount}>
             <Image
