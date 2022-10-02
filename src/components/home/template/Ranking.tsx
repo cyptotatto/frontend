@@ -9,6 +9,12 @@ function Ranking() {
   return (
     <Wrap>
       <Title />
+      <DescriptionWrap>
+        <Description />
+        <Responsive>
+          <Description />
+        </Responsive>
+      </DescriptionWrap>
       <BoxWrap>
         <RankingBox />
         <RankingBox />
@@ -21,6 +27,17 @@ export default Ranking;
 
 const Wrap = styled.div`
   margin: 0 10%;
+`;
+
+const DescriptionWrap = styled.div`
+  display: flex;
+`;
+
+const Responsive = styled.div`
+  width: 100%;
+  @media screen and (max-width: 1120px) {
+    display: none;
+  }
 `;
 
 const BoxWrap = styled.div`
