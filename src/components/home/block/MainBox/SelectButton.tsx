@@ -5,8 +5,8 @@ import CustomButton from "../../../common/CustomButton";
 function SelectButton() {
   return (
     <Wrap>
-      <CustomButton active="true">Explore NFTs</CustomButton>
-      <CustomButton active="false">Create NFTs</CustomButton>
+      <CustomButton active="true">Explore</CustomButton>
+      <CustomButton active="false">Create</CustomButton>
     </Wrap>
   );
 }

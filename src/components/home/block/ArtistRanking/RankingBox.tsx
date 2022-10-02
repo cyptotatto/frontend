@@ -6,7 +6,6 @@ import RankingBar from "../../atom/RankingBox.tsx/RankingBar";
 function RankingBox() {
   return (
     <Wrap>
-      <Description />
       <Box>
         <RankingBar rank="1" artist="Jane Cooper" type="올드스쿨, 뉴스쿨" />
         <RankingBar rank="1" artist="Jane Cooper" type="올드스쿨, 뉴스쿨" />

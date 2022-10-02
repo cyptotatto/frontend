@@ -6,6 +6,7 @@ import styled from "styled-components";
 import Menu from "./Menu";
 import { menuAtom } from "../../recoil/menu";
 import Image from "next/image";
+import SearchBar from "../common/SearchBar";
 
 function AppBar() {
   const router = useRouter();
@@ -38,18 +39,7 @@ function AppBar() {
       <Logo onClick={() => router.push("/")}>
         <Image src="/assets/logo.svg" alt="logo" width="128px" height="60px" />
       </Logo>
-      <Search>
-        <div className="search-icon">
-          <Image
-            src="/assets/search.svg"
-            alt="logo"
-            width="30px"
-            height="30px"
-          />
-        </div>
-        <input placeholder="Search items or creators"></input>
-        <div className="search-button">search</div>
-      </Search>
+      <SearchBar />
       <Responsive>
         <div className="when-wide">
           <Create onClick={() => router.push("/create")}>create</Create>
@@ -92,35 +82,6 @@ const Wrap = styled.div`
 
 const Logo = styled.div`
   margin-top: 11px;
-`;
-
-const Search = styled.div`
-  display: flex;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  width: 50%;
-  height: 40px;
-  margin-top: 20px;
-  .search-icon {
-    line-height: 30px;
-    padding-top: 5px;
-    padding-left: 10px;
-  }
-  input {
-    background: transparent;
-    border: none;
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 18px;
-    padding-left: 16px;
-    width: 85%;
-    :focus {
-      outline: none;
-    }
-  }
-  .search-button {
-    display: none;
-  }
 `;
 
 const Create = styled.div`

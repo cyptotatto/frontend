@@ -17,7 +17,8 @@ function MainBox() {
 export default MainBox;
 
 const Wrap = styled.div`
-  margin-top: 234px;
-  margin-left: 10%;
-  margin-bottom: 266px;
+  margin: 200px 10%;
+  @media screen and (max-width: 500px) {
+    margin-top: 100px;
+  }
 `;
