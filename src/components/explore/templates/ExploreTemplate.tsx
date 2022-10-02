@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PageTitle from "../../common/PageTitle";
 import NavBar from "../blocks/NavBar";
 import TabBar from "../blocks/TabBar";
-import TattoBox from "../blocks/TattoBox";
+import TattoBox from "../blocks/TattooBox";
 
 function ExploreTemplate() {
   return (
