@@ -10,11 +10,13 @@ function ExploreTemplate() {
   return (
     <Wrap>
       <Header />
-      <TabBar />
-      <MainContent>
+      <Container>
         <FilterTab />
-        <TattoBox />
-      </MainContent>
+        <MainContent>
+          <TabBar />
+          <TattoBox />
+        </MainContent>
+      </Container>
     </Wrap>
   );
 }
@@ -25,6 +27,12 @@ const Wrap = styled.div`
   padding: 24px;
 `;
 
+const Container = styled.div`
+  display: flex;
+`;
+
 const MainContent = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
 `;

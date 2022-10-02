@@ -11,7 +11,7 @@ function ComboBox() {
     <Box onClick={() => setIsMenuOpen((prev) => !prev)}>
       <Select>
         <Text>{isMenuOpen ? "정렬" : selectedMenu}</Text>
-        <ArrowIcon isOpen={isMenuOpen} />
+        <ArrowIcon isopen={isMenuOpen.toString()} />
       </Select>
       {isMenuOpen && (
         <OptBox>
@@ -55,7 +55,7 @@ const Select = styled.div`
 
 const ArrowIcon = styled(ArrowDownIcon)`
   ${(props) =>
-    props.isOpen &&
+    props.isopen &&
     css`
       transform: rotate(-180deg);
     `}

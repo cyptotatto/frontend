@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import FilterMenuBox from "./Filter/FilterMenuBox";
+import FilterTabMenuBox from "./Filter/FilterTabMenuBox";
 import SelectMenuBox from "./Select/SelectMenuBox";
 
 function NavBar() {
   return (
     <Nav>
-      <FilterMenuBox />
+      <FilterTabMenuBox />
       <SelectMenuBox />
     </Nav>
   );

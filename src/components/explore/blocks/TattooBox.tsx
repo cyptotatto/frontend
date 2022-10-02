@@ -1,16 +1,19 @@
 import React from "react";
+import styled from "styled-components";
 
 import Card from "../../common/Card";
 
 function TattoBox() {
   return (
-    <div>
+    <Box>
       <Card />
       <Card />
       <Card />
       <Card />
-    </div>
+    </Box>
   );
 }
 
 export default TattoBox;
+
+const Box = styled.div``;
