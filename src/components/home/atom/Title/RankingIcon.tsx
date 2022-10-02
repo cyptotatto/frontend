@@ -13,8 +13,8 @@ function RankingIcon({ IconType }: IconType) {
         <Image
           src="/assets/top100_icon.svg"
           alt="next"
-          width="58px"
-          height="50px"
+          width="40px"
+          height="38px"
         />
       </IconWrap>
     );
@@ -36,6 +36,7 @@ export default RankingIcon;
 
 const IconWrap = styled.div`
   margin-right: 10px;
+  margin-top: 8px;
 `;
 
 const ImgWrap = styled.div`
