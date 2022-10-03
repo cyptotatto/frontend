@@ -53,7 +53,7 @@ const Select = styled.div`
   padding: 10px 8px;
 `;
 
-const ArrowIcon = styled(ArrowDownIcon)`
+const ArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
   ${(props) =>
     props.isopen &&
     css`

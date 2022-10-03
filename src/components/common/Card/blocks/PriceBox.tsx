@@ -66,7 +66,7 @@ const Percentage = styled.span`
   margin-right: 8px;
 `;
 
-const StyledTriangleIcon = styled(TriangleIcon)`
+const StyledTriangleIcon = styled((props) => <TriangleIcon {...props} />)`
   margin: 4px 10px 0 0px;
 `;
 
