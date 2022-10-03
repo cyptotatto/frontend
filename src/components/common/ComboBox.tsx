@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import ArrowDownIcon from "../../../../../public/assets/arrow_down.svg";
+import ArrowDownIcon from "../../../public/assets/arrow_down.svg";
 
 function ComboBox() {
   const [selectedMenu, setSelectedMenu] = useState("정렬");
