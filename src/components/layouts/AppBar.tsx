@@ -39,7 +39,9 @@ function AppBar() {
       <Logo onClick={() => router.push("/")}>
         <Image src="/assets/logo.svg" alt="logo" width="128px" height="60px" />
       </Logo>
-      <SearchBar />
+      <SearchBarWrap>
+        <SearchBar />
+      </SearchBarWrap>
       <Responsive>
         <div className="when-wide">
           <Create onClick={() => router.push("/create")}>create</Create>
@@ -82,6 +84,11 @@ const Wrap = styled.div`
 
 const Logo = styled.div`
   margin-top: 11px;
+`;
+
+const SearchBarWrap = styled.div`
+  margin-top: 20px;
+  width: 50%;
 `;
 
 const Create = styled.div`

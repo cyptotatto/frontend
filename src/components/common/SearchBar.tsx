@@ -20,9 +20,8 @@ const Wrap = styled.div`
   display: flex;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50px;
-  width: 50%;
+  width: 100%;
   height: 40px;
-  margin-top: 20px;
   .search-icon {
     line-height: 30px;
     padding-top: 5px;
