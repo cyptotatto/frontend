@@ -27,6 +27,6 @@ const Menu = styled.button<MenuPropsType>`
   font-size: 15px;
   font-weight: 600;
   padding: 12px 0;
-  width: 80px;
+  width: 95px;
   height: 100%;
 `;

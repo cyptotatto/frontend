@@ -1,22 +1,18 @@
 import React from "react";
-import styled from "styled-components";
 
+import CustomNavBar from "../../common/CustomNavBar";
 import FilterTabMenuBox from "./Filter/FilterTabMenuBox";
-import SelectMenuBox from "./Select/SelectMenuBox";
+import SelectMenuBox from "../../common/CustomNavBar/blocks/SelectMenuBox";
+
+const exploreMenu = ["도안", "아티스트"];
 
 function NavBar() {
   return (
-    <Nav>
+    <CustomNavBar>
       <FilterTabMenuBox />
-      <SelectMenuBox />
-    </Nav>
+      <SelectMenuBox menu={exploreMenu} />
+    </CustomNavBar>
   );
 }
 
 export default NavBar;
-
-const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #7a7a7a;
-`;
