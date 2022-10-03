@@ -54,7 +54,7 @@ const Text = styled.span`
   margin-left: 5px;
 `;
 
-const StyledFilterIcon = styled(FilterIcon)`
+const StyledFilterIcon = styled((props) => <FilterIcon {...props} />)`
   margin: 12px 16px;
   cursor: pointer;
 `;

@@ -33,7 +33,7 @@ const Title = styled.span`
   font-weight: 600;
 `;
 
-const MenuArrowIcon = styled(ArrowDownIcon)`
+const MenuArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
   ${(props) =>
     props.isOpen &&
     css`
