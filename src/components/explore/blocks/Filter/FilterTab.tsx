@@ -5,6 +5,7 @@ import { useRecoilValue } from "recoil";
 import { isFilterTabOpenAtom } from "../../../../recoil/menu";
 
 import FilterMenuBox from "./FilterMenuBox";
+import SearchBar from "../../../common/SearchBar";
 
 const tagInfo = {
   genere: [
@@ -38,6 +39,7 @@ function FilterTab() {
             <FilterMenuBox title="주제별" />
             <FilterMenuBox title="부위별" />
           </MenuContainer>
+          <SearchBar />
         </Tab>
       )}
     </>
