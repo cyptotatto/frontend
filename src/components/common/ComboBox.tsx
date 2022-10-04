@@ -55,9 +55,9 @@ const Select = styled.div`
 
 const ArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
   ${(props) =>
-    props.isopen &&
+    props.isopen === "true" &&
     css`
-      transform: rotate(-180deg);
+      transform: rotate(180deg);
     `}
 `;
 
