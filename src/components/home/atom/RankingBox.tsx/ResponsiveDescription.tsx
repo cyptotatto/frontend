@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function Description() {
+function ResponsiveDescription() {
   return (
     <Wrap>
       <div className="rank">Rank</div>
@@ -11,7 +11,7 @@ function Description() {
   );
 }
 
-export default Description;
+export default ResponsiveDescription;
 
 const Wrap = styled.div`
   width: 100%;
@@ -31,5 +31,8 @@ const Wrap = styled.div`
   }
   .type {
     width: 18%;
+  }
+  @media screen and (max-width: 1120px) {
+    display: none;
   }
 `;

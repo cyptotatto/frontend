@@ -12,7 +12,16 @@ interface IProps {
 function ImgBox({ imgUrl, isHeart }: IProps) {
   return (
     <Box>
-      <Image id="mainImg" src={imgUrl} width="331" height="232" alt="mainImg" />
+      <ImageWrap>
+        <Image
+          id="mainImg"
+          src={imgUrl}
+          width={664}
+          height={464}
+          objectFit="contain"
+          alt="mainImg"
+        />
+      </ImageWrap>
       <HeartBtn isHeart={isHeart} />
     </Box>
   );
@@ -24,3 +33,5 @@ const Box = styled.div`
   position: relative;
   display: flex;
 `;
+
+const ImageWrap = styled.div``;

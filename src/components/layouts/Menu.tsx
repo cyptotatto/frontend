@@ -63,7 +63,7 @@ const Wrap = styled.div`
   background-color: white;
   color: black;
   text-align: center;
-  @media screen and (min-width: 750px) {
+  @media screen and (min-width: 950px) {
     display: none;
   }
 `;

@@ -121,7 +121,7 @@ const Responsive = styled.div`
   .when-narrow {
     display: none;
   }
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 950px) {
     .when-wide {
       display: none;
     }

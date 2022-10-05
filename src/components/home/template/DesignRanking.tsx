@@ -15,6 +15,5 @@ function DesignRanking() {
 export default DesignRanking;
 
 const Wrap = styled.div`
-  margin: 120px 10% 0px 10%;
-  padding-bottom: 20px;
+  padding: 120px 7%;
 `;

@@ -72,8 +72,14 @@ const Container = styled.div`
   color: white;
   padding: 16px;
   border-radius: 22px;
+  width: 100%;
+  @media screen and (700px < width < 1000px) {
+    width: 50%;
+  }
+  @media screen and (min-width: 1000px) {
+    width: 33%;
+  }
 `;
-
 const Content = styled.div`
   padding: 22px 0;
 `;
