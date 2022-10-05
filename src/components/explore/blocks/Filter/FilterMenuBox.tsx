@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
-import FilterMenuTitle from "./FilterMenuTitle";
+import FilterMenuTitle from "../../atoms/Filter/FilterMenuTitle";
 import Tag from "../../atoms/Filter/Tag";
 
 interface IProps {

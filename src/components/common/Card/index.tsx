@@ -4,8 +4,8 @@ import styled from "styled-components";
 import CustomButton from "../CustomButton";
 import ImgBox from "../Card/blocks/ImgBox";
 import TattooInfoBox from "../Card/blocks/TattooInfoBox";
-import PriceBox from "../Card/blocks/PriceBox";
-import HeartBox from "./blocks/HeartBox";
+import PriceBox from "./atoms/PriceBox";
+import HeartBox from "./atoms/HeartBox";
 import Link from "next/link";
 
 type InfoType = {

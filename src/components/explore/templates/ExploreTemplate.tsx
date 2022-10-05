@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import Header from "../blocks/Header";
-import FilterTab from "../blocks/Filter/FilterTab";
-import TabBar from "../blocks/TabBar";
-import TattoBox from "../blocks/TattooBox";
+import Header from "./Header";
+import FilterTab from "./FilterTab";
+import TabBar from "./TabBar";
+import TattoBox from "./TattooBox";
 
 function ExploreTemplate() {
   return (

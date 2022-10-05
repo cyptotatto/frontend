@@ -9,16 +9,16 @@ interface IProps {
   onToggleMenu: () => void;
 }
 
-function FilterMenu({ children, isOpen, onToggleMenu }: IProps) {
+function FilterMenuTitle({ children, isOpen, onToggleMenu }: IProps) {
   return (
     <Menu onClick={onToggleMenu}>
-      <Title>{children}</Title>
+      <span className="title">{children}</span>
       <MenuArrowIcon isOpen={isOpen} />
     </Menu>
   );
 }
 
-export default FilterMenu;
+export default FilterMenuTitle;
 
 const Menu = styled.div`
   display: flex;
@@ -26,11 +26,11 @@ const Menu = styled.div`
   justify-content: space-between;
   padding: 20px 0;
   cursor: pointer;
-`;
 
-const Title = styled.span`
-  font-size: 18px;
-  font-weight: 600;
+  .title {
+    font-size: 18px;
+    font-weight: 600;
+  }
 `;
 
 const MenuArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
