@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 import { useRecoilValue } from "recoil";
-import { isFilterTabOpenAtom } from "../../../../recoil/menu";
+import { isFilterTabOpenAtom } from "../../../recoil/menu";
 
-import FilterMenuBox from "./FilterMenuBox";
-import SearchBar from "../../../common/SearchBar";
+import FilterMenuBox from "../blocks/Filter/FilterMenuBox";
+import SearchBar from "../../common/SearchBar";
 
 const tagInfo = {
   genere: [

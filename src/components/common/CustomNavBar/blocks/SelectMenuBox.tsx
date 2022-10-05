@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import TabMenu from "../atoms/TabMenu";
-
 interface IProps {
   menu: string[];
 }
+
+type MenuPropsType = {
+  isActive?: boolean;
+};
 
 type UnderLinePropsType = {
   selectedMenuIdx: number;
@@ -26,7 +28,7 @@ function SelectMenuBox({ menu }: IProps) {
         <TabMenu
           key={i}
           isActive={selectedMenuIdx === i}
-          onClickHandler={onChangeMenu}
+          onClick={onChangeMenu}
         >
           {menuName}
         </TabMenu>
@@ -40,6 +42,16 @@ export default SelectMenuBox;
 
 const Box = styled.div`
   position: relative;
+`;
+
+const TabMenu = styled.button<MenuPropsType>`
+  background: none;
+  color: ${(props) => (props.isActive ? "#C23270" : "white")};
+  font-size: 15px;
+  font-weight: 600;
+  padding: 12px 0;
+  width: 95px;
+  height: 100%;
 `;
 
 const UnderLine = styled.div<UnderLinePropsType>`

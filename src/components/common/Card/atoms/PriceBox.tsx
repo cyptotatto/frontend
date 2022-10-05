@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 
 import EthereumIcon from "../../../../../public/assets/ethereum.svg";
 import TriangleIcon from "../../../../../public/assets/triangle.svg";
-import Label from "../atoms/Label";
 
 interface IProps {
   sign: string;
@@ -18,19 +17,17 @@ interface IStyledPercentage {
 function PriceBox({ sign, price, percentage }: IProps) {
   return (
     <Wrap>
-      <Container>
-        <LabelWrap>
-          <Label>Price</Label>
-        </LabelWrap>
+      <div>
+        <label className="title">Price</label>
         <Price>
           <EthereumIcon />
-          <Num>{price}</Num>
+          <span className="num">{price}</span>
         </Price>
         <PercentageBox sign={sign}>
-          <Percentage>{percentage}%</Percentage>
+          <span className="percentage">{percentage}%</span>
           <StyledTriangleIcon />
         </PercentageBox>
-      </Container>
+      </div>
     </Wrap>
   );
 }
@@ -42,28 +39,21 @@ const Wrap = styled.div`
   justify-content: end;
   width: 50%;
   margin-top: 5px;
+
+  .title {
+    margin-left: 22px;
+    color: #bcbcbc;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
 `;
 
-const Container = styled.div``;
-
-const LabelWrap = styled.div`
-  margin-left: 22px;
-`;
-
-const Price = styled.div``;
-
-const Num = styled.span`
-  font-weight: 700;
-  font-size: 28px;
-  margin-left: 2px;
-`;
-
-const Percentage = styled.span`
-  display: inline-block;
-  width: 100%;
-  text-align: right;
-  font-size: 20px;
-  margin-right: 8px;
+const Price = styled.div`
+  .num {
+    font-weight: 700;
+    font-size: 28px;
+    margin-left: 2px;
+  }
 `;
 
 const StyledTriangleIcon = styled((props) => <TriangleIcon {...props} />)`
@@ -74,9 +64,15 @@ const PercentageBox = styled.div<IStyledPercentage>`
   display: flex;
   align-items: center;
 
-  ${Percentage} {
+  .percentage {
+    display: inline-block;
+    width: 100%;
+    text-align: right;
+    font-size: 20px;
+    margin-right: 8px;
     color: ${(props) => (props.sign === "up" ? "#78e490" : "#E2193A")};
   }
+
   ${StyledTriangleIcon} {
     ${(props) =>
       props.sign === "up"
