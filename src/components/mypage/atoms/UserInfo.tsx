@@ -2,78 +2,53 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Image from "next/image";
 
+import { InfoType } from "../blocks/UserProfile";
+
 import SettingIcon from "../../../../public/assets/setting.svg";
 import EthereumIcon from "../../../../public/assets/ethereum.svg";
-import PencilIcon from "../../../../public/assets/pencil.svg";
 
-function UserInfo() {
+interface IProps {
+  info: InfoType;
+}
+
+function UserInfo({ info }: IProps) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
 
   const onToggleSetting = () => setIsSettingOpen((prev) => !prev);
 
   return (
-    <Container>
-      <CoverImgBox>
-        <CoverImg src="" alt="" layout="fill" />
-        <EditBtn>
-          <PencilIcon />
-        </EditBtn>
-      </CoverImgBox>
-      <InfoBox>
-        <UserImgBackground>
-          <UserImg
-            src="/assets/user_default_img.png"
-            alt="userDefaultImg"
-            width="154"
-            height="154"
-          />
-        </UserImgBackground>
-        <UserNameBox>
-          <UserName>UserName</UserName>
-          <Setting onClick={onToggleSetting}>
-            <SettingBtn>
-              <SettingIcon />
-            </SettingBtn>
-            {isSettingOpen && (
-              <OptBox>
-                <Opt>개인정보수정</Opt>
-                <Opt>회원탈퇴</Opt>
-              </OptBox>
-            )}
-          </Setting>
-        </UserNameBox>
-        <AccountNumBox>
-          <EthereumIcon />
-          <AccountNum>0x0017...1D19</AccountNum>
-        </AccountNumBox>
-      </InfoBox>
-    </Container>
+    <InfoBox>
+      <UserImgBackground>
+        <UserImg
+          src={info.userImgUrl}
+          alt="userDefaultImg"
+          width="154"
+          height="154"
+        />
+      </UserImgBackground>
+      <UserNameBox>
+        <UserName>{info.username}</UserName>
+        <Setting onClick={onToggleSetting}>
+          <SettingBtn>
+            <SettingIcon />
+          </SettingBtn>
+          {isSettingOpen && (
+            <OptBox>
+              <Opt>개인정보수정</Opt>
+              <Opt>회원탈퇴</Opt>
+            </OptBox>
+          )}
+        </Setting>
+      </UserNameBox>
+      <AccountNumBox>
+        <EthereumIcon />
+        <AccountNum>{info.accountNum}</AccountNum>
+      </AccountNumBox>
+    </InfoBox>
   );
 }
 
 export default UserInfo;
-
-const Container = styled.div``;
-
-const CoverImgBox = styled.div`
-  position: relative;
-  height: 300px;
-  width: 100%;
-  background: #191919;
-  border-radius: 30px;
-`;
-
-const CoverImg = styled(Image)``;
-
-const EditBtn = styled.button`
-  position: absolute;
-  bottom: 18px;
-  right: 18px;
-  padding: 8px 8px 4px 8px;
-  border-radius: 10px;
-  background: #2b2b2b;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-`;
 
 const InfoBox = styled.div`
   margin-top: -140px;
