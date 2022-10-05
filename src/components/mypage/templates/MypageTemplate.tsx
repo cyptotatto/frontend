@@ -4,6 +4,7 @@ import styled from "styled-components";
 import NavBar from "../blocks/NavBar";
 import UserInfo from "../blocks/UserInfo";
 import TabBar from "../blocks/TabBar";
+import ListBox from "../blocks/ListBox";
 
 function MypageTemplate() {
   return (
@@ -14,6 +15,7 @@ function MypageTemplate() {
       </TopContent>
       <MainContent>
         <TabBar />
+        <ListBox />
       </MainContent>
     </Wrap>
   );
