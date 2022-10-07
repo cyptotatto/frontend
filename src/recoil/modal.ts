@@ -5,6 +5,11 @@ export const menuAtom = atom({
   default: "",
 });
 
+export const walletAtom = atom({
+  key: "walletAtom",
+  default: "",
+});
+
 export const isFilterTabOpenAtom = atom({
   key: "isFilterTabOpenAtom",
   default: false,
