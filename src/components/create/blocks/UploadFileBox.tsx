@@ -40,8 +40,10 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
 
   useEffect(() => {
     if (!Ref) return;
-    Ref.current.addEventListener("dragover", (e) => e.preventDefault());
-    Ref.current.addEventListener("drop", (e) => imgUpload(e, e.dataTransfer));
+    Ref.current.addEventListener("dragover", (e: any) => e.preventDefault());
+    Ref.current.addEventListener("drop", (e: any) =>
+      imgUpload(e, e.dataTransfer)
+    );
   }, []);
 
   return (

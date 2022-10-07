@@ -5,7 +5,6 @@ import UploadFileBox from "../blocks/UploadFileBox";
 import UploadTitle from "../blocks/UploadTitle";
 import UploadLink from "../blocks/UploadLink";
 import UploadDescript from "../blocks/UploadDescript";
-import CustomButton from "../../../common/CustomButton";
 
 //create
 function CreateTemplate() {
