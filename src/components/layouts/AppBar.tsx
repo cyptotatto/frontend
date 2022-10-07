@@ -4,14 +4,16 @@ import { useRecoilState } from "recoil";
 import { accountAtom } from "../../recoil/user";
 import styled from "styled-components";
 import Menu from "./Menu";
-import { menuAtom } from "../../recoil/menu";
+import { menuAtom, walletAtom } from "../../recoil/modal";
 import Image from "next/image";
 import SearchBar from "../common/SearchBar";
+import WalletModal from "./WalletModal";
 
 function AppBar() {
   const router = useRouter();
   const [account, setAccount] = useRecoilState(accountAtom);
   const [menu, setMenu] = useRecoilState(menuAtom);
+  const [wallet, setWallet] = useRecoilState(walletAtom);
 
   useEffect(() => {
     setMenu("");
@@ -33,15 +35,20 @@ function AppBar() {
     }
   }, [setAccount, router]);
 
+  const openWallet = () => {
+    setWallet("ok");
+    console.log(wallet);
+    setMenu("");
+  };
+
   return (
     <Wrap>
-      {menu && <Menu />}
+      <>{wallet && <WalletModal />}</>
+      <>{menu && <Menu />}</>
       <Logo onClick={() => router.push("/")}>
         <Image src="/assets/logo.svg" alt="logo" width="128px" height="60px" />
       </Logo>
-      <SearchBarWrap>
-        <SearchBar />
-      </SearchBarWrap>
+      <SearchBar />
       <Responsive>
         <div className="when-wide">
           <Create onClick={() => router.push("/create")}>create</Create>
@@ -54,7 +61,7 @@ function AppBar() {
               height="30px"
             />
           </Mypage>
-          <Wallet>
+          <Wallet onClick={openWallet}>
             <Image
               src="/assets/wallet.svg"
               alt="logo"
@@ -84,11 +91,6 @@ const Wrap = styled.div`
 
 const Logo = styled.div`
   margin-top: 11px;
-`;
-
-const SearchBarWrap = styled.div`
-  margin-top: 20px;
-  width: 50%;
 `;
 
 const Create = styled.div`

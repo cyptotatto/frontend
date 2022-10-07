@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useCallback, useState, useEffect } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import styled from "styled-components";
-import { menuAtom } from "../../recoil/menu";
+import { menuAtom } from "../../recoil/modal";
 import { accountAtom } from "../../recoil/user";
 
 function Menu() {

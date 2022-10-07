@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { useRecoilValue } from "recoil";
-import { isFilterTabOpenAtom } from "../../../recoil/menu";
+import { isFilterTabOpenAtom } from "../../../recoil/modal";
 
 import FilterMenuBox from "../blocks/Filter/FilterMenuBox";
 import SearchBar from "../../common/SearchBar";
