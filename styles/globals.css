@@ -5,6 +5,8 @@ body {
   font-family: "Acumin Pro";
   background: black;
   color: white;
+  text-rendering: optimizeLegibility;
+  font-synthesis: none;
 }
 
 a {
