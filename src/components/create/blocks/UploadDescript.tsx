@@ -33,6 +33,7 @@ const StyledInput = styled.input`
   border-radius: 10px;
   border: 2px solid #191919;
   outline: none;
+  margin-bottom: 24px;
 `;
 
 export default UploadDescript;
