@@ -4,6 +4,7 @@ import { useSetRecoilState, useRecoilState } from "recoil";
 import styled from "styled-components";
 import { menuAtom } from "../../recoil/modal";
 import { accountAtom } from "../../recoil/user";
+import CloseButton from "./block/CloseButton";
 
 function Menu() {
   const setMenu = useSetRecoilState(menuAtom);
@@ -33,18 +34,19 @@ function Menu() {
 
   return (
     <Wrap>
-      <div onClick={() => router.push("/explore")}>Explore</div>
-      <div onClick={() => router.push("/minting")}>Minting</div>
-      {render && (
-        <>
-          {account ? (
-            <div onClick={() => router.push("/mypage")}>mypage</div>
-          ) : (
-            <div onClick={getAccount}>Login</div>
-          )}
-        </>
-      )}
-      <div onClick={() => setMenu("")}>닫기</div>
+      <CloseButton handleClick={() => setMenu("")} />
+      <div className="router" onClick={() => router.push("/explore")}>
+        explore
+      </div>
+      <div className="router" onClick={() => router.push("/create")}>
+        create
+      </div>
+      <div
+        className="router"
+        onClick={account ? () => router.push("/mypage") : getAccount}
+      >
+        mypage
+      </div>
     </Wrap>
   );
 }
@@ -53,16 +55,19 @@ export default Menu;
 
 const Wrap = styled.div`
   opacity: 1;
-  margin-top: 60px;
-  height: calc(100vh - 60px);
   position: fixed;
+  z-index: 30;
   right: 0;
   left: 0;
   top: 0;
   bottom: 0;
-  background-color: white;
-  color: black;
+  background-color: black;
+  color: white;
   text-align: center;
+  line-height: normal;
+  .router {
+    line-height: 80px;
+  }
   @media screen and (min-width: 950px) {
     display: none;
   }

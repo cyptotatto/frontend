@@ -22,6 +22,7 @@ const Wrap = styled.button`
   height: 50px;
   align-items: center;
   border-radius: 30px;
+  color: white;
   background: ${(props) =>
     props.color === "true"
       ? "linear-gradient(92.39deg, #d13750 9%, #ae2b9e 88.89%)"
