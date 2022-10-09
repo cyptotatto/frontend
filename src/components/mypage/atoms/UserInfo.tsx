@@ -1,20 +1,27 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Image from "next/image";
 
 import { InfoType } from "../blocks/UserProfile";
 
 import SettingIcon from "../../../../public/assets/setting.svg";
 import EthereumIcon from "../../../../public/assets/ethereum.svg";
+import ArrowDownIcon from "../../../../public/assets/arrow_down.svg";
 
 interface IProps {
   info: InfoType;
 }
 
+interface IntroPropsType {
+  isOpen: boolean;
+}
+
 function UserInfo({ info }: IProps) {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
+  const [isFoldOpen, setIsFoldOpen] = useState(false);
 
   const onToggleSetting = () => setIsSettingOpen((prev) => !prev);
+  const onToggleFold = () => setIsFoldOpen((prev) => !prev);
 
   return (
     <InfoBox>
@@ -44,6 +51,15 @@ function UserInfo({ info }: IProps) {
         <EthereumIcon />
         <AccountNum>{info.accountNum}</AccountNum>
       </AccountNumBox>
+      <IntroBox>
+        <Intro isOpen={isFoldOpen}>{info.intro}</Intro>
+        <FoldBox onClick={onToggleFold}>
+          <strong className="foldText">
+            {isFoldOpen ? "see Less" : "see More"}
+          </strong>
+          <ArrowIcon isopen={isFoldOpen.toString()} />
+        </FoldBox>
+      </IntroBox>
     </InfoBox>
   );
 }
@@ -131,4 +147,38 @@ const AccountNum = styled.span`
   font-weight: 500;
   color: #7a7a7a;
   margin-left: 5px;
+`;
+
+const IntroBox = styled.div``;
+
+const Intro = styled.p<IntroPropsType>`
+  color: #7a7a7a;
+  font-weight: 500;
+  white-space: pre-wrap;
+
+  ${(props) =>
+    !props.isOpen &&
+    css`
+      height: 18px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    `};
+`;
+
+const FoldBox = styled.div`
+  cursor: pointer;
+
+  .foldText {
+    font-size: 15px;
+    text-decoration: underline;
+    margin-right: 8px;
+  }
+`;
+
+const ArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
+  ${(props) =>
+    props.isopen === "true" &&
+    css`
+      transform: rotate(180deg);
+    `}
 `;
