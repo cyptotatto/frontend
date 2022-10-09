@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import NavBar from "../blocks/NavBar";
-import UserInfo from "../blocks/UserInfo";
+import UserProfile from "../blocks/UserProfile";
 import TabBar from "../blocks/TabBar";
 import ListBox from "../blocks/ListBox";
 
@@ -10,7 +10,7 @@ function MypageTemplate() {
   return (
     <Wrap>
       <TopContent>
-        <UserInfo />
+        <UserProfile />
         <NavBar />
       </TopContent>
       <MainContent>
