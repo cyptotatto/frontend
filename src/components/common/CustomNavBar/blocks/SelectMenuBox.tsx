@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface IProps {
   menu: string[];
@@ -10,16 +10,22 @@ type MenuPropsType = {
 };
 
 type UnderLinePropsType = {
+  width: number;
+  pos: number;
   selectedMenuIdx: number;
 };
 
 function SelectMenuBox({ menu }: IProps) {
+  const [lineWidth, setLineWidth] = useState(87);
+  const [linePos, setLinePos] = useState(0);
   const [selectedMenuIdx, setSelectedMenuIdx] = useState(0);
 
   const onChangeMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
     const menuName = e.currentTarget.innerText;
     const idx = menu.indexOf(menuName);
     setSelectedMenuIdx(idx);
+    setLineWidth(e.currentTarget.offsetWidth);
+    setLinePos(e.currentTarget.offsetLeft);
   };
 
   return (
@@ -33,7 +39,11 @@ function SelectMenuBox({ menu }: IProps) {
           {menuName}
         </TabMenu>
       ))}
-      <UnderLine selectedMenuIdx={selectedMenuIdx} />
+      <UnderLine
+        width={lineWidth}
+        pos={linePos}
+        selectedMenuIdx={selectedMenuIdx}
+      />
     </Box>
   );
 }
@@ -49,17 +59,16 @@ const TabMenu = styled.button<MenuPropsType>`
   color: ${(props) => (props.isActive ? "#C23270" : "white")};
   font-size: 15px;
   font-weight: 600;
-  padding: 12px 0;
-  width: 95px;
+  padding: 12px 12px;
   height: 100%;
 `;
 
 const UnderLine = styled.div<UnderLinePropsType>`
   position: absolute;
-  left: ${(props) => `${95 * props.selectedMenuIdx}px`};
+  left: ${(props) => `${props.pos}px`};
   transition: 0.1s ease-out;
   bottom: -2px;
   height: 3px;
-  width: 95px;
+  width: ${(props) => `${props.width}px`};
   background: linear-gradient(90deg, #d1374e 18.55%, #ac2aa1 96.67%);
 `;
