@@ -3,13 +3,18 @@ import styled from "styled-components";
 import Image from "next/image";
 
 interface IProps {
+  type: string;
   imgUrl: string;
 }
 
-function UserImg({ imgUrl }: IProps) {
+type CustomImgPropsType = {
+  type: string;
+};
+
+function UserImg({ type, imgUrl }: IProps) {
   return (
     <UserImgBackground>
-      <CustomImg src={imgUrl} alt="userDefaultImg" layout="fill" />
+      <CustomImg type={type} src={imgUrl} alt="userDefaultImg" layout="fill" />
     </UserImgBackground>
   );
 }
@@ -20,14 +25,13 @@ const UserImgBackground = styled.div`
   position: relative;
   width: 168px;
   height: 168px;
-  border-radius: 50%;
   z-index: 1;
 `;
 
-const CustomImg = styled(Image)`
+const CustomImg = styled(Image)<CustomImgPropsType>`
   width: 154px;
   height: 154px;
-  border-radius: 50%;
+  border-radius: ${(props) => (props.type === "circle" ? "50%" : "25px")};
   border: 6px solid black !important;
   z-index: 2;
 `;

@@ -3,10 +3,10 @@ import styled from "styled-components";
 
 import NavBar from "../blocks/NavBar";
 import UserProfile from "../blocks/UserProfile";
-import TabBar from "../blocks/TabBar";
-import ListBox from "../blocks/ListBox";
+import TabBar from "../../explore/templates/TabBar";
+import ListBox from "../../mypage/blocks/ListBox";
 
-function MypageTemplate() {
+function ArtistTemplate() {
   return (
     <Wrap>
       <TopContent>
@@ -21,7 +21,7 @@ function MypageTemplate() {
   );
 }
 
-export default MypageTemplate;
+export default ArtistTemplate;
 
 const Wrap = styled.div`
   padding: 24px;
