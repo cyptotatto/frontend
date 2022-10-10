@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
-import ArrowDownIcon from "../../../../../public/assets/arrow_down.svg";
+import ArrowDownIcon from "../../../public/assets/arrow_down.svg";
 
 function ComboBox() {
   const [selectedMenu, setSelectedMenu] = useState("정렬");
@@ -55,9 +55,9 @@ const Select = styled.div`
 
 const ArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
   ${(props) =>
-    props.isopen &&
+    props.isopen === "true" &&
     css`
-      transform: rotate(-180deg);
+      transform: rotate(180deg);
     `}
 `;
 

@@ -1,22 +1,15 @@
 import React from "react";
 import styled from "styled-components";
-import { useRouter } from "next/router";
-import { useSetRecoilState } from "recoil";
-import { accountAtom } from "../../../recoil/user";
+
 import NavBar from "../NavBar";
+import UserInfo from "../blocks/UserInfo";
 
 function MypageTemplate() {
-  const router = useRouter();
-  const setAccount = useSetRecoilState(accountAtom);
-
-  const handleLogout = () => {
-    setAccount("");
-    router.push("/");
-  };
-
   return (
     <Wrap>
-      <Logout onClick={handleLogout}>로그아웃</Logout>
+      <TopContent>
+        <UserInfo />
+      </TopContent>
       <NavBar />
     </Wrap>
   );
@@ -31,3 +24,7 @@ const Wrap = styled.div`
 const Account = styled.div``;
 
 const Logout = styled.div``;
+
+const TopContent = styled.div`
+  margin-bottom: 34px;
+`;

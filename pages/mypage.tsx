@@ -3,6 +3,14 @@ import styled from "styled-components";
 import MypageTemplate from "../src/components/mypage/templates/MypageTemplate";
 
 function Mypage() {
+  // const router = useRouter();
+  // const setAccount = useSetRecoilState(accountAtom);
+
+  // const handleLogout = () => {
+  //   setAccount("");
+  //   router.push("/");
+  // };
+
   return (
     <Wrap>
       <MypageTemplate />
