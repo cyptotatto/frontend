@@ -1,6 +1,8 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
+import { makeFormattedNumber } from "../../../../utils/transform";
+
 import EthereumIcon from "../../../../../public/assets/ethereum.svg";
 import TriangleIcon from "../../../../../public/assets/triangle.svg";
 
@@ -21,10 +23,10 @@ function PriceBox({ sign, price, percentage }: IProps) {
         <label className="title">Price</label>
         <Price>
           <EthereumIcon />
-          <span className="num">{price}</span>
+          <span className="num">{makeFormattedNumber(price)}</span>
         </Price>
         <PercentageBox sign={sign}>
-          <span className="percentage">{percentage}%</span>
+          <span className="percentage">{makeFormattedNumber(percentage)}%</span>
           <StyledTriangleIcon />
         </PercentageBox>
       </div>

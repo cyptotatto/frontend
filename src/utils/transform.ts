@@ -3,3 +3,7 @@ export function makeShortAddress(address: string): string {
   const right = address.slice(-4);
   return left + "..." + right;
 }
+
+export function makeFormattedNumber(num: number): string {
+  return num.toLocaleString("en-US");
+}

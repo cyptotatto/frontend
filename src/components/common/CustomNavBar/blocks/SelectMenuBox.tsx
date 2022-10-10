@@ -59,7 +59,8 @@ const TabMenu = styled.button<MenuPropsType>`
   color: ${(props) => (props.isActive ? "#C23270" : "white")};
   font-size: 15px;
   font-weight: 600;
-  padding: 12px 12px;
+  min-width: 87px;
+  padding: 12px;
   height: 100%;
 `;
 
