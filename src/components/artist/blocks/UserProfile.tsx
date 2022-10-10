@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import CoverImgBox from "../atoms/CoverImgBox";
+import CoverImgBox from "../../mypage/atoms/CoverImgBox";
 import AccountNumBox from "../atoms/AccountNumBox";
-import Setting from "../atoms/Setting";
-import UserImg from "../atoms/UserImg";
-import UserName from "../atoms/UserName";
-import Intro from "../atoms/Intro";
+import UserImg from "../../mypage/atoms/UserImg";
+import UserName from "../../mypage/atoms/UserName";
+import Intro from "../../mypage/atoms/Intro";
+import HeartBtn from "./HeartBtn";
 
 const userInfo = {
-  username: "UserName",
+  username: "그레이트",
   userImgUrl: "/assets/user_img.png",
   userCoverImgUrl: "/",
   accountNum: "0x001700000001D19",
@@ -18,18 +18,14 @@ const userInfo = {
 };
 
 function UserProfile() {
-  const [isSettingOpen, setIsSettingOpen] = useState(false);
-
-  const onToggleSetting = () => setIsSettingOpen((prev) => !prev);
-
   return (
     <Container>
       <CoverImgBox imgUrl={userInfo.userCoverImgUrl} />
       <InfoBox>
-        <UserImg type="circle" imgUrl={userInfo.userImgUrl} />
+        <UserImg type="square" imgUrl={userInfo.userImgUrl} />
         <UserNameBox>
           <UserName>{userInfo.username}</UserName>
-          <Setting isOpen={isSettingOpen} onToggleSetting={onToggleSetting} />
+          <HeartBtn isHeart={true} />
         </UserNameBox>
         <AccountNumBox accountNum={userInfo.accountNum} />
         <Intro intro={userInfo.intro} />
@@ -50,5 +46,6 @@ const InfoBox = styled.div`
 const UserNameBox = styled.div`
   display: flex;
   align-items: center;
-  margin: 32px 0 8px 0;
+  margin: 32px 0 18px 0;
+  gap: 16px;
 `;
