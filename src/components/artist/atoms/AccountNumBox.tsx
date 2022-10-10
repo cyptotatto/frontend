@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { makeShortAddress } from "../../../utils/transform";
-import EthereumIcon from "../../../../public/assets/ethereum.svg";
 
 interface IProps {
   accountNum: string;

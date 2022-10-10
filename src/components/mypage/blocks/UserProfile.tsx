@@ -40,7 +40,9 @@ function UserProfile() {
 
 export default UserProfile;
 
-const Container = styled.div``;
+const Container = styled.div`
+  padding-bottom: 32px;
+`;
 
 const InfoBox = styled.div`
   margin-top: -140px;
