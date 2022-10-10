@@ -34,20 +34,21 @@ const Wrap = styled.div`
   align-items: center;
   padding-top: 10px;
   .rank {
-    width: 20%;
-    padding-left: 45px;
+    width: 15%;
+    padding-left: 25px;
   }
   .img {
   }
   .artist {
-    padding-left: 29.03px;
-    width: calc(50% - 80px);
+    padding-left: 20px;
+    width: calc(68% - 80px);
     font-weight: 600;
     font-size: 20px;
     line-height: 24px;
+    padding-right: 10px;
   }
   .type {
-    width: 30%;
+    width: 17%;
     font-weight: 400;
     font-size: 15px;
     line-height: 22px;

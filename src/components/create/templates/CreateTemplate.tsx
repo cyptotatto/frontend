@@ -5,7 +5,9 @@ import UploadFileBox from "../blocks/UploadFileBox";
 import UploadTitle from "../blocks/UploadTitle";
 import UploadLink from "../blocks/UploadLink";
 import UploadDescript from "../blocks/UploadDescript";
-import CustomButton from "../../../common/CustomButton";
+import SelectBox from "../atoms/SelectBox";
+import UploadCategory from "../blocks/UploadCategory";
+import UploadSell from "../blocks/UploadSell";
 
 //create
 function CreateTemplate() {
@@ -14,10 +16,6 @@ function CreateTemplate() {
   const [title, setTitle] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const [descript, setDescript] = useState<string>("");
-  const options = [
-    { value: "1", name: "dummy1" },
-    { value: "2", name: "dummy2" },
-  ];
   const onSubmit = () => {};
 
   return (
@@ -38,49 +36,10 @@ function CreateTemplate() {
         setDescript={setDescript}
       ></UploadDescript>
 
-      <div>
-        <h1>카테고리</h1>
-        <StyledSelect>
-          <option selected disabled hidden>
-            장르별
-          </option>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.name}
-            </option>
-          ))}
-        </StyledSelect>
-      </div>
+      <UploadCategory />
+      <UploadSell />
 
-      <div>
-        <StyledSelect>
-          <option selected disabled hidden>
-            장르별
-          </option>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.name}
-            </option>
-          ))}
-        </StyledSelect>
-      </div>
-
-      <div>
-        <StyledSelect>
-          <option selected disabled hidden>
-            장르별
-          </option>
-          {options.map((option) => (
-            <option key={option.value} value={option.value}>
-              {option.name}
-            </option>
-          ))}
-        </StyledSelect>
-      </div>
-
-      <div>
-        <StyledBtn onClick={onSubmit}>Create</StyledBtn>
-      </div>
+      <StyledBtn onClick={onSubmit}>Create</StyledBtn>
     </Wrap>
   );
 }
@@ -88,8 +47,6 @@ function CreateTemplate() {
 export default CreateTemplate;
 
 const Wrap = styled.div`
-  //padding-top: 80px;
-
   display: flex;
 
   flex-direction: column;
@@ -101,16 +58,6 @@ const Title = styled.h1`
   font-size: 48px;
   line-height: 58px;
   margin-right: 270px;
-`;
-
-const StyledSelect = styled.select`
-  background-color: #191919;
-  color: #7a7a7a;
-  width: 640px;
-  height: 48px;
-  border: 2px solid #191919;
-  border-radius: 10px;
-  margin-bottom: 24px;
 `;
 
 const StyledBtn = styled.button`

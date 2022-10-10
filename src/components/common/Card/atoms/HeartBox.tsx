@@ -13,7 +13,7 @@ function HeartBox({ cnt }: IProps) {
   return (
     <Box>
       <OutlineHeartIcon width="20" />
-      <Cnt>{makeFormattedNumber(cnt)}</Cnt>
+      <span className="count">{makeFormattedNumber(cnt)}</span>
     </Box>
   );
 }
@@ -24,11 +24,11 @@ const Box = styled.div`
   display: flex;
   align-items: center;
   padding-top: 18px;
-`;
 
-const Cnt = styled.span`
-  font-weight: 500;
-  font-size: 16px;
-  padding-bottom: 1px;
-  margin-left: 5px;
+  .count {
+    font-weight: 500;
+    font-size: 16px;
+    padding-bottom: 1px;
+    margin-left: 5px;
+  }
 `;

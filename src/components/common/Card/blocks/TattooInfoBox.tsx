@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import UserProfile from "./UserProfile";
+import UserProfile from "../atoms/UserProfile";
 
 interface IProps {
   name: string;
@@ -12,7 +12,7 @@ interface IProps {
 function TattooInfoBox({ name, artist, artistImgUrl }: IProps) {
   return (
     <Container>
-      <TattooName>{name}</TattooName>
+      <h2 className="tattooName">{name}</h2>
       <UserProfile
         labelText="Artist"
         userName={artist}
@@ -26,9 +26,9 @@ export default TattooInfoBox;
 
 const Container = styled.div`
   width: 50%;
-`;
 
-const TattooName = styled.h2`
-  font-size: 20px;
-  margin: 0 0 15px 0;
+  .tattooName {
+    font-size: 20px;
+    margin: 0 0 15px 0;
+  }
 `;

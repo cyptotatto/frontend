@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-
+import addImage from "../../../../public/assets/add_image.png";
 import styled, { css } from "styled-components";
 
 function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
@@ -40,8 +40,10 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
 
   useEffect(() => {
     if (!Ref) return;
-    Ref.current.addEventListener("dragover", (e) => e.preventDefault());
-    Ref.current.addEventListener("drop", (e) => imgUpload(e, e.dataTransfer));
+    Ref.current.addEventListener("dragover", (e: any) => e.preventDefault());
+    Ref.current.addEventListener("drop", (e: any) =>
+      imgUpload(e, e.dataTransfer)
+    );
   }, []);
 
   return (
@@ -52,6 +54,7 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
         <Image alt="사진" src={imgSrc} width="100" height="100" />
       ) : (
         <StyledUploadBox ref={Ref}>
+          <Image src={addImage} width="40" height="40" layout="fixed" />
           <StyledInput
             accept="image/"
             type="file"
@@ -79,6 +82,9 @@ const StyledUploadBox = styled.div`
   height: 150px;
   border: 3px dashed #191919;
   border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const StyledInput = styled.input`

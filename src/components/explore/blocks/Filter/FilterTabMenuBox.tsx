@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 import { useRecoilState } from "recoil";
-import { isFilterTabOpenAtom } from "../../../../recoil/menu";
+import { isFilterTabOpenAtom } from "../../../../recoil/modal";
 
 import ArrowLeftIcon from "../../../../../public/assets/arrow_left.svg";
 import FilterIcon from "../../../../../public/assets/filter.svg";

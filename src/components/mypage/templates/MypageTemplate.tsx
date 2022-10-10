@@ -1,16 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-import NavBar from "../NavBar";
-import UserInfo from "../blocks/UserInfo";
+import NavBar from "../blocks/NavBar";
+import UserProfile from "../blocks/UserProfile";
+import TabBar from "../blocks/TabBar";
+import ListBox from "../blocks/ListBox";
 
 function MypageTemplate() {
   return (
     <Wrap>
       <TopContent>
-        <UserInfo />
+        <UserProfile />
+        <NavBar />
       </TopContent>
-      <NavBar />
+      <MainContent>
+        <TabBar />
+        <ListBox />
+      </MainContent>
     </Wrap>
   );
 }
@@ -25,6 +31,6 @@ const Account = styled.div``;
 
 const Logout = styled.div``;
 
-const TopContent = styled.div`
-  margin-bottom: 34px;
-`;
+const TopContent = styled.div``;
+
+const MainContent = styled.div``;

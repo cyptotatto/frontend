@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import CustomNavBar from "../common/CustomNavBar";
-import SelectedMenuBox from "../common/CustomNavBar/blocks/SelectMenuBox";
+import CustomNavBar from "../../common/CustomNavBar";
+import SelectedMenuBox from "../../common/CustomNavBar/blocks/SelectMenuBox";
 
-const myPageMenu = ["소유 NFT", "만든 NFT", "판매한 NFT"];
+const myPageMenu = ["소유 NFT", "만든 NFT", "판매한 NFT", "좋아요한 NFT"];
 
 function NavBar() {
   return (

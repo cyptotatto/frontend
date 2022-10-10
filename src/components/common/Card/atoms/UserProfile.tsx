@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import Image from "next/image";
-import Label from "../atoms/Label";
 
 interface IProps {
   labelText: string;
@@ -21,8 +20,8 @@ function UserProfile({ labelText, userName, userImgUrl }: IProps) {
         alt="userImg"
       />
       <InfoBox>
-        <Label>{labelText}</Label>
-        <Name>{userName}</Name>
+        <label className="title">{labelText}</label>
+        <span className="userName">{userName}</span>
       </InfoBox>
     </Container>
   );
@@ -44,9 +43,15 @@ const InfoBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
-`;
 
-const Name = styled.span`
-  font-size: 15px;
-  font-weight: bold;
+  .title {
+    color: #bcbcbc;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+
+  .userName {
+    font-size: 15px;
+    font-weight: bold;
+  }
 `;

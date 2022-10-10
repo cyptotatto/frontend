@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import PageTitle from "../../common/PageTitle";
-import NavBar from "./NavBar";
+import NavBar from "../blocks/NavBar";
 
 function Header() {
   return (

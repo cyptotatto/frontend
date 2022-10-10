@@ -27,7 +27,7 @@ export default MyApp;
 
 const AppBarWrap = styled.div`
   position: relative;
-  z-index: 2;
+  z-index: 15;
 `;
 
 const ComponentWrap = styled.div`

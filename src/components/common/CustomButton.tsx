@@ -4,11 +4,12 @@ import styled from "styled-components";
 interface ButtonPropsType {
   active: string;
   children: React.ReactNode;
+  handleClick?: () => void;
 }
 
-function CustomButton({ active, children }: ButtonPropsType) {
+function CustomButton({ active, children, handleClick }: ButtonPropsType) {
   return (
-    <Wrap color={active}>
+    <Wrap color={active} onClick={handleClick}>
       <div className="content">{children}</div>
     </Wrap>
   );
@@ -17,11 +18,11 @@ function CustomButton({ active, children }: ButtonPropsType) {
 export default CustomButton;
 
 const Wrap = styled.button`
-  display: flex;
   padding: 0 36px;
   height: 50px;
   align-items: center;
   border-radius: 30px;
+  color: white;
   background: ${(props) =>
     props.color === "true"
       ? "linear-gradient(92.39deg, #d13750 9%, #ae2b9e 88.89%)"
