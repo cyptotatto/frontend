@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
+import { useRouter } from "next/router";
 import SettingIcon from "../../../../public/assets/setting.svg";
 
 interface IProps {
@@ -9,6 +9,7 @@ interface IProps {
 }
 
 function Setting({ isOpen, onToggleSetting }: IProps) {
+  const router = useRouter();
   return (
     <Box onClick={onToggleSetting}>
       <SettingBtn>
@@ -16,7 +17,7 @@ function Setting({ isOpen, onToggleSetting }: IProps) {
       </SettingBtn>
       {isOpen && (
         <OptBox>
-          <Opt>개인정보수정</Opt>
+          <Opt onClick={() => router.push("/editprofile")}>개인정보수정</Opt>
           <Opt>회원탈퇴</Opt>
         </OptBox>
       )}
