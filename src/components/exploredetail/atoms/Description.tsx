@@ -35,7 +35,7 @@ const Box = styled.div`
   cursor: pointer;
   height: 63px;
   border-radius: 10px;
-  margin-bottom: 50px;
+  margin-top: 32px;
 `;
 
 const Select = styled.div`
@@ -57,7 +57,9 @@ const ArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
 
 const Text = styled.span``;
 
-const OptBox = styled.div``;
+const OptBox = styled.div`
+  display: flexbox;
+`;
 
 const Opt = styled.div`
   width: 640px;

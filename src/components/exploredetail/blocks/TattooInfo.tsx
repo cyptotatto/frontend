@@ -4,13 +4,24 @@ import styled from "styled-components";
 import TattooImg from "../atoms/TattooImg";
 import TattooName from "../atoms/TattooName";
 import BuyBtn from "../atoms/BuyBtn";
+import Details from "../atoms/Details";
+import Description from "../atoms/Description";
+import ItemTable from "../atoms/ItemTable";
 
+interface detail {
+  contractAddress: string;
+  tokenId: string;
+  blockChain: string;
+  tokenStandard: string;
+}
 interface IProps {
   username: string;
   tattooTitle: string;
   tattooImgUrl: string;
   ownerId: string;
   price: string;
+  intro: string;
+  details: detail;
 }
 
 function TattooInfo({
@@ -19,10 +30,16 @@ function TattooInfo({
   tattooTitle,
   ownerId,
   price,
+  intro,
+  details,
 }: IProps) {
   return (
     <Container>
-      <TattooImg type={username} imgUrl={tattooImgUrl}></TattooImg>
+      <div>
+        <TattooImg type={username} imgUrl={tattooImgUrl}></TattooImg>
+        <Description intro={intro}></Description>
+        <Details contractAddress={details.contractAddress}></Details>
+      </div>
       <StyledInfo>
         <TattooName
           userName={username}
@@ -31,6 +48,7 @@ function TattooInfo({
           price={price}
         ></TattooName>
         <BuyBtn></BuyBtn>
+        <ItemTable></ItemTable>
       </StyledInfo>
     </Container>
   );
@@ -40,7 +58,7 @@ export default TattooInfo;
 
 const Container = styled.div`
   display: flex;
-  align-items: center;
+
   padding-bottom: 32px;
 `;
 

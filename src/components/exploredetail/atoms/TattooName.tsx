@@ -17,23 +17,97 @@ function TattooName({ userName, tattooTitle, ownerId, price }: IProps) {
 
   return (
     <div>
-      <h1>{userName}</h1>
+      <StyledName>{userName}</StyledName>
 
-      <div>
-        <h1>{tattooTitle}</h1>
+      <StyledTitle>
+        <h1>{tattooTitle}&nbsp;</h1>
         <HeartBtn isHeart={heart}></HeartBtn>
-      </div>
+      </StyledTitle>
 
-      <h1>owner by {ownerId}</h1>
+      <StyledOwner>
+        Owner by&nbsp;<StyledOwnerName> {ownerId}</StyledOwnerName>
+      </StyledOwner>
 
-      <h1>current price</h1>
+      <StyledCurrentPrice>current price</StyledCurrentPrice>
 
-      <div>
+      <StyledPrice>
         <EthereumIcon></EthereumIcon>
-        <h1>{price}</h1>
-      </div>
+        <h1>&nbsp;{price}</h1>
+      </StyledPrice>
     </div>
   );
 }
 
 export default TattooName;
+
+const StyledName = styled.h1`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+
+  color: #7a7a7a;
+`;
+const StyledTitle = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0;
+  h1 {
+    margin: 0;
+  }
+`;
+const StyledCurrentPrice = styled.h1`
+  font-family: "Noto Sans CJK KR";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+
+  color: #7a7a7a;
+`;
+
+const StyledPrice = styled.div`
+  display: flex;
+  align-items: center;
+  h1 {
+    margin: 0;
+  }
+`;
+
+const StyledOwner = styled.h1`
+  font-family: "Acumin Pro";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  display: flex;
+
+  letter-spacing: 0.02em;
+
+  color: #7a7a7a;
+
+  h1 {
+    margin: 0;
+  }
+`;
+
+const StyledOwnerName = styled.span`
+  background: linear-gradient(180deg, #da3a3a 0%, #da3a3a 0.01%, #9723ce 100%);
+  font-weight: 700;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+`;

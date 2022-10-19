@@ -36,8 +36,8 @@ const Box = styled.div`
   cursor: pointer;
   height: 63px;
   border-radius: 10px;
-
-  margin-top: 10px;
+  margin-top: 32px;
+  position: absolute;
 `;
 
 const Select = styled.div`
@@ -66,7 +66,6 @@ const Opt = styled.div`
   outline: none;
   background-color: #191919;
   font-size: 12px;
-
   height: 128px;
   display: flex;
   background-color: #191919;

@@ -18,6 +18,8 @@ const StyledBtn = styled.button`
   line-height: 40px;
   color: #7a7a7a;
   background: #191919;
+  margin-top: 24px;
+  margin-bottom: 32px;
 
   &:hover {
     color: white;

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Description from "../atoms/Description";
 import Details from "../atoms/Details";
+import ItemTable from "../atoms/ItemTable";
 import TattooInfo from "../blocks/TattooInfo";
 
 function ExploreDetailTemplate() {
@@ -24,17 +25,18 @@ function ExploreDetailTemplate() {
   };
   return (
     <Wrap>
-      <TattooInfo
-        username={Info.username}
-        tattooImgUrl={Info.tattooImgUrl}
-        tattooTitle={Info.tattooTitle}
-        ownerId={Info.ownerId}
-        price={Info.price}
-      ></TattooInfo>
-      <div>
-        <Description intro={Info.intro}></Description>
-        <Details contractAddress={Detail.contractAddress}></Details>
-      </div>
+      <InfoBox>
+        <TattooInfo
+          username={Info.username}
+          tattooImgUrl={Info.tattooImgUrl}
+          tattooTitle={Info.tattooTitle}
+          ownerId={Info.ownerId}
+          price={Info.price}
+          intro={Info.intro}
+          details={Detail}
+        ></TattooInfo>
+      </InfoBox>
+      <StyledDescript></StyledDescript>
     </Wrap>
   );
 }
@@ -43,7 +45,15 @@ export default ExploreDetailTemplate;
 
 const Wrap = styled.div`
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
+const InfoBox = styled.div`
+  padding: 0;
+`;
+
+const StyledDescript = styled.div``;
 
 const TopContent = styled.div``;
 
