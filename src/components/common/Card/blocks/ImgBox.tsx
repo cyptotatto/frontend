@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import Image from "next/image";
 import HeartBtn from "../atoms/HeartBtn";
+import { useRouter } from "next/router";
 
 interface IProps {
   imgUrl: string;
@@ -10,6 +11,7 @@ interface IProps {
 }
 
 function ImgBox({ imgUrl, isHeart }: IProps) {
+  const router = useRouter();
   return (
     <Box>
       <ImageWrap>
@@ -20,6 +22,7 @@ function ImgBox({ imgUrl, isHeart }: IProps) {
           height={464}
           objectFit="contain"
           alt="mainImg"
+          onClick={() => router.push("/exploredetail")}
         />
       </ImageWrap>
       <HeartBtn isHeart={isHeart} />
@@ -34,4 +37,6 @@ const Box = styled.div`
   display: flex;
 `;
 
-const ImageWrap = styled.div``;
+const ImageWrap = styled.div`
+  cursor: pointer;
+`;
