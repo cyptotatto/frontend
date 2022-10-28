@@ -36,31 +36,33 @@ const tattooInfo: InfoType = {
 
 function Card() {
   return (
-    <Container>
-      <ImgBox imgUrl={tattooInfo.tattooImgUrl} isHeart={tattooInfo.isHeart} />
-      <Content>
-        <TopContent>
-          <TattooInfoBox
-            name={tattooInfo.name}
-            artist={tattooInfo.artist}
-            artistImgUrl={tattooInfo.artistImgUrl}
+    <Link href={tattooInfo.detailUrl}>
+      <a>
+        <Container>
+          <ImgBox
+            imgUrl={tattooInfo.tattooImgUrl}
+            isHeart={tattooInfo.isHeart}
           />
-          <PriceBox
-            sign={tattooInfo.sign}
-            price={tattooInfo.price}
-            percentage={tattooInfo.percentage}
-          />
-        </TopContent>
-        <BottomContent>
-          <HeartBox cnt={tattooInfo.heartCnt} />
-          <Link href={tattooInfo.detailUrl}>
-            <a>
-              <CustomButton active="true">Buy Now</CustomButton>
-            </a>
-          </Link>
-        </BottomContent>
-      </Content>
-    </Container>
+          <Content>
+            <TopContent>
+              <TattooInfoBox
+                name={tattooInfo.name}
+                artist={tattooInfo.artist}
+                artistImgUrl={tattooInfo.artistImgUrl}
+              />
+              <PriceBox
+                sign={tattooInfo.sign}
+                price={tattooInfo.price}
+                percentage={tattooInfo.percentage}
+              />
+            </TopContent>
+            <BottomContent>
+              <HeartBox cnt={tattooInfo.heartCnt} />
+            </BottomContent>
+          </Content>
+        </Container>
+      </a>
+    </Link>
   );
 }
 
