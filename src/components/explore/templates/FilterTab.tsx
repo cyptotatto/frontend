@@ -25,6 +25,34 @@ const tagInfo = {
     "커버업",
     "리얼리스틱",
   ],
+  theme: [
+    "전체",
+    "꽃",
+    "반려동물",
+    "종교",
+    "맹수",
+    "해골",
+    "다크",
+    "가족",
+    "용",
+    "도깨비",
+    "인물",
+    "기타",
+  ],
+  part: [
+    "전체",
+    "쇄골",
+    "팔",
+    "다리",
+    "손",
+    "가슴",
+    "허벅지",
+    "목",
+    "등",
+    "옆구리",
+    "골반",
+    "기타",
+  ],
 };
 
 function FilterTab() {
@@ -36,8 +64,8 @@ function FilterTab() {
         <Tab>
           <MenuContainer>
             <FilterMenuBox title="장르별" tags={tagInfo.genere} />
-            <FilterMenuBox title="주제별" />
-            <FilterMenuBox title="부위별" />
+            <FilterMenuBox title="주제별" tags={tagInfo.theme} />
+            <FilterMenuBox title="부위별" tags={tagInfo.part} />
           </MenuContainer>
           <SearchBar />
         </Tab>

@@ -56,7 +56,6 @@ const Wrap = styled.div`
   width: 100%;
   height: 40px;
   margin-top: 20px;
-  width: 50%;
   .search-icon {
     line-height: 30px;
     padding-top: 5px;
