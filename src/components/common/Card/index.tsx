@@ -34,7 +34,11 @@ const tattooInfo: InfoType = {
   detailUrl: "/",
 };
 
-function Card() {
+interface IProps {
+  type: string;
+}
+
+function Card({ type }: IProps) {
   return (
     <Link href={tattooInfo.detailUrl}>
       <a>
@@ -46,15 +50,18 @@ function Card() {
           <Content>
             <TopContent>
               <TattooInfoBox
+                type={"artist"}
                 name={tattooInfo.name}
                 artist={tattooInfo.artist}
                 artistImgUrl={tattooInfo.artistImgUrl}
               />
-              <PriceBox
-                sign={tattooInfo.sign}
-                price={tattooInfo.price}
-                percentage={tattooInfo.percentage}
-              />
+              {type === "art" && (
+                <PriceBox
+                  sign={tattooInfo.sign}
+                  price={tattooInfo.price}
+                  percentage={tattooInfo.percentage}
+                />
+              )}
             </TopContent>
             <BottomContent>
               <HeartBox cnt={tattooInfo.heartCnt} />
