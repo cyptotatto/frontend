@@ -4,7 +4,6 @@ import { useRecoilState } from "recoil";
 import { accountAtom } from "../../recoil/user";
 import styled from "styled-components";
 import Menu from "./Menu";
-import { menuAtom, walletAtom } from "../../recoil/modal";
 import Image from "next/image";
 import SearchBar from "../common/SearchBar";
 import WalletModal from "./WalletModal";
@@ -12,8 +11,8 @@ import WalletModal from "./WalletModal";
 function AppBar() {
   const router = useRouter();
   const [account, setAccount] = useRecoilState(accountAtom);
-  const [menu, setMenu] = useRecoilState(menuAtom);
-  const [wallet, setWallet] = useRecoilState(walletAtom);
+  const [menu, setMenu] = useState("");
+  const [wallet, setWallet] = useState("");
 
   useEffect(() => {
     setMenu("");
@@ -41,10 +40,18 @@ function AppBar() {
     setMenu("");
   };
 
+  const closeWallet = () => {
+    setWallet("");
+  };
+
+  const closeMenu = () => {
+    setMenu("");
+  };
+
   return (
     <Wrap>
-      <>{wallet && <WalletModal />}</>
-      <>{menu && <Menu />}</>
+      <>{wallet && <WalletModal closeWallet={closeWallet} />}</>
+      <>{menu && <Menu closeMenu={closeMenu} />}</>
       <Logo onClick={() => router.push("/")}>
         <Image src="/assets/logo.svg" alt="logo" width="128px" height="60px" />
       </Logo>
@@ -85,31 +92,31 @@ const Wrap = styled.div`
   justify-content: space-between;
   height: 80px;
   line-height: 80px;
-  padding-left: 8%;
-  padding-right: 6%;
 `;
 
 const Logo = styled.div`
-  margin-top: 11px;
+  display: flex;
+  margin: 0 15px;
 `;
 
 const Create = styled.div`
-  margin-right: 30px;
+  width: 70px;
 `;
 
 const Explore = styled.div`
-  margin-right: 40px;
+  width: 70px;
 `;
 
 const Mypage = styled.div`
-  margin-right: 40px;
-  line-height: 30px;
-  margin-top: 25px;
+  display: flex;
+  width: 50px;
+  text-align: center;
 `;
 
 const Wallet = styled.div`
-  line-height: 30px;
-  margin-top: 25px;
+  display: flex;
+  width: 50px;
+  text-align: center;
 `;
 
 const TapButton = styled.div``;
@@ -117,13 +124,14 @@ const TapButton = styled.div``;
 const Responsive = styled.div`
   font-size: 15px;
   font-weight: 500;
+  margin: 0 15px;
   .when-wide {
     display: flex;
   }
   .when-narrow {
     display: none;
   }
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 750px) {
     .when-wide {
       display: none;
     }

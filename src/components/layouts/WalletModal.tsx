@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { walletAtom } from "../../recoil/modal";
 import { accountAtom } from "../../recoil/user";
 import { makeShortAddress } from "../../utils/transform";
 import CustomButton from "../common/CustomButton";
@@ -10,13 +9,13 @@ import Balance from "./block/Balance";
 import CloseButton from "./block/CloseButton";
 import WalletUserInfo from "./block/WalletUserInfo";
 
-function WalletModal() {
-  const account = useRecoilValue(accountAtom);
-  const setWallet = useSetRecoilState(walletAtom);
+interface WalletModalPropsType {
+  closeWallet: () => void;
+}
 
-  const closeWallet = () => {
-    setWallet("");
-  };
+function WalletModal({ closeWallet }: WalletModalPropsType) {
+  const account = useRecoilValue(accountAtom);
+
   return (
     <Wrap>
       <Back></Back>
