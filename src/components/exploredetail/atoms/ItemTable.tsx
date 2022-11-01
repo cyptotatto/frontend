@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Image from "next/image";
+import GrowthIcon from "../../../../public/assets/growth.png";
 
 function ItemTable() {
   const columns = ["Event", "Price", "From", "To", "Time"];
@@ -30,20 +32,23 @@ function ItemTable() {
   return (
     <StyledTable>
       <StyledHead>
-        <tr>
+        <StyledTitleTr>
+          <Image src={GrowthIcon} /> Item Activity
+        </StyledTitleTr>
+        <StyledHeadTr>
           {columns.map((column) => (
             <th key={column}>{column}</th>
           ))}
-        </tr>
+        </StyledHeadTr>
       </StyledHead>
       <StyledBody>
         {data.map(({ event, price, from, to, time }) => (
           <tr key={event}>
-            <td>{event}</td>
-            <td>{price}</td>
-            <td>{from}</td>
-            <td>{to}</td>
-            <td>{time}</td>
+            <StyledTd>{event}</StyledTd>
+            <StyledTd>{price}</StyledTd>
+            <StyledTd>{from}</StyledTd>
+            <StyledTd>{to}</StyledTd>
+            <StyledTd>{time}</StyledTd>
           </tr>
         ))}
       </StyledBody>
@@ -55,9 +60,19 @@ export default ItemTable;
 
 const StyledTable = styled.table`
   width: 608px;
-  height: 320px;
   background: #0a0a0a;
+  border: solid 22px #0a0a0a;
   border-radius: 10px;
+  border-collapse: collapse;
+`;
+
+const StyledTitleTr = styled.tr`
+  display: flex;
+  height: 64px;
+  align-items: center;
+`;
+const StyledHeadTr = styled.tr`
+  height: 40px;
 `;
 
 const StyledHead = styled.thead`
@@ -67,10 +82,10 @@ const StyledHead = styled.thead`
   font-size: 15px;
   line-height: 18px;
   letter-spacing: 0.02em;
-
   color: #ffffff;
   th {
     text-align: start;
+    border-bottom: 1px solid #191919;
   }
 `;
 
@@ -80,8 +95,12 @@ const StyledBody = styled.tbody`
   font-weight: 400;
   font-size: 15px;
   line-height: 18px;
-
   letter-spacing: 0.02em;
-
   color: #ebebeb;
+  height: 40px;
+`;
+
+const StyledTd = styled.td`
+  height: 40px;
+  border-bottom: 1px solid #191919;
 `;
