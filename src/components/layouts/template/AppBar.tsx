@@ -21,21 +21,6 @@ function AppBar() {
     setMenu("");
   }, [setMenu, router]);
 
-  const checkAccount = useCallback(async () => {
-    const accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
-    });
-    if (account !== accounts[0]) {
-      setAccount("");
-    }
-  }, [account, setAccount]);
-
-  useEffect(() => {
-    if (account) {
-      checkAccount();
-    }
-  }, [account, checkAccount]);
-
   const getAccount = useCallback(async () => {
     try {
       if (window.ethereum) {
@@ -43,14 +28,17 @@ function AppBar() {
           method: "eth_requestAccounts",
         });
         setAccount(accounts[0]);
-        router.reload();
       } else {
         alert("install metamask");
       }
     } catch (error) {
       console.log(error);
     }
-  }, [setAccount, router]);
+  }, [setAccount]);
+
+  useEffect(() => {
+    getAccount();
+  }, [getAccount]);
 
   const openWallet = () => {
     setWallet("ok");
