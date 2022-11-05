@@ -1,0 +1,13 @@
+[
+  "constructor(address)",
+  "error TattoCurrency_Insufficient_Available_Funds(uint256)",
+  "error TattoCurrency_Only_Market()",
+  "event Deposit(address,address,uint256)",
+  "event ETHTransfer(address,address,uint256)",
+  "event Withdraw(address,address,uint256)",
+  "function balanceOf(address) view returns (uint256)",
+  "function depositETH() payable",
+  "function reduceCurrencyFrom(address,uint256)",
+  "function transferETHFrom(address,address,uint256)",
+  "function withdrawETH(uint256)"
+]

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import NavBar from "../blocks/NavBar";
 import UserProfile from "../blocks/UserProfile";
-import TabBar from "../../explore/templates/TabBar";
+import TabBar from "../../explore/template/TabBar";
 import ListBox from "../../mypage/blocks/ListBox";
 
 function ArtistTemplate() {

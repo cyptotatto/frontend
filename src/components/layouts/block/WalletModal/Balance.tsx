@@ -1,10 +1,13 @@
 import Image from "next/image";
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
+import { currencyManagerAtom } from "../../../../recoil/modal";
 
 function Balance() {
+  const setCurrencyManager = useSetRecoilState(currencyManagerAtom);
   return (
-    <Wrap>
+    <Wrap onClick={() => setCurrencyManager(true)}>
       <div className="title">wallet 🦊</div>
       <div className="balance">
         <div className="ether-img">

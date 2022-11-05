@@ -2,8 +2,8 @@ import { useRouter } from "next/router";
 import React, { useCallback, useState, useEffect } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import styled from "styled-components";
-import { accountAtom } from "../../recoil/user";
-import CloseButton from "./block/CloseButton";
+import { accountAtom } from "../../../recoil/user";
+import CloseButton from "../../common/CloseButton";
 
 interface MenuModalPropsType {
   closeMenu: () => void;
@@ -58,7 +58,7 @@ export default Menu;
 const Wrap = styled.div`
   opacity: 1;
   position: fixed;
-  z-index: 30;
+  z-index: 10;
   right: 0;
   left: 0;
   top: 0;

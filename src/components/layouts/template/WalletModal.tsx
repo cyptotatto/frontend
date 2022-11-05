@@ -2,12 +2,12 @@ import Image from "next/image";
 import React from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { accountAtom } from "../../recoil/user";
-import { makeShortAddress } from "../../utils/transform";
-import CustomButton from "../common/CustomButton";
-import Balance from "./block/Balance";
-import CloseButton from "./block/CloseButton";
-import WalletUserInfo from "./block/WalletUserInfo";
+import { accountAtom } from "../../../recoil/user";
+import { makeShortAddress } from "../../../utils/transform";
+import CustomButton from "../../common/CustomButton";
+import Balance from "../block/WalletModal/Balance";
+import CloseButton from "../../common/CloseButton";
+import WalletUserInfo from "../block/WalletModal/WalletUserInfo";
 
 interface WalletModalPropsType {
   closeWallet: () => void;
@@ -18,7 +18,7 @@ function WalletModal({ closeWallet }: WalletModalPropsType) {
 
   return (
     <Wrap>
-      <Back></Back>
+      <Back onClick={closeWallet}></Back>
       <Modal>
         <CloseButton handleClick={closeWallet} />
         <WalletUserInfo account={account} />
@@ -34,7 +34,7 @@ export default WalletModal;
 const Wrap = styled.div`
   height: 100vh;
   position: fixed;
-  z-index: 20;
+  z-index: 15;
   left: 0;
   right: 0;
   right: 0;
