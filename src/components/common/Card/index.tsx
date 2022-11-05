@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import CustomButton from "../CustomButton";
-import ImgBox from "../Card/blocks/ImgBox";
-import TattooInfoBox from "../Card/blocks/TattooInfoBox";
+import ImgBox from "./blocks/ImgBox";
+import TattooInfoBox from "./blocks/TattooInfoBox";
 import PriceBox from "./atoms/PriceBox";
 import HeartBox from "./atoms/HeartBox";
 import Link from "next/link";
@@ -36,7 +36,7 @@ const tattooInfo: InfoType = {
 };
 
 interface IProps {
-  type: string;
+  type?: string;
 }
 
 function Card({ type }: IProps) {

@@ -4,8 +4,13 @@ import styled, { css } from "styled-components";
 import ArrowDownIcon from "../../../../public/assets/arrow_down.svg";
 
 interface IProps {
-  options: object;
+  options: option[];
 }
+
+type option = {
+  value: string;
+  name: string;
+};
 
 function SelectBox({ options }: IProps) {
   const [selectedMenu, setSelectedMenu] = useState("정렬");

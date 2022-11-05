@@ -26,7 +26,7 @@ export default CloseButton;
 const Wrap = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 20px;
+  margin: 10px;
   div {
     padding: 10px;
   }

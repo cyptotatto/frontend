@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import EditProfileTemplate from "../src/components/editprofile/templates/EditProfileTemplate";
+import EditProfileTemplate from "../src/components/editprofile/template/EditProfileTemplate";
 
 function Editprofile() {
   // const router = useRouter();

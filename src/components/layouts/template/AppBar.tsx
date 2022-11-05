@@ -1,22 +1,40 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useState } from "react";
-import { useRecoilState } from "recoil";
-import { accountAtom } from "../../recoil/user";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { accountAtom } from "../../../recoil/user";
 import styled from "styled-components";
 import Menu from "./Menu";
 import Image from "next/image";
-import SearchBar from "../common/SearchBar";
+import SearchBar from "../../common/SearchBar";
 import WalletModal from "./WalletModal";
+import { currencyManagerAtom } from "../../../recoil/modal";
+import CurrencyModal from "./CurrencyModal";
 
 function AppBar() {
   const router = useRouter();
   const [account, setAccount] = useRecoilState(accountAtom);
   const [menu, setMenu] = useState("");
   const [wallet, setWallet] = useState("");
+  const isCurrencyModal = useRecoilValue(currencyManagerAtom);
 
   useEffect(() => {
     setMenu("");
   }, [setMenu, router]);
+
+  const checkAccount = useCallback(async () => {
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    if (account !== accounts[0]) {
+      setAccount("");
+    }
+  }, [account, setAccount]);
+
+  useEffect(() => {
+    if (account) {
+      checkAccount();
+    }
+  }, [account, checkAccount]);
 
   const getAccount = useCallback(async () => {
     try {
@@ -36,22 +54,14 @@ function AppBar() {
 
   const openWallet = () => {
     setWallet("ok");
-    console.log(wallet);
-    setMenu("");
-  };
-
-  const closeWallet = () => {
-    setWallet("");
-  };
-
-  const closeMenu = () => {
     setMenu("");
   };
 
   return (
     <Wrap>
-      <>{wallet && <WalletModal closeWallet={closeWallet} />}</>
-      <>{menu && <Menu closeMenu={closeMenu} />}</>
+      <>{isCurrencyModal && <CurrencyModal />}</>
+      <>{wallet && <WalletModal closeWallet={() => setWallet("")} />}</>
+      <>{menu && <Menu closeMenu={() => setMenu("")} />}</>
       <Logo onClick={() => router.push("/")}>
         <Image src="/assets/logo.svg" alt="logo" width="128px" height="60px" />
       </Logo>
@@ -68,7 +78,7 @@ function AppBar() {
               height="30px"
             />
           </Mypage>
-          <Wallet onClick={openWallet}>
+          <Wallet onClick={account ? openWallet : getAccount}>
             <Image
               src="/assets/wallet.svg"
               alt="logo"
