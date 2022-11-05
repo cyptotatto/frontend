@@ -1,10 +1,17 @@
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import React from "react";
 import { useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { currencyManagerAtom } from "../../../recoil/modal";
 import CloseButton from "../../common/CloseButton";
-import ModalContainer from "../block/CurrencyModal/ModalContainer";
+
+const DynamicModalContainer = dynamic(
+  () => import("../block/CurrencyModal/ModalContainer"),
+  {
+    ssr: false,
+  }
+);
 
 function CurrencyModal() {
   const setCurrencyManager = useSetRecoilState(currencyManagerAtom);
@@ -17,7 +24,7 @@ function CurrencyModal() {
       ></Back>
       <Modal>
         <CloseButton handleClick={() => setCurrencyManager(false)} />
-        <ModalContainer />
+        <DynamicModalContainer />
       </Modal>
     </Wrap>
   );
@@ -52,5 +59,6 @@ const Modal = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   width: 384px;
-  height: 472px;
+  background-color: black;
+  border-radius: 20px;
 `;

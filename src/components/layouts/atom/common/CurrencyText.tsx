@@ -4,22 +4,25 @@ import styled from "styled-components";
 interface CurrencyTextPropsType {
   mainText: string;
   subText: string;
+  marginTop?: string;
   marginBottom?: string;
 }
 
 function CurrencyText({
   mainText,
   subText,
+  marginTop,
   marginBottom,
 }: CurrencyTextPropsType) {
+  console.log(marginTop);
   return (
     <Wrap>
-      <div className="main-text">{mainText}</div>
-      <div className="sub-text">{subText}</div>
-      <div
-        className="sub-text"
-        style={{ marginBottom: `${marginBottom}` }}
-      ></div>
+      <div className="main-text" style={{ marginTop: `${marginTop}` }}>
+        {mainText}
+      </div>
+      <div className="sub-text" style={{ marginBottom: `${marginBottom}` }}>
+        {subText}
+      </div>
     </Wrap>
   );
 }
@@ -39,6 +42,5 @@ const Wrap = styled.div`
     font-size: 15px;
     line-height: 22px;
     color: #7a7a7a;
-    margin-bottom: 20px;
   }
 `;

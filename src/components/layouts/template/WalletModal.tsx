@@ -1,29 +1,41 @@
 import Image from "next/image";
 import React from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { accountAtom } from "../../../recoil/user";
 import { makeShortAddress } from "../../../utils/transform";
 import CustomButton from "../../common/CustomButton";
-import Balance from "../block/WalletModal/Balance";
 import CloseButton from "../../common/CloseButton";
 import WalletUserInfo from "../block/WalletModal/WalletUserInfo";
+import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
 interface WalletModalPropsType {
   closeWallet: () => void;
 }
 
-function WalletModal({ closeWallet }: WalletModalPropsType) {
-  const account = useRecoilValue(accountAtom);
+const DynamicBalance = dynamic(() => import("../block/WalletModal/Balance"), {
+  ssr: false,
+});
 
+function WalletModal({ closeWallet }: WalletModalPropsType) {
+  const [account, setAccount] = useRecoilState(accountAtom);
+  const router = useRouter();
+  const disconnectWallet = () => {
+    setAccount("");
+    closeWallet();
+    router.push("/");
+  };
   return (
     <Wrap>
       <Back onClick={closeWallet}></Back>
       <Modal>
         <CloseButton handleClick={closeWallet} />
         <WalletUserInfo account={account} />
-        <Balance></Balance>
-        <CustomButton active="false">Disconnect</CustomButton>
+        <DynamicBalance></DynamicBalance>
+        <CustomButton active="false" handleClick={disconnectWallet}>
+          Disconnect
+        </CustomButton>
       </Modal>
     </Wrap>
   );

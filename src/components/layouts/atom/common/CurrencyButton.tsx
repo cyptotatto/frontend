@@ -18,7 +18,7 @@ const Wrap = styled.button`
   box-sizing: border-box;
   border: 1px solid #7a7a7a;
   border-radius: 20px;
-  background-color: black;
+  background-color: #0a0a0a;
   font-weight: 600;
   font-size: 16px;
   line-height: 19.2px;

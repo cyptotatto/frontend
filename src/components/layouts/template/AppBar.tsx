@@ -21,6 +21,21 @@ function AppBar() {
     setMenu("");
   }, [setMenu, router]);
 
+  const checkAccount = useCallback(async () => {
+    const accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    if (account !== accounts[0]) {
+      setAccount("");
+    }
+  }, [account, setAccount]);
+
+  useEffect(() => {
+    if (account) {
+      checkAccount();
+    }
+  }, [account, checkAccount]);
+
   const getAccount = useCallback(async () => {
     try {
       if (window.ethereum) {
@@ -63,7 +78,7 @@ function AppBar() {
               height="30px"
             />
           </Mypage>
-          <Wallet onClick={openWallet}>
+          <Wallet onClick={account ? openWallet : getAccount}>
             <Image
               src="/assets/wallet.svg"
               alt="logo"

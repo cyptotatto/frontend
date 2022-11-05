@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
 
 interface BalanceFormType {
-  balance: string;
+  balance: number;
   inputBalance: number;
   setInputBalance: Dispatch<SetStateAction<number>>;
 }
@@ -12,12 +12,26 @@ function BalanceForm({
   inputBalance,
   setInputBalance,
 }: BalanceFormType) {
+  const handleDeposit = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value.includes("-")) {
+      return;
+    }
+    let value = Number(e.target.value);
+
+    if (value > balance) {
+      return;
+    }
+
+    value = Math.floor(value * 10000) / 10000;
+    setInputBalance(value);
+  };
   return (
     <Wrap>
       <div className="main-text">입금할 금액 입력</div>
       <div className="input">
         <input
-          onChange={() => setInputBalance(inputBalance)}
+          type="number"
+          onChange={handleDeposit}
           value={inputBalance}
         ></input>
         <span>ETH</span>
@@ -32,7 +46,7 @@ function BalanceForm({
 export default BalanceForm;
 
 const Wrap = styled.div`
-  margin: 4px 24px;
+  margin: 24px 24px 50px 24px;
   text-align: start;
   .main-text {
     font-style: normal;
@@ -68,5 +82,4 @@ const Wrap = styled.div`
       color: white;
     }
   }
-  margin-bottom: 60px;
 `;

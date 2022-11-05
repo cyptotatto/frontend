@@ -11,13 +11,6 @@ import {
 import { ContractStructInterface } from "./interface";
 
 export const provider = new ethers.providers.Web3Provider(window.ethereum);
-/**
- * backend는 아래에 해당
- */
-// export const provier = new ethers.providers.AlchemyProvider(
-//   "goerli",
-//   process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-// );
 
 export const signer = provider.getSigner();
 

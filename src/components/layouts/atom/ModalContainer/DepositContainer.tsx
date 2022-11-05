@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { provider, Tatto } from "../../../../contracts/contractConfig";
+import { provider, signer, Tatto } from "../../../../contracts/contractConfig";
 import { accountAtom } from "../../../../recoil/user";
 import { LoadingPropsType } from "../../../../types/type";
 import {
@@ -14,29 +14,29 @@ import BalanceForm from "../common/BalanceForm";
 import CurrencyButton from "../common/CurrencyButton";
 import CurrencyText from "../common/CurrencyText";
 
-function WithdrawContainer({ startLoading }: LoadingPropsType) {
+function DespositContainer({ startLoading }: LoadingPropsType) {
   const account = useRecoilValue(accountAtom);
   const [inputBalance, setInputBalance] = useState(0);
-  const [tatuBalance, setTatuBalance] = useState(0);
+  const [walletBalance, setWalletBalance] = useState(0);
 
   useEffect(() => {
     if (account && window) {
-      getTattoBalace(account).then((result) => {
-        setTatuBalance(result);
+      getmyBalance(account).then((result) => {
+        setWalletBalance(result);
       });
     }
   }, [account]);
 
-  const getTattoBalace = async (_account: string): Promise<number> => {
-    const value = window && (await Tatto.currencyControl.balanceOf(_account));
+  const getmyBalance = async (_account: string): Promise<number> => {
+    const value = window && (await provider.getBalance(_account));
     return makeEtherFromBigNumber(value);
   };
 
-  const withdrawEther = async () => {
+  const depositEther = async () => {
     try {
-      await Tatto.currencyControl.withdrawETH(
-        parseEtherFromNumber(inputBalance)
-      );
+      await Tatto.currencyControl.depositETH({
+        value: parseEtherFromNumber(inputBalance),
+      });
       startLoading();
     } catch (err) {
       console.log(err);
@@ -46,27 +46,27 @@ function WithdrawContainer({ startLoading }: LoadingPropsType) {
   return (
     <Wrap>
       <Image
-        src="/assets/withdraw.svg"
-        alt="withdraw"
+        src="/assets/deposit.svg"
+        alt="deposit"
         width={40}
         height={40}
       ></Image>
       <CurrencyText
-        mainText="출금하기"
-        subText="출금하고 싶은 금액을 입력해주세요"
+        mainText="입금하기"
+        subText="입금하고 싶은 금액을 입력해주세요"
         marginBottom="20px"
       />
       <BalanceForm
-        balance={tatuBalance}
+        balance={walletBalance}
         inputBalance={inputBalance}
         setInputBalance={setInputBalance}
       />
-      <CurrencyButton handleClick={withdrawEther}>Withdraw</CurrencyButton>
+      <CurrencyButton handleClick={depositEther}>Deposit</CurrencyButton>
     </Wrap>
   );
 }
 
-export default WithdrawContainer;
+export default DespositContainer;
 
 const Wrap = styled.div`
   text-align: center;
