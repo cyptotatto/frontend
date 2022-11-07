@@ -2,8 +2,13 @@ import React from "react";
 import styled, { css } from "styled-components";
 import SelectBox from "../atoms/SelectBox";
 
-function UploadCategory() {
+function UploadImgClassify() {
   const options = [
+    { value: ".", name: "도안" },
+    { value: ".1", name: "타투 사진" },
+  ];
+
+  const options1 = [
     { value: "장르별", name: "도안" },
     { value: "장르별2", name: "타투 사진" },
   ];
@@ -16,11 +21,17 @@ function UploadCategory() {
   ];
 
   return (
-    <div>
-      <StyledTitle>카테고리</StyledTitle>
-      <SelectBox options={options} />
-      <SelectBox options={options2} />
-    </div>
+    <>
+      <div>
+        <StyledTitle>사진 분류</StyledTitle>
+        <SelectBox options={options} />
+      </div>
+      <div>
+        <StyledTitle>카테고리</StyledTitle>
+        <SelectBox options={options1} />
+        <SelectBox options={options2} />
+      </div>
+    </>
   );
 }
 
@@ -28,4 +39,4 @@ const StyledTitle = styled.h1`
   font-size: 18px;
 `;
 
-export default UploadCategory;
+export default UploadImgClassify;

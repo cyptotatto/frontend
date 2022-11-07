@@ -8,6 +8,7 @@ import UploadDescript from "../blocks/UploadDescript";
 import SelectBox from "../atoms/SelectBox";
 import UploadCategory from "../blocks/UploadCategory";
 import UploadSell from "../blocks/UploadSell";
+import UploadImgClassify from "../blocks/UploadImgClassify";
 
 //create
 function CreateTemplate() {
@@ -17,6 +18,11 @@ function CreateTemplate() {
   const [link, setLink] = useState<string>("");
   const [descript, setDescript] = useState<string>("");
   const onSubmit = () => {};
+
+  const options = [
+    { value: ".", name: "판매 등록 하지 않음" },
+    { value: ".1", name: "판매 등록" },
+  ];
 
   return (
     <Wrap>
@@ -35,9 +41,10 @@ function CreateTemplate() {
         descript={descript}
         setDescript={setDescript}
       ></UploadDescript>
+      <UploadImgClassify />
 
-      <UploadCategory />
-      <UploadSell />
+      {/*<UploadCategory />*/}
+      <UploadSell options={options} />
 
       <StyledBtn onClick={onSubmit}>Create</StyledBtn>
     </Wrap>

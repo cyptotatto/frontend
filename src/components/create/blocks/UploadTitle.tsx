@@ -26,7 +26,7 @@ const StyledTitle = styled.h1`
 
 const StyledInput = styled.input`
   width: 640px;
-  height: 76px;
+  height: 48px;
   color: white;
   background: #191919;
   border-radius: 10px;
