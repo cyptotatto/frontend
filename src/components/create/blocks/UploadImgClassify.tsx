@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import SelectBox from "../atoms/SelectBox";
+import SelectImg from "../atoms/SelectImg";
+import UploadPrice from "./UploadPrice";
+import UploadSell from "./UploadSell";
 
 function UploadImgClassify() {
+  const [imgClassify, SetImgClassify] = useState(false);
+  const [sellClassify, SetSellClassify] = useState(false);
   const options = [
     { value: ".", name: "도안" },
     { value: ".1", name: "타투 사진" },
@@ -20,16 +25,44 @@ function UploadImgClassify() {
     { value: "주제별5", name: "장르별" },
   ];
 
+  const optionImg = [
+    { value: ".", name: "판매 등록 하지 않음" },
+    { value: ".1", name: "판매 등록" },
+  ];
+  useEffect(() => {
+    console.log(imgClassify);
+  }, [imgClassify]);
+
+  useEffect(() => {
+    console.log(sellClassify);
+  }, [sellClassify]);
+
   return (
     <>
       <div>
         <StyledTitle>사진 분류</StyledTitle>
-        <SelectBox options={options} />
+        <SelectImg
+          options={options}
+          openValue={imgClassify}
+          setOpenValue={SetImgClassify}
+        />
       </div>
       <div>
         <StyledTitle>카테고리</StyledTitle>
         <SelectBox options={options1} />
         <SelectBox options={options2} />
+        {imgClassify ? (
+          <>
+            <UploadSell
+              options={optionImg}
+              openValue={sellClassify}
+              setOpenValue={SetSellClassify}
+            />
+            {sellClassify ? <UploadPrice /> : <></>}
+          </>
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );

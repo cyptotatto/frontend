@@ -19,11 +19,6 @@ function CreateTemplate() {
   const [descript, setDescript] = useState<string>("");
   const onSubmit = () => {};
 
-  const options = [
-    { value: ".", name: "판매 등록 하지 않음" },
-    { value: ".1", name: "판매 등록" },
-  ];
-
   return (
     <Wrap>
       <Title>Create New NFT</Title>
@@ -44,7 +39,6 @@ function CreateTemplate() {
       <UploadImgClassify />
 
       {/*<UploadCategory />*/}
-      <UploadSell options={options} />
 
       <StyledBtn onClick={onSubmit}>Create</StyledBtn>
     </Wrap>
