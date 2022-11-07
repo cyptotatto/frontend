@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 
 import ArrowDownIcon from "../../../../public/assets/arrow_down.svg";
 
 interface IProps {
   options: option[];
+  openValue: boolean;
+  setOpenValue: Dispatch<SetStateAction<boolean>>;
 }
 
 type option = {
@@ -12,7 +14,7 @@ type option = {
   name: string;
 };
 
-function SelectBox({ options }: IProps) {
+function SelectImg({ options, openValue, setOpenValue }: IProps) {
   const [selectedMenu, setSelectedMenu] = useState(options[0].value);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -24,21 +26,33 @@ function SelectBox({ options }: IProps) {
       </Select>
       {isMenuOpen && (
         <OptBox>
-          {options.map((option) => (
-            <Opt
-              key={option.value}
-              onClick={() => setSelectedMenu(option.name)}
-            >
-              {option.name}
-            </Opt>
-          ))}
+          <Opt
+            key={options[0].value}
+            onClick={() => {
+              setSelectedMenu(options[0].name);
+              setOpenValue(false);
+              console.log(open);
+            }}
+          >
+            {options[0].name}
+          </Opt>
+          <Opt
+            key={options[1].value}
+            onClick={() => {
+              setSelectedMenu(options[1].name);
+              setOpenValue(true);
+              console.log(open);
+            }}
+          >
+            {options[1].name}
+          </Opt>
         </OptBox>
       )}
     </Box>
   );
 }
 
-export default SelectBox;
+export default SelectImg;
 
 const Box = styled.div`
   width: 640px;

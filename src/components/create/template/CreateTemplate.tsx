@@ -8,6 +8,7 @@ import UploadDescript from "../blocks/UploadDescript";
 import SelectBox from "../atoms/SelectBox";
 import UploadCategory from "../blocks/UploadCategory";
 import UploadSell from "../blocks/UploadSell";
+import UploadImgClassify from "../blocks/UploadImgClassify";
 
 //create
 function CreateTemplate() {
@@ -35,9 +36,9 @@ function CreateTemplate() {
         descript={descript}
         setDescript={setDescript}
       ></UploadDescript>
+      <UploadImgClassify />
 
-      <UploadCategory />
-      <UploadSell />
+      {/*<UploadCategory />*/}
 
       <StyledBtn onClick={onSubmit}>Create</StyledBtn>
     </Wrap>
