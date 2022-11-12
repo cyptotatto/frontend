@@ -19,7 +19,7 @@ type InfoType = {
   heartCnt: number;
   isHeart: boolean;
   sign: string;
-  detailUrl: "/";
+  detailUrl: string;
 };
 
 const tattooInfo: InfoType = {
@@ -32,7 +32,7 @@ const tattooInfo: InfoType = {
   heartCnt: 96,
   isHeart: true,
   sign: "up",
-  detailUrl: "/",
+  detailUrl: "/exploredetail",
 };
 
 interface IProps {
