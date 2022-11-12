@@ -9,6 +9,7 @@ import SearchBar from "../../common/SearchBar";
 import WalletModal from "./WalletModal";
 import { currencyManagerAtom } from "../../../recoil/modal";
 import CurrencyModal from "./CurrencyModal";
+import axios from "axios";
 
 function AppBar() {
   const router = useRouter();
@@ -27,6 +28,14 @@ function AppBar() {
         const accounts = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+
+        const res = await axios.post(
+          process.env.NEXT_PUBLIC_BACK_URL + "/user/add",
+          {
+            account: accounts[0],
+          }
+        );
+        console.log(res);
         setAccount(accounts[0]);
       } else {
         alert("install metamask");
@@ -35,10 +44,6 @@ function AppBar() {
       console.log(error);
     }
   }, [setAccount]);
-
-  useEffect(() => {
-    getAccount();
-  }, [getAccount]);
 
   const openWallet = () => {
     setWallet("ok");
