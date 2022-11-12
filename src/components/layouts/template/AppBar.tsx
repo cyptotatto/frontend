@@ -61,8 +61,8 @@ function AppBar() {
       <SearchBar />
       <Responsive>
         <div className="when-wide">
-          <Create onClick={() => router.push("/create")}>create</Create>
-          <Explore onClick={() => router.push("/explore")}>explore</Explore>
+          <Create onClick={() => router.push("/create")}>Create</Create>
+          <Explore onClick={() => router.push("/explore")}>Explore</Explore>
           <Mypage onClick={account ? () => router.push("/mypage") : getAccount}>
             <Image
               src="/assets/profile.svg"
@@ -100,14 +100,25 @@ const Wrap = styled.div`
 const Logo = styled.div`
   display: flex;
   margin: 0 15px;
+  cursor: pointer;
 `;
 
 const Create = styled.div`
   width: 70px;
+  cursor: pointer;
+  font-family: "Acumin Pro";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
 `;
 
 const Explore = styled.div`
   width: 70px;
+  cursor: pointer;
+  font-family: "Acumin Pro";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
 `;
 
 const Mypage = styled.div`

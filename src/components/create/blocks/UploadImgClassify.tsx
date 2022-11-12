@@ -25,6 +25,14 @@ function UploadImgClassify() {
     { value: "주제별5", name: "장르별" },
   ];
 
+  const options3 = [
+    { value: "부위별", name: "이레즈미" },
+    { value: "주제별2", name: "블랙워크" },
+    { value: "주제별3", name: "올드스쿨" },
+    { value: "주제별4", name: "뉴스쿨" },
+    { value: "주제별5", name: "장르별" },
+  ];
+
   const optionImg = [
     { value: ".", name: "판매 등록 하지 않음" },
     { value: ".1", name: "판매 등록" },
@@ -51,18 +59,16 @@ function UploadImgClassify() {
         <StyledTitle>카테고리</StyledTitle>
         <SelectBox options={options1} />
         <SelectBox options={options2} />
-        {imgClassify ? (
-          <>
-            <UploadSell
-              options={optionImg}
-              openValue={sellClassify}
-              setOpenValue={SetSellClassify}
-            />
-            {sellClassify ? <UploadPrice /> : <></>}
-          </>
-        ) : (
-          <></>
-        )}
+        {imgClassify ? <SelectBox options={options3} /> : <></>}
+
+        <>
+          <UploadSell
+            options={optionImg}
+            openValue={sellClassify}
+            setOpenValue={SetSellClassify}
+          />
+          {sellClassify ? <UploadPrice /> : <></>}
+        </>
       </div>
     </>
   );
