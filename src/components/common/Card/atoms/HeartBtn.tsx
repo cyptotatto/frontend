@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import OutlineHeartIcon from "../../../../../public/assets/outline_heart.svg";
@@ -11,13 +11,8 @@ interface IProps {
 function HeartBtn({ isHeart }: IProps) {
   const [isActive, setIsActive] = useState(isHeart);
 
-  const onToggleHeart = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    setIsActive((prev) => !prev);
-  };
-
   return (
-    <StyledBtn onClick={onToggleHeart}>
+    <StyledBtn onClick={() => setIsActive((prev) => !prev)}>
       {isActive ? (
         <FillHeartIcon width="26" />
       ) : (
@@ -39,6 +34,5 @@ const StyledBtn = styled.button`
   background: rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   border: none;
-  z-index: 1;
   cursor: pointer;
 `;

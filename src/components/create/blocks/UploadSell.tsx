@@ -1,28 +1,17 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import styled, { css } from "styled-components";
 import SelectBox from "../atoms/SelectBox";
-import SelectImg from "../atoms/SelectImg";
 
-interface IProps {
-  options: option[];
-  openValue: boolean;
-  setOpenValue: Dispatch<SetStateAction<boolean>>;
-}
+function UploadSell() {
+  const options = [
+    { value: "1", name: "dummy1" },
+    { value: "2", name: "dummy2" },
+  ];
 
-type option = {
-  value: string;
-  name: string;
-};
-
-function UploadSell({ options, openValue, setOpenValue }: IProps) {
   return (
     <div>
       <StyledTitle>판매 등록 여부</StyledTitle>
-      <SelectImg
-        options={options}
-        openValue={openValue}
-        setOpenValue={setOpenValue}
-      />
+      <SelectBox options={options} />
     </div>
   );
 }

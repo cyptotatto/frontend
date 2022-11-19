@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import CustomButton from "../CustomButton";
-import ImgBox from "./blocks/ImgBox";
-import TattooInfoBox from "./blocks/TattooInfoBox";
+import ImgBox from "../Card/blocks/ImgBox";
+import TattooInfoBox from "../Card/blocks/TattooInfoBox";
 import PriceBox from "./atoms/PriceBox";
 import HeartBox from "./atoms/HeartBox";
 import Link from "next/link";
@@ -19,7 +18,7 @@ type InfoType = {
   heartCnt: number;
   isHeart: boolean;
   sign: string;
-  detailUrl: string;
+  detailUrl: "/";
 };
 
 const tattooInfo: InfoType = {
@@ -32,40 +31,45 @@ const tattooInfo: InfoType = {
   heartCnt: 96,
   isHeart: true,
   sign: "up",
-  detailUrl: "/exploredetail",
+  detailUrl: "/",
 };
 
 interface IProps {
-  type?: string;
+  type: string;
 }
 
 function Card({ type }: IProps) {
-  const router = useRouter();
-
   return (
-    <Container onClick={() => router.push(tattooInfo.detailUrl)}>
-      <ImgBox imgUrl={tattooInfo.tattooImgUrl} isHeart={tattooInfo.isHeart} />
-      <Content>
-        <TopContent>
-          <TattooInfoBox
-            type={"artist"}
-            name={tattooInfo.name}
-            artist={tattooInfo.artist}
-            artistImgUrl={tattooInfo.artistImgUrl}
+    <Link href={tattooInfo.detailUrl}>
+      <a>
+        <Container>
+          <ImgBox
+            imgUrl={tattooInfo.tattooImgUrl}
+            isHeart={tattooInfo.isHeart}
           />
-          {type === "art" && (
-            <PriceBox
-              sign={tattooInfo.sign}
-              price={tattooInfo.price}
-              percentage={tattooInfo.percentage}
-            />
-          )}
-        </TopContent>
-        <BottomContent>
-          <HeartBox cnt={tattooInfo.heartCnt} />
-        </BottomContent>
-      </Content>
-    </Container>
+          <Content>
+            <TopContent>
+              <TattooInfoBox
+                type={"artist"}
+                name={tattooInfo.name}
+                artist={tattooInfo.artist}
+                artistImgUrl={tattooInfo.artistImgUrl}
+              />
+              {type === "art" && (
+                <PriceBox
+                  sign={tattooInfo.sign}
+                  price={tattooInfo.price}
+                  percentage={tattooInfo.percentage}
+                />
+              )}
+            </TopContent>
+            <BottomContent>
+              <HeartBox cnt={tattooInfo.heartCnt} />
+            </BottomContent>
+          </Content>
+        </Container>
+      </a>
+    </Link>
   );
 }
 
@@ -78,8 +82,6 @@ const Container = styled.div`
   padding: 16px;
   border-radius: 22px;
   width: 100%;
-  cursor: pointer;
-
   @media screen and (700px < width < 1000px) {
     width: 50%;
   }

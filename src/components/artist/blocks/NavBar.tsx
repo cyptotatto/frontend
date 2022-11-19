@@ -1,22 +1,26 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import CustomNavBar from "../../common/CustomNavBar";
 import SelectedMenuBox from "../../common/CustomNavBar/blocks/SelectMenuBox";
 
-const artistMenu = [
-  "소유 NFT",
-  "만든 NFT",
-  "판매한 NFT",
-  "좋아요한 NFT",
-  "좋아요한 아티스트",
-];
+const myPageMenu = ["Items", "Activity"];
 
 function NavBar() {
+  const [selectedMenuIdx, setSelectedMenuIdx] = useState(0);
+
   return (
     <CustomNavBar>
       <Layout>
-        <SelectedMenuBox menu={artistMenu} />
+<<<<<<< Updated upstream
+        <SelectedMenuBox menu={myPageMenu} />
+=======
+        <SelectedMenuBox
+          menu={artistMenu}
+          selectedMenuIdx={selectedMenuIdx}
+          setSelectedMenuIdx={setSelectedMenuIdx}
+        />
+>>>>>>> Stashed changes
       </Layout>
     </CustomNavBar>
   );

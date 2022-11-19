@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import ArtistTemplate from "../src/components/artist/template/ArtistTemplate";
+import ArtistTemplate from "../src/components/artist/templates/ArtistTemplate";
 
 function ArtistDetail() {
   return (

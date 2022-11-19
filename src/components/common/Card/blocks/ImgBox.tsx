@@ -22,6 +22,7 @@ function ImgBox({ imgUrl, isHeart }: IProps) {
           height={464}
           objectFit="contain"
           alt="mainImg"
+          onClick={() => router.push("/exploredetail")}
         />
       </ImageWrap>
       <HeartBtn isHeart={isHeart} />

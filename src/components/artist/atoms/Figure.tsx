@@ -16,13 +16,7 @@ function Figure({ title, num, isEthereum }: IProps) {
       <span className="title">{title}</span>
       <div className="numBox">
         {isEthereum && <EthereumIcon />}
-        <span>
-          {num && num !== "0"
-            ? typeof num === "number"
-              ? makeFormattedNumber(num)
-              : num
-            : "-"}
-        </span>
+        <span>{typeof num === "number" ? makeFormattedNumber(num) : num}</span>
       </div>
     </Box>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import CreateTemplate from "../src/components/create/template/CreateTemplate";
+import CreateTemplate from "../src/components/create/templates/CreateTemplate";
 
 function create() {
   return (

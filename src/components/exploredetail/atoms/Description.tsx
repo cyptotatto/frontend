@@ -33,7 +33,7 @@ const Box = styled.div`
   background-color: #191919;
   font-size: 18px;
   cursor: pointer;
-
+  height: 63px;
   border-radius: 10px;
   margin-top: 32px;
 `;

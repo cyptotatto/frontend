@@ -33,7 +33,7 @@ const StyledDescript = styled.h1`
 
 const StyledInput = styled.input`
   width: 640px;
-  height: 48px;
+  height: 76px;
   color: white;
   background: #191919;
   border-radius: 10px;
