@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { useRecoilValue } from "recoil";
 import { isFilterTabOpenAtom } from "../../../recoil/modal";
+import { selectedMenuAtom } from "../../../recoil/menu";
 
 import FilterMenuBox from "../blocks/Filter/FilterMenuBox";
 import SearchBar from "../../common/SearchBar";
@@ -57,6 +58,7 @@ const tagInfo = {
 
 function FilterTab() {
   const isMenuOpen = useRecoilValue(isFilterTabOpenAtom);
+  const selectedMenu = useRecoilValue(selectedMenuAtom);
 
   return (
     <>
@@ -64,8 +66,12 @@ function FilterTab() {
         <Tab>
           <MenuContainer>
             <FilterMenuBox title="장르별" tags={tagInfo.genere} />
-            <FilterMenuBox title="주제별" tags={tagInfo.theme} />
-            <FilterMenuBox title="부위별" tags={tagInfo.part} />
+            {selectedMenu !== "아티스트" && (
+              <>
+                <FilterMenuBox title="주제별" tags={tagInfo.theme} />
+                <FilterMenuBox title="부위별" tags={tagInfo.part} />
+              </>
+            )}
           </MenuContainer>
           <SearchBar />
         </Tab>

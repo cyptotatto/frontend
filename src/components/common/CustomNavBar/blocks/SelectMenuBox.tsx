@@ -3,6 +3,8 @@ import styled, { css } from "styled-components";
 
 interface IProps {
   menu: string[];
+  selectedMenuIdx: number;
+  setSelectedMenuIdx: (idx: number) => void;
 }
 
 type MenuPropsType = {
@@ -15,10 +17,9 @@ type UnderLinePropsType = {
   selectedMenuIdx: number;
 };
 
-function SelectMenuBox({ menu }: IProps) {
+function SelectMenuBox({ menu, selectedMenuIdx, setSelectedMenuIdx }: IProps) {
   const [lineWidth, setLineWidth] = useState(87);
   const [linePos, setLinePos] = useState(0);
-  const [selectedMenuIdx, setSelectedMenuIdx] = useState(0);
 
   const onChangeMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
     const menuName = e.currentTarget.innerText;
