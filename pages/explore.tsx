@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-import ExploreTemplate from "../src/components/explore/templates/ExploreTemplate";
+import ExploreTemplate from "../src/components/explore/template/ExploreTemplate";
 
 function explore() {
   return (

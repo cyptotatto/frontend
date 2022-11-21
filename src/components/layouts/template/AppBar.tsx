@@ -1,19 +1,21 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useState } from "react";
-import { useRecoilState } from "recoil";
-import { accountAtom } from "../../recoil/user";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { accountAtom } from "../../../recoil/user";
 import styled from "styled-components";
 import Menu from "./Menu";
-import { menuAtom, walletAtom } from "../../recoil/modal";
 import Image from "next/image";
-import SearchBar from "../common/SearchBar";
+import SearchBar from "../../common/SearchBar";
 import WalletModal from "./WalletModal";
+import { currencyManagerAtom } from "../../../recoil/modal";
+import CurrencyModal from "./CurrencyModal";
 
 function AppBar() {
   const router = useRouter();
   const [account, setAccount] = useRecoilState(accountAtom);
-  const [menu, setMenu] = useRecoilState(menuAtom);
-  const [wallet, setWallet] = useRecoilState(walletAtom);
+  const [menu, setMenu] = useState("");
+  const [wallet, setWallet] = useState("");
+  const isCurrencyModal = useRecoilValue(currencyManagerAtom);
 
   useEffect(() => {
     setMenu("");
@@ -26,33 +28,36 @@ function AppBar() {
           method: "eth_requestAccounts",
         });
         setAccount(accounts[0]);
-        router.reload();
       } else {
         alert("install metamask");
       }
     } catch (error) {
       console.log(error);
     }
-  }, [setAccount, router]);
+  }, [setAccount]);
+
+  useEffect(() => {
+    getAccount();
+  }, [getAccount]);
 
   const openWallet = () => {
     setWallet("ok");
-    console.log(wallet);
     setMenu("");
   };
 
   return (
     <Wrap>
-      <>{wallet && <WalletModal />}</>
-      <>{menu && <Menu />}</>
+      <>{isCurrencyModal && <CurrencyModal />}</>
+      <>{wallet && <WalletModal closeWallet={() => setWallet("")} />}</>
+      <>{menu && <Menu closeMenu={() => setMenu("")} />}</>
       <Logo onClick={() => router.push("/")}>
         <Image src="/assets/logo.svg" alt="logo" width="128px" height="60px" />
       </Logo>
       <SearchBar />
       <Responsive>
         <div className="when-wide">
-          <Create onClick={() => router.push("/create")}>create</Create>
-          <Explore onClick={() => router.push("/explore")}>explore</Explore>
+          <Create onClick={() => router.push("/create")}>Create</Create>
+          <Explore onClick={() => router.push("/explore")}>Explore</Explore>
           <Mypage onClick={account ? () => router.push("/mypage") : getAccount}>
             <Image
               src="/assets/profile.svg"
@@ -61,7 +66,7 @@ function AppBar() {
               height="30px"
             />
           </Mypage>
-          <Wallet onClick={openWallet}>
+          <Wallet onClick={account ? openWallet : getAccount}>
             <Image
               src="/assets/wallet.svg"
               alt="logo"
@@ -85,31 +90,42 @@ const Wrap = styled.div`
   justify-content: space-between;
   height: 80px;
   line-height: 80px;
-  padding-left: 8%;
-  padding-right: 6%;
 `;
 
 const Logo = styled.div`
-  margin-top: 11px;
+  display: flex;
+  margin: 0 15px;
+  cursor: pointer;
 `;
 
 const Create = styled.div`
-  margin-right: 30px;
+  width: 70px;
+  cursor: pointer;
+  font-family: "Acumin Pro";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
 `;
 
 const Explore = styled.div`
-  margin-right: 40px;
+  width: 70px;
+  cursor: pointer;
+  font-family: "Acumin Pro";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 15px;
 `;
 
 const Mypage = styled.div`
-  margin-right: 40px;
-  line-height: 30px;
-  margin-top: 25px;
+  display: flex;
+  width: 50px;
+  text-align: center;
 `;
 
 const Wallet = styled.div`
-  line-height: 30px;
-  margin-top: 25px;
+  display: flex;
+  width: 50px;
+  text-align: center;
 `;
 
 const TapButton = styled.div``;
@@ -117,13 +133,14 @@ const TapButton = styled.div``;
 const Responsive = styled.div`
   font-size: 15px;
   font-weight: 500;
+  margin: 0 15px;
   .when-wide {
     display: flex;
   }
   .when-narrow {
     display: none;
   }
-  @media screen and (max-width: 950px) {
+  @media screen and (max-width: 750px) {
     .when-wide {
       display: none;
     }

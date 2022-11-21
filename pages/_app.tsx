@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import AppBar from "../src/components/layouts/AppBar";
+import AppBar from "../src/components/layouts/template/AppBar";
 import styled from "styled-components";
 
 declare global {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 
 import CustomButton from "../CustomButton";
@@ -18,7 +19,7 @@ type InfoType = {
   heartCnt: number;
   isHeart: boolean;
   sign: string;
-  detailUrl: string;
+  detailUrl: "/";
 };
 
 const tattooInfo: InfoType = {
@@ -31,7 +32,7 @@ const tattooInfo: InfoType = {
   heartCnt: 96,
   isHeart: true,
   sign: "up",
-  detailUrl: "/exploredetail",
+  detailUrl: "/",
 };
 
 interface IProps {
@@ -39,37 +40,32 @@ interface IProps {
 }
 
 function Card({ type }: IProps) {
+  const router = useRouter();
+
   return (
-    <Link href={tattooInfo.detailUrl}>
-      <a>
-        <Container>
-          <ImgBox
-            imgUrl={tattooInfo.tattooImgUrl}
-            isHeart={tattooInfo.isHeart}
+    <Container onClick={() => router.push(tattooInfo.detailUrl)}>
+      <ImgBox imgUrl={tattooInfo.tattooImgUrl} isHeart={tattooInfo.isHeart} />
+      <Content>
+        <TopContent>
+          <TattooInfoBox
+            type={"artist"}
+            name={tattooInfo.name}
+            artist={tattooInfo.artist}
+            artistImgUrl={tattooInfo.artistImgUrl}
           />
-          <Content>
-            <TopContent>
-              <TattooInfoBox
-                type={"artist"}
-                name={tattooInfo.name}
-                artist={tattooInfo.artist}
-                artistImgUrl={tattooInfo.artistImgUrl}
-              />
-              {type === "art" && (
-                <PriceBox
-                  sign={tattooInfo.sign}
-                  price={tattooInfo.price}
-                  percentage={tattooInfo.percentage}
-                />
-              )}
-            </TopContent>
-            <BottomContent>
-              <HeartBox cnt={tattooInfo.heartCnt} />
-            </BottomContent>
-          </Content>
-        </Container>
-      </a>
-    </Link>
+          {type === "art" && (
+            <PriceBox
+              sign={tattooInfo.sign}
+              price={tattooInfo.price}
+              percentage={tattooInfo.percentage}
+            />
+          )}
+        </TopContent>
+        <BottomContent>
+          <HeartBox cnt={tattooInfo.heartCnt} />
+        </BottomContent>
+      </Content>
+    </Container>
   );
 }
 
@@ -82,6 +78,8 @@ const Container = styled.div`
   padding: 16px;
   border-radius: 22px;
   width: 100%;
+  cursor: pointer;
+
   @media screen and (700px < width < 1000px) {
     width: 50%;
   }

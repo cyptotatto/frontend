@@ -2,12 +2,14 @@ import { useRouter } from "next/router";
 import React, { useCallback, useState, useEffect } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import styled from "styled-components";
-import { menuAtom } from "../../recoil/modal";
-import { accountAtom } from "../../recoil/user";
-import CloseButton from "./block/CloseButton";
+import { accountAtom } from "../../../recoil/user";
+import CloseButton from "../../common/CloseButton";
 
-function Menu() {
-  const setMenu = useSetRecoilState(menuAtom);
+interface MenuModalPropsType {
+  closeMenu: () => void;
+}
+
+function Menu({ closeMenu }: MenuModalPropsType) {
   const router = useRouter();
   const [account, setAccount] = useRecoilState(accountAtom);
   const [render, setRender] = useState("");
@@ -34,7 +36,7 @@ function Menu() {
 
   return (
     <Wrap>
-      <CloseButton handleClick={() => setMenu("")} />
+      <CloseButton handleClick={closeMenu} />
       <div className="router" onClick={() => router.push("/explore")}>
         explore
       </div>
@@ -56,7 +58,7 @@ export default Menu;
 const Wrap = styled.div`
   opacity: 1;
   position: fixed;
-  z-index: 30;
+  z-index: 10;
   right: 0;
   left: 0;
   top: 0;
