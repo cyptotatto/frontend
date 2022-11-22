@@ -12,15 +12,11 @@ function NavBar() {
   return (
     <CustomNavBar>
       <Layout>
-<<<<<<< Updated upstream
-        <SelectedMenuBox menu={myPageMenu} />
-=======
         <SelectedMenuBox
-          menu={artistMenu}
+          menu={myPageMenu}
           selectedMenuIdx={selectedMenuIdx}
           setSelectedMenuIdx={setSelectedMenuIdx}
         />
->>>>>>> Stashed changes
       </Layout>
     </CustomNavBar>
   );

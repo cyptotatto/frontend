@@ -5,7 +5,7 @@ import { makeShortAddress } from "../../../utils/transform";
 import EthereumIcon from "../../../../public/assets/ethereum.svg";
 
 interface IProps {
-  accountNum: string;
+  accountNum?: string;
 }
 
 function AccountNumBox({ accountNum }: IProps) {

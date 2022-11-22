@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 import CustomButton from "../CustomButton";
-import ImgBox from "../Card/blocks/ImgBox";
-import TattooInfoBox from "../Card/blocks/TattooInfoBox";
+import ImgBox from "./blocks/ImgBox";
+import TattooInfoBox from "./blocks/TattooInfoBox";
 import PriceBox from "./atoms/PriceBox";
 import HeartBox from "./atoms/HeartBox";
 import Link from "next/link";
@@ -18,7 +18,7 @@ type InfoType = {
   heartCnt: number;
   isHeart: boolean;
   sign: string;
-  detailUrl: "/";
+  detailUrl: string;
 };
 
 const tattooInfo: InfoType = {
@@ -31,11 +31,11 @@ const tattooInfo: InfoType = {
   heartCnt: 96,
   isHeart: true,
   sign: "up",
-  detailUrl: "/",
+  detailUrl: "/exploredetail",
 };
 
 interface IProps {
-  type: string;
+  type?: string;
 }
 
 function Card({ type }: IProps) {

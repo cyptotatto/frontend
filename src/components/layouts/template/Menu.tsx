@@ -2,39 +2,27 @@ import { useRouter } from "next/router";
 import React, { useCallback, useState, useEffect } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import styled from "styled-components";
-import { menuAtom } from "../../recoil/modal";
-import { accountAtom } from "../../recoil/user";
-import CloseButton from "./block/CloseButton";
+import { useAccount, useConnect } from "wagmi";
+import CloseButton from "../../common/CloseButton";
 
-function Menu() {
-  const setMenu = useSetRecoilState(menuAtom);
+interface MenuModalPropsType {
+  closeMenu: () => void;
+}
+
+function Menu({ closeMenu }: MenuModalPropsType) {
   const router = useRouter();
-  const [account, setAccount] = useRecoilState(accountAtom);
+  const { address } = useAccount();
   const [render, setRender] = useState("");
+  const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect();
 
   useEffect(() => {
     setRender("render");
   }, []);
 
-  const getAccount = useCallback(async () => {
-    try {
-      if (window.ethereum) {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setAccount(accounts[0]);
-        router.reload();
-      } else {
-        alert("install metamask");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [setAccount, router]);
-
   return (
     <Wrap>
-      <CloseButton handleClick={() => setMenu("")} />
+      <CloseButton handleClick={closeMenu} />
       <div className="router" onClick={() => router.push("/explore")}>
         explore
       </div>
@@ -43,7 +31,11 @@ function Menu() {
       </div>
       <div
         className="router"
-        onClick={account ? () => router.push("/mypage") : getAccount}
+        onClick={
+          address
+            ? () => router.push("/mypage")
+            : () => connect({ connector: connectors[0] })
+        }
       >
         mypage
       </div>
@@ -56,7 +48,7 @@ export default Menu;
 const Wrap = styled.div`
   opacity: 1;
   position: fixed;
-  z-index: 30;
+  z-index: 10;
   right: 0;
   left: 0;
   top: 0;

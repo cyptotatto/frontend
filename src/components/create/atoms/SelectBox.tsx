@@ -4,17 +4,21 @@ import styled, { css } from "styled-components";
 import ArrowDownIcon from "../../../../public/assets/arrow_down.svg";
 
 interface IProps {
-  options: object;
+  options: option[];
 }
+type option = {
+  value: string;
+  name: string;
+};
 
 function SelectBox({ options }: IProps) {
-  const [selectedMenu, setSelectedMenu] = useState("정렬");
+  const [selectedMenu, setSelectedMenu] = useState(options[0].value);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Box onClick={() => setIsMenuOpen((prev) => !prev)}>
       <Select>
-        <Text>{isMenuOpen ? "정렬" : selectedMenu}</Text>
+        <Text>{isMenuOpen ? options[0].value : selectedMenu}</Text>
         <ArrowIcon isopen={isMenuOpen.toString()} />
       </Select>
       {isMenuOpen && (

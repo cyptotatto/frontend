@@ -1,11 +1,9 @@
 import Image from "next/image";
 import React from "react";
 import styled from "styled-components";
-
 interface CloseButtonPropsType {
   handleClick: () => void;
 }
-
 function CloseButton({ handleClick }: CloseButtonPropsType) {
   return (
     <Wrap>
@@ -20,13 +18,11 @@ function CloseButton({ handleClick }: CloseButtonPropsType) {
     </Wrap>
   );
 }
-
 export default CloseButton;
-
 const Wrap = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 20px;
+  margin: 10px;
   div {
     padding: 10px;
   }

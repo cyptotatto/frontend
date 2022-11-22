@@ -1,10 +1,37 @@
-import { AbiItem } from "web3-utils";
-import Web3 from "web3";
+import { ethers } from "ethers";
+import { useContract } from "wagmi";
+import TattoCollectionAbi from "./abi/TattoCollection.sol/TattoCollection.json";
+import TattoCurrencyAbi from "./abi/TattoCurrnency.sol/TattoCurrency.json";
+import TattoMarketAbi from "./abi/TattoMarket.sol/TattoMarket.json";
+import {
+  TattoRoleAddress,
+  TattoMarketAddress,
+  TattoCurrencyAddess,
+  TattoCollectionAddress,
+} from "./constant";
+import { ContractStructInterface } from "./interface";
 
-const contractABI: AbiItem[] = [];
+export function getContract(_signer: any): ContractStructInterface {
+  let currencyControl, market, collection;
 
-const contractAddress = "주소자리";
+  currencyControl = new ethers.Contract(
+    TattoCurrencyAddess,
+    TattoCurrencyAbi,
+    _signer
+  );
 
-// export const web3 = new Web3(window.ethereum);
+  market = new ethers.Contract(TattoMarketAddress, TattoMarketAbi, _signer);
 
-// export const contract = new web3.eth.Contract(contractABI, contractAddress);
+  //chizu chizu erc721
+  collection = new ethers.Contract(
+    TattoCollectionAddress,
+    TattoCollectionAbi,
+    _signer
+  );
+
+  return {
+    collection,
+    currencyControl,
+    market,
+  };
+}
