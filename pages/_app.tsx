@@ -1,7 +1,6 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
-import AppBar from "../src/components/layouts/template/AppBar";
 import styled from "styled-components";
 import {
   WagmiConfig,
@@ -17,6 +16,7 @@ import { CoinbaseWalletConnector } from "wagmi/connectors/coinbaseWallet";
 import { InjectedConnector } from "wagmi/connectors/injected";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
+import dynamic from "next/dynamic";
 
 const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
   alchemyProvider({
@@ -54,6 +54,11 @@ const client = createClient({
   provider,
   webSocketProvider,
 });
+
+const AppBar = dynamic(
+  () => import("../src/components/layouts/template/AppBar"),
+  { ssr: false }
+);
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
