@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import React, { useCallback, useState, useEffect } from "react";
 import { useSetRecoilState, useRecoilState } from "recoil";
 import styled from "styled-components";
-import { accountAtom } from "../../../recoil/user";
+import { useAccount, useConnect } from "wagmi";
 import CloseButton from "../../common/CloseButton";
 
 interface MenuModalPropsType {
@@ -11,28 +11,14 @@ interface MenuModalPropsType {
 
 function Menu({ closeMenu }: MenuModalPropsType) {
   const router = useRouter();
-  const [account, setAccount] = useRecoilState(accountAtom);
+  const { address } = useAccount();
   const [render, setRender] = useState("");
+  const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect();
 
   useEffect(() => {
     setRender("render");
   }, []);
-
-  const getAccount = useCallback(async () => {
-    try {
-      if (window.ethereum) {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setAccount(accounts[0]);
-        router.reload();
-      } else {
-        alert("install metamask");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [setAccount, router]);
 
   return (
     <Wrap>
@@ -45,7 +31,11 @@ function Menu({ closeMenu }: MenuModalPropsType) {
       </div>
       <div
         className="router"
-        onClick={account ? () => router.push("/mypage") : getAccount}
+        onClick={
+          address
+            ? () => router.push("/mypage")
+            : () => connect({ connector: connectors[0] })
+        }
       >
         mypage
       </div>

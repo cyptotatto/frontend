@@ -1,10 +1,10 @@
 import { BigNumber } from "ethers";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { provider, signer, Tatto } from "../../../../contracts/contractConfig";
-import { accountAtom } from "../../../../recoil/user";
+import { useAccount, useProvider } from "wagmi";
+import { getContract } from "../../../../contracts/contractConfig";
 import { LoadingPropsType } from "../../../../types/type";
 import {
   makeEtherFromBigNumber,
@@ -15,24 +15,29 @@ import CurrencyButton from "../common/CurrencyButton";
 import CurrencyText from "../common/CurrencyText";
 
 function DespositContainer({ startLoading }: LoadingPropsType) {
-  const account = useRecoilValue(accountAtom);
+  const { address } = useAccount();
   const [inputBalance, setInputBalance] = useState(0);
   const [walletBalance, setWalletBalance] = useState(0);
+  const provider = useProvider();
+
+  const getmyBalance = useCallback(
+    async (_account: string): Promise<number> => {
+      const value = window && (await provider.getBalance(_account));
+      return makeEtherFromBigNumber(value);
+    },
+    [provider]
+  );
 
   useEffect(() => {
-    if (account && window) {
-      getmyBalance(account).then((result) => {
+    if (address) {
+      getmyBalance(address).then((result) => {
         setWalletBalance(result);
       });
     }
-  }, [account]);
-
-  const getmyBalance = async (_account: string): Promise<number> => {
-    const value = window && (await provider.getBalance(_account));
-    return makeEtherFromBigNumber(value);
-  };
+  }, [address, getmyBalance]);
 
   const depositEther = async () => {
+    const Tatto = getContract(provider);
     try {
       await Tatto.currencyControl.depositETH({
         value: parseEtherFromNumber(inputBalance),

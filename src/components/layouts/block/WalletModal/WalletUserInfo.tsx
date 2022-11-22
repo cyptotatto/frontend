@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { makeShortAddress } from "../../../../utils/transform";
 
 interface Props {
-  account: string;
+  account?: string;
 }
 
 function WalletUserInfo({ account }: Props) {

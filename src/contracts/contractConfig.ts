@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { useContract } from "wagmi";
 import TattoCollectionAbi from "./abi/TattoCollection.sol/TattoCollection.json";
 import TattoCurrencyAbi from "./abi/TattoCurrnency.sol/TattoCurrency.json";
 import TattoMarketAbi from "./abi/TattoMarket.sol/TattoMarket.json";
@@ -9,10 +10,6 @@ import {
   TattoCollectionAddress,
 } from "./constant";
 import { ContractStructInterface } from "./interface";
-
-export const provider = new ethers.providers.Web3Provider(window.ethereum);
-
-export const signer = provider.getSigner();
 
 export function getContract(_signer: any): ContractStructInterface {
   let currencyControl, market, collection;
@@ -38,5 +35,3 @@ export function getContract(_signer: any): ContractStructInterface {
     market,
   };
 }
-
-export const Tatto = getContract(signer);

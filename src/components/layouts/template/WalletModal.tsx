@@ -2,13 +2,13 @@ import Image from "next/image";
 import React from "react";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { accountAtom } from "../../../recoil/user";
 import { makeShortAddress } from "../../../utils/transform";
 import CustomButton from "../../common/CustomButton";
 import CloseButton from "../../common/CloseButton";
 import WalletUserInfo from "../block/WalletModal/WalletUserInfo";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { useAccount, useDisconnect } from "wagmi";
 
 interface WalletModalPropsType {
   closeWallet: () => void;
@@ -19,10 +19,11 @@ const DynamicBalance = dynamic(() => import("../block/WalletModal/Balance"), {
 });
 
 function WalletModal({ closeWallet }: WalletModalPropsType) {
-  const [account, setAccount] = useRecoilState(accountAtom);
+  const { address } = useAccount();
+  const { disconnect } = useDisconnect();
   const router = useRouter();
   const disconnectWallet = () => {
-    setAccount("");
+    disconnect();
     closeWallet();
     router.push("/");
   };
@@ -31,7 +32,7 @@ function WalletModal({ closeWallet }: WalletModalPropsType) {
       <Back onClick={closeWallet}></Back>
       <Modal>
         <CloseButton handleClick={closeWallet} />
-        <WalletUserInfo account={account} />
+        <WalletUserInfo account={address} />
         <DynamicBalance></DynamicBalance>
         <CustomButton active="false" handleClick={disconnectWallet}>
           Disconnect

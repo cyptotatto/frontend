@@ -8,7 +8,7 @@ import UserImg from "../atoms/UserImg";
 import UserName from "../atoms/UserName";
 import Intro from "../atoms/Intro";
 import { useRecoilValue } from "recoil";
-import { accountAtom } from "../../../recoil/user";
+import { useAccount } from "wagmi";
 
 const userInfo = {
   username: "UserName",
@@ -21,7 +21,7 @@ const userInfo = {
 
 function UserProfile() {
   const [isSettingOpen, setIsSettingOpen] = useState(false);
-  const account = useRecoilValue(accountAtom);
+  const { address } = useAccount();
   const onToggleSetting = () => setIsSettingOpen((prev) => !prev);
 
   return (
@@ -33,7 +33,7 @@ function UserProfile() {
           <UserName>{userInfo.username}</UserName>
           <Setting isOpen={isSettingOpen} onToggleSetting={onToggleSetting} />
         </UserNameBox>
-        <AccountNumBox accountNum={account} />
+        <AccountNumBox accountNum={address} />
         <Intro intro={userInfo.intro} />
       </InfoBox>
     </Container>

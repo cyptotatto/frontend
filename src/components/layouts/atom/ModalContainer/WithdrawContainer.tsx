@@ -1,10 +1,10 @@
 import { BigNumber } from "ethers";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { provider, Tatto } from "../../../../contracts/contractConfig";
-import { accountAtom } from "../../../../recoil/user";
+import { useAccount, useProvider } from "wagmi";
+import { getContract } from "../../../../contracts/contractConfig";
 import { LoadingPropsType } from "../../../../types/type";
 import {
   makeEtherFromBigNumber,
@@ -15,24 +15,30 @@ import CurrencyButton from "../common/CurrencyButton";
 import CurrencyText from "../common/CurrencyText";
 
 function WithdrawContainer({ startLoading }: LoadingPropsType) {
-  const account = useRecoilValue(accountAtom);
+  const { address } = useAccount();
   const [inputBalance, setInputBalance] = useState(0);
   const [tatuBalance, setTatuBalance] = useState(0);
+  const provider = useProvider();
+
+  const getTattoBalace = useCallback(
+    async (_account: string): Promise<number> => {
+      const Tatto = getContract(provider);
+      const value = window && (await Tatto.currencyControl.balanceOf(_account));
+      return makeEtherFromBigNumber(value);
+    },
+    [provider]
+  );
 
   useEffect(() => {
-    if (account && window) {
-      getTattoBalace(account).then((result) => {
+    if (address) {
+      getTattoBalace(address).then((result) => {
         setTatuBalance(result);
       });
     }
-  }, [account]);
-
-  const getTattoBalace = async (_account: string): Promise<number> => {
-    const value = window && (await Tatto.currencyControl.balanceOf(_account));
-    return makeEtherFromBigNumber(value);
-  };
+  }, [address, getTattoBalace]);
 
   const withdrawEther = async () => {
+    const Tatto = getContract(provider);
     try {
       await Tatto.currencyControl.withdrawETH(
         parseEtherFromNumber(inputBalance)

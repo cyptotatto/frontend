@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useCallback, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { accountAtom } from "../../../recoil/user";
 import styled from "styled-components";
 import Menu from "./Menu";
 import Image from "next/image";
@@ -9,36 +8,29 @@ import SearchBar from "../../common/SearchBar";
 import WalletModal from "./WalletModal";
 import { currencyManagerAtom } from "../../../recoil/modal";
 import CurrencyModal from "./CurrencyModal";
+import { useAccount, useConnect } from "wagmi";
 
 function AppBar() {
   const router = useRouter();
-  const [account, setAccount] = useRecoilState(accountAtom);
   const [menu, setMenu] = useState("");
   const [wallet, setWallet] = useState("");
   const isCurrencyModal = useRecoilValue(currencyManagerAtom);
 
+  const { address, isConnected } = useAccount({
+    onConnect({ address, connector, isReconnected }) {
+      console.log("Connected", { address, connector, isReconnected });
+    },
+    onDisconnect() {
+      console.log("Disconnected");
+    },
+  });
+  const { connect, connectors, error, isLoading, pendingConnector } =
+    useConnect();
+  console.log(connectors);
+
   useEffect(() => {
     setMenu("");
   }, [setMenu, router]);
-
-  const getAccount = useCallback(async () => {
-    try {
-      if (window.ethereum) {
-        const accounts = await window.ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        setAccount(accounts[0]);
-      } else {
-        alert("install metamask");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }, [setAccount]);
-
-  useEffect(() => {
-    getAccount();
-  }, [getAccount]);
 
   const openWallet = () => {
     setWallet("ok");
@@ -58,22 +50,30 @@ function AppBar() {
         <div className="when-wide">
           <Create onClick={() => router.push("/create")}>Create</Create>
           <Explore onClick={() => router.push("/explore")}>Explore</Explore>
-          <Mypage onClick={account ? () => router.push("/mypage") : getAccount}>
-            <Image
-              src="/assets/profile.svg"
-              alt="logo"
-              width="30px"
-              height="30px"
-            />
-          </Mypage>
-          <Wallet onClick={account ? openWallet : getAccount}>
-            <Image
-              src="/assets/wallet.svg"
-              alt="logo"
-              width="30px"
-              height="30px"
-            />
-          </Wallet>
+          {isConnected ? (
+            <>
+              <Mypage onClick={() => router.push("/mypage")}>
+                <Image
+                  src="/assets/profile.svg"
+                  alt="logo"
+                  width="30px"
+                  height="30px"
+                />
+              </Mypage>
+              <Wallet onClick={openWallet}>
+                <Image
+                  src="/assets/wallet.svg"
+                  alt="logo"
+                  width="30px"
+                  height="30px"
+                />
+              </Wallet>
+            </>
+          ) : (
+            <Login onClick={() => connect({ connector: connectors[0] })}>
+              로그인
+            </Login>
+          )}
         </div>
         <div className="when-narrow">
           <TapButton onClick={() => setMenu("show")}>menu</TapButton>
@@ -148,4 +148,16 @@ const Responsive = styled.div`
       display: block;
     }
   }
+`;
+
+const Login = styled.div`
+  width: 104px;
+  height: 40px;
+
+  border: 1px solid #ffffff;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 `;

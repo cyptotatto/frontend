@@ -1,38 +1,46 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
-import { provider, Tatto } from "../../../../contracts/contractConfig";
+import { useAccount, useProvider } from "wagmi";
+import { getContract } from "../../../../contracts/contractConfig";
 import { currencyManagerAtom } from "../../../../recoil/modal";
-import { accountAtom } from "../../../../recoil/user";
 import { makeEtherFromBigNumber } from "../../../../utils/transform";
 
 function Balance() {
-  const account = useRecoilValue(accountAtom);
+  const { address } = useAccount();
   const setCurrencyManager = useSetRecoilState(currencyManagerAtom);
   const [walletBalance, setWalletBalance] = useState(0);
   const [tatuBalance, setTatuBalance] = useState(0);
+  const provider = useProvider();
+
+  const getMyBalance = useCallback(
+    async (_account: string): Promise<number> => {
+      const value = window && (await provider.getBalance(_account));
+      return makeEtherFromBigNumber(value);
+    },
+    [provider]
+  );
+
+  const getTattoBalace = useCallback(
+    async (_account: string): Promise<number> => {
+      const Tatto = getContract(provider);
+      const value = window && (await Tatto.currencyControl.balanceOf(_account));
+      return makeEtherFromBigNumber(value);
+    },
+    [provider]
+  );
 
   useEffect(() => {
-    if (account && window) {
-      getMyBalance(account).then((result) => {
+    if (address) {
+      getMyBalance(address).then((result) => {
         setWalletBalance(result);
       });
-      getTattoBalace(account).then((result) => {
+      getTattoBalace(address).then((result) => {
         setTatuBalance(result);
       });
     }
-  }, [account]);
-
-  const getMyBalance = async (_account: string): Promise<number> => {
-    const value = window && (await provider.getBalance(_account));
-    return makeEtherFromBigNumber(value);
-  };
-
-  const getTattoBalace = async (_account: string): Promise<number> => {
-    const value = window && (await Tatto.currencyControl.balanceOf(_account));
-    return makeEtherFromBigNumber(value);
-  };
+  }, [address, getMyBalance, getTattoBalace]);
 
   return (
     <Wrap onClick={() => setCurrencyManager(true)}>
