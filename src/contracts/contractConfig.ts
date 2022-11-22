@@ -5,6 +5,6 @@ const contractABI: AbiItem[] = [];
 
 const contractAddress = "주소자리";
 
-export const web3 = new Web3(window.ethereum);
+// export const web3 = new Web3(window.ethereum);
 
-export const contract = new web3.eth.Contract(contractABI, contractAddress);
+// export const contract = new web3.eth.Contract(contractABI, contractAddress);

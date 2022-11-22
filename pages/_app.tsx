@@ -3,22 +3,42 @@ import type { AppProps } from "next/app";
 import { RecoilRoot } from "recoil";
 import AppBar from "../src/components/layouts/AppBar";
 import styled from "styled-components";
+import {
+  createClient,
+  configureChains,
+  defaultChains,
+  WagmiConfig,
+} from "wagmi";
+import { alchemyProvider } from "wagmi/providers/alchemy";
+import { publicProvider } from "wagmi/providers/public";
+import { InjectedConnector } from "wagmi/connectors/injected";
 
-declare global {
-  interface Window {
-    ethereum: any;
-  }
-}
+const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
+  alchemyProvider({
+    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+      ? process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+      : "default",
+  }),
+  publicProvider(),
+]);
+
+const client = createClient({
+  provider,
+  connectors: [new InjectedConnector({ chains })],
+  webSocketProvider,
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <AppBarWrap>
-        <AppBar />
-      </AppBarWrap>
-      <ComponentWrap>
-        <Component {...pageProps} />
-      </ComponentWrap>
+      <WagmiConfig client={client}>
+        <AppBarWrap>
+          <AppBar />
+        </AppBarWrap>
+        <ComponentWrap>
+          <Component {...pageProps} />
+        </ComponentWrap>
+      </WagmiConfig>
     </RecoilRoot>
   );
 }
