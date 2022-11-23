@@ -41,8 +41,8 @@ interface IProps {
 function Card({ type }: IProps) {
   return (
     <Link href={tattooInfo.detailUrl}>
-      <a>
-        <Container>
+      <Container>
+        <a>
           <ImgBox
             imgUrl={tattooInfo.tattooImgUrl}
             isHeart={tattooInfo.isHeart}
@@ -67,8 +67,8 @@ function Card({ type }: IProps) {
               <HeartBox cnt={tattooInfo.heartCnt} />
             </BottomContent>
           </Content>
-        </Container>
-      </a>
+        </a>
+      </Container>
     </Link>
   );
 }
