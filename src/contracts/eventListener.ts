@@ -1,5 +1,4 @@
 import { BigNumber, Contract } from "ethers";
-import { Tatto } from "./contractConfig";
 
 /**
  * ======================================

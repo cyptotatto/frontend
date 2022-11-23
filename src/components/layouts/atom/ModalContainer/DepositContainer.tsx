@@ -3,7 +3,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { useAccount, useProvider } from "wagmi";
+import { useAccount, useProvider, useSigner } from "wagmi";
 import { getContract } from "../../../../contracts/contractConfig";
 import { LoadingPropsType } from "../../../../types/type";
 import {
@@ -19,10 +19,11 @@ function DespositContainer({ startLoading }: LoadingPropsType) {
   const [inputBalance, setInputBalance] = useState(0);
   const [walletBalance, setWalletBalance] = useState(0);
   const provider = useProvider();
+  const { data: signer } = useSigner();
 
   const getmyBalance = useCallback(
     async (_account: string): Promise<number> => {
-      const value = window && (await provider.getBalance(_account));
+      const value = await provider.getBalance(_account);
       return makeEtherFromBigNumber(value);
     },
     [provider]
@@ -37,7 +38,7 @@ function DespositContainer({ startLoading }: LoadingPropsType) {
   }, [address, getmyBalance]);
 
   const depositEther = async () => {
-    const Tatto = getContract(provider);
+    const Tatto = getContract(signer);
     try {
       await Tatto.currencyControl.depositETH({
         value: parseEtherFromNumber(inputBalance),

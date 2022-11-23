@@ -3,7 +3,8 @@ import dynamic from "next/dynamic";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Tatto } from "../../../../contracts/contractConfig";
+import { useProvider, useSigner } from "wagmi";
+import { getContract } from "../../../../contracts/contractConfig";
 import { TattoCurrencyListener } from "../../../../contracts/eventListener";
 import CurrencyButton from "../../atom/common/CurrencyButton";
 import CurrencyText from "../../atom/common/CurrencyText";
@@ -15,8 +16,10 @@ import WithdrawContainer from "../../atom/ModalContainer/WithdrawContainer";
 function ModalContainer() {
   const [loading, setLoading] = useState(0);
   const [type, setType] = useState("");
+  const provider = useProvider();
 
   useEffect(() => {
+    const Tatto = getContract(provider);
     const listener = (from: string, to: string, amount: BigNumber) => {
       setLoading(2);
     };
@@ -33,7 +36,7 @@ function ModalContainer() {
         listener
       );
     };
-  }, []);
+  }, [provider]);
   if (loading === 1) {
     return <Loading />;
   }
