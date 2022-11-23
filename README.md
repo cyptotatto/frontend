@@ -6,6 +6,7 @@
 
 1. styled-components
 2. recoil
+3. wagmi(ethereum react hooks)
 
 ---
 
