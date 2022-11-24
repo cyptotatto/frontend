@@ -10,7 +10,7 @@ import ItemTable from "../atoms/ItemTable";
 
 interface detail {
   contractAddress: string;
-  tokenId: string;
+  tokenId: number;
   blockChain: string;
   tokenStandard: string;
 }
@@ -18,7 +18,8 @@ interface IProps {
   username: string;
   tattooTitle: string;
   tattooImgUrl: string;
-  ownerId: string;
+  ownerUserName: string;
+  ownerAccount: string;
   price: string;
   intro: string;
   details: detail;
@@ -28,7 +29,8 @@ function TattooInfo({
   username,
   tattooImgUrl,
   tattooTitle,
-  ownerId,
+  ownerUserName,
+  ownerAccount,
   price,
   intro,
   details,
@@ -44,10 +46,15 @@ function TattooInfo({
         <TattooName
           userName={username}
           tattooTitle={tattooTitle}
-          ownerId={ownerId}
+          ownerId={ownerUserName}
           price={price}
         ></TattooName>
-        <BuyBtn></BuyBtn>
+        <BuyBtn
+          ownerAccount={ownerAccount}
+          contractAddress={details.contractAddress}
+          tokenId={details.tokenId}
+          price={price}
+        ></BuyBtn>
         <ItemTable></ItemTable>
       </StyledInfo>
     </Container>

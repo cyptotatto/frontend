@@ -10,16 +10,16 @@ function ExploreDetailTemplate() {
     username: "그레이트",
     tattooTitle: "엔틱 무드 레터링과 월계수 잎",
     tattooImgUrl: "/assets/tattoo_img.png",
-    ownerId: "gumming",
-    accountNum: "0x001700000001D19",
-    price: "0.022",
+    ownerUserName: "gumming",
+    ownerAccount: "0xE976893Bf88F6CC81ae942cE9531fBebd8530D81",
+    price: "0.0001",
     intro:
       "그레이트는 올드 스쿨 장르를 기반으로 다양한 타투 NFT를 생성하는 타투이스트입니다.\n그레이트는 올드 스쿨 장르를 기반으로 다양한 타투 NFT를 생성하는 타투이스트입니다.\n\nWeb: https://greate.world Twiter: https://twitter.com/great Discord: https://discord.gg/great",
   };
 
   const Detail = {
-    contractAddress: "0xex64..38f3",
-    tokenId: "2089",
+    contractAddress: "0xe4F0E339c173EDb993bAe6f85DC1dcfc9EBbe810",
+    tokenId: 1,
     blockChain: "Ethereum",
     tokenStandard: "ERC721",
   };
@@ -30,7 +30,8 @@ function ExploreDetailTemplate() {
           username={Info.username}
           tattooImgUrl={Info.tattooImgUrl}
           tattooTitle={Info.tattooTitle}
-          ownerId={Info.ownerId}
+          ownerUserName={Info.ownerUserName}
+          ownerAccount={Info.ownerAccount}
           price={Info.price}
           intro={Info.intro}
           details={Detail}

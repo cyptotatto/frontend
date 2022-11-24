@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ExploreDetailTemplate from "../src/components/exploredetail/template/ExploreDetailTemplate";
 
-function Editprofile() {
+function ExploreDetail() {
   return (
     <Wrap>
       <ExploreDetailTemplate></ExploreDetailTemplate>
@@ -10,7 +10,7 @@ function Editprofile() {
   );
 }
 
-export default Editprofile;
+export default ExploreDetail;
 
 const Wrap = styled.div`
   margin-top: 80px;

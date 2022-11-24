@@ -31,14 +31,14 @@ function ItemTable() {
     <StyledTable>
       <StyledHead>
         <tr>
-          {columns.map((column) => (
-            <th key={column}>{column}</th>
+          {columns.map((column, index) => (
+            <th key={index}>{column}</th>
           ))}
         </tr>
       </StyledHead>
       <StyledBody>
-        {data.map(({ event, price, from, to, time }) => (
-          <tr key={event}>
+        {data.map(({ event, price, from, to, time }, index) => (
+          <tr key={index}>
             <td>{event}</td>
             <td>{price}</td>
             <td>{from}</td>

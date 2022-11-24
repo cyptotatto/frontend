@@ -7,6 +7,7 @@ import {
   createClient,
   defaultChains,
   configureChains,
+  chain,
 } from "wagmi";
 
 import { alchemyProvider } from "wagmi/providers/alchemy";
@@ -18,14 +19,17 @@ import { MetaMaskConnector } from "wagmi/connectors/metaMask";
 import { WalletConnectConnector } from "wagmi/connectors/walletConnect";
 import dynamic from "next/dynamic";
 
-const { chains, provider, webSocketProvider } = configureChains(defaultChains, [
-  alchemyProvider({
-    apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-      ? process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
-      : "default",
-  }),
-  publicProvider(),
-]);
+const { chains, provider, webSocketProvider } = configureChains(
+  [chain.goerli],
+  [
+    alchemyProvider({
+      apiKey: process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+        ? process.env.NEXT_PUBLIC_ALCHEMY_API_KEY
+        : "default",
+    }),
+    publicProvider(),
+  ]
+);
 
 const client = createClient({
   autoConnect: true,

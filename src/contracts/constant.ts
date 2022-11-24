@@ -1,5 +1,5 @@
-export const TattoRoleAddress = "0x87974cb4E05f102A9527F2f185Cc8641D548bEA5";
-export const TattoCurrencyAddess = "0xd701c4C2d29660b8Dd91ca1254A988Ac1316F2c3";
-export const TattoMarketAddress = "0x0DcC01a5d496A6c5F58b3CDe335cE861795913C3";
+export const TattoRoleAddress = "0xc3ca39a5673676F67a3Df75c7C496EC8B7487648";
+export const TattoCurrencyAddess = "0x5eDaeBeAd6Ed654F95949120D23B50D20829358A";
+export const TattoMarketAddress = "0xb97cCDFE4d7503FA038509aeE432747bbdD2bb00";
 export const TattoCollectionAddress =
-  "0x48501804b332d642c4b14580574e26A949A3D2c1";
+  "0xe4F0E339c173EDb993bAe6f85DC1dcfc9EBbe810";

@@ -18,12 +18,16 @@ export function lazyMintHash(
   return hash;
 }
 
-export function payHash(buyerAddress: string, price: BigNumber) {
-  const hash = ethers.utils.solidityKeccak256(
-    ["uint256", "uint256"],
-    [BigInt(buyerAddress), price]
-  );
-  return hash;
+export function payHash(buyerAddress: string | undefined, price: BigNumber) {
+  if (buyerAddress) {
+    const hash = ethers.utils.solidityKeccak256(
+      ["uint256", "uint256"],
+      [BigInt(buyerAddress), price]
+    );
+    return hash;
+  } else {
+    return false;
+  }
 }
 
 export function tradeHash(
