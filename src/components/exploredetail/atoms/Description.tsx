@@ -12,10 +12,12 @@ function Description({ intro }: IProps) {
 
   return (
     <Box onClick={() => setIsMenuOpen((prev) => !prev)}>
-      <Select>
-        <Text>Description</Text>
-        <ArrowIcon isopen={isMenuOpen.toString()} />
-      </Select>
+      <StyledBox>
+        <Select>
+          <Text>Description</Text>
+          <ArrowIcon isopen={isMenuOpen.toString()} />
+        </Select>
+      </StyledBox>
       {isMenuOpen && (
         <OptBox>
           <Opt>{intro}</Opt>
@@ -36,6 +38,12 @@ const Box = styled.div`
   height: 63px;
   border-radius: 10px;
   margin-top: 32px;
+`;
+const StyledBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 63px;
 `;
 
 const Select = styled.div`
@@ -58,17 +66,20 @@ const ArrowIcon = styled((props) => <ArrowDownIcon {...props} />)`
 const Text = styled.span``;
 
 const OptBox = styled.div`
-  display: flexbox;
+  display: flex;
 `;
 
 const Opt = styled.div`
+  position: relative;
+  top: -10px;
+  z-index: 5;
   width: 640px;
   outline: none;
   background-color: #191919;
   font-size: 12px;
-
+  cursor: pointer;
   height: 128px;
-
+  display: flex;
   background-color: #191919;
   align-items: center;
   justify-content: space-between;

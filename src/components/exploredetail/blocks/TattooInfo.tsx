@@ -37,11 +37,11 @@ function TattooInfo({
 }: IProps) {
   return (
     <Container>
-      <div>
+      <StyledTattoo>
         <TattooImg type={username} imgUrl={tattooImgUrl}></TattooImg>
         <Description intro={intro}></Description>
         <Details contractAddress={details.contractAddress}></Details>
-      </div>
+      </StyledTattoo>
       <StyledInfo>
         <TattooName
           userName={username}
@@ -67,6 +67,10 @@ const Container = styled.div`
   display: flex;
 
   padding-bottom: 32px;
+`;
+const StyledTattoo = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledInfo = styled.div`
