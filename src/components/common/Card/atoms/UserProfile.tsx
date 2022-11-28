@@ -84,7 +84,7 @@ const InfoBox = styled.div<ProfilePropsType>`
       props.type === "artist" &&
       css`
         font-size: 24px;
-        margin-bottom: -10px;
+        margin-bottom: 29px;
       `}
   }
 `;
