@@ -50,7 +50,7 @@ function Card({ type }: IProps) {
           <Content>
             <TopContent>
               <TattooInfoBox
-                type={"artist"}
+                type={type || ""}
                 name={tattooInfo.name}
                 artist={tattooInfo.artist}
                 artistImgUrl={tattooInfo.artistImgUrl}
@@ -101,5 +101,5 @@ const TopContent = styled.div`
 const BottomContent = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 24px;
+  margin-top: 12px;
 `;
