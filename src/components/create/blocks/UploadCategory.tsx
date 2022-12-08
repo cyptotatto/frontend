@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import SelectBox from "../atoms/SelectBox";
 
 function UploadCategory() {
+  const [selectedMenu, setSelectedMenu] = useState(".");
   const options = [
     { value: "장르별", name: "도안" },
     { value: "장르별2", name: "타투 사진" },
@@ -14,12 +15,17 @@ function UploadCategory() {
     { value: "주제별4", name: "뉴스쿨" },
     { value: "주제별5", name: "장르별" },
   ];
-
+  useEffect(() => {
+    console.log(selectedMenu);
+  }, [selectedMenu]);
   return (
     <div>
       <StyledTitle>카테고리</StyledTitle>
-      <SelectBox options={options} />
-      <SelectBox options={options2} />
+      <SelectBox
+        options={options}
+        selectedMenu={selectedMenu}
+        setSelectedMenu={setSelectedMenu}
+      />
     </div>
   );
 }

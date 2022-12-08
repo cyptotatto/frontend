@@ -1,19 +1,29 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import styled, { css } from "styled-components";
-function UploadPrice({ title, setTitle }: any) {
+interface IProps {
+  price: number;
+  setPrice: Dispatch<SetStateAction<number>>;
+}
+function UploadPrice({ price, setPrice }: IProps) {
   useEffect(() => {
-    console.log(title);
-  }, [title]);
+    console.log(price);
+  }, [price]);
 
   const onChangeInput = (e: any) => {
-    setTitle(e.target.value);
+    setPrice(e.target.value);
   };
   return (
     <div>
       <StyledTitle>가격설정</StyledTitle>
       <StyledInput
         placeholder="0.00"
-        value={title}
+        value={price}
         onChange={onChangeInput}
       ></StyledInput>
       <StyledSpan>ETH</StyledSpan>

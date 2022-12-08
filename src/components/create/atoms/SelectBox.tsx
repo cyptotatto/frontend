@@ -1,18 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import styled, { css } from "styled-components";
 
 import ArrowDownIcon from "../../../../public/assets/arrow_down.svg";
 
 interface IProps {
   options: option[];
+  selectedMenu: string;
+  setSelectedMenu: Dispatch<SetStateAction<string>>;
 }
 type option = {
   value: string;
   name: string;
 };
 
-function SelectBox({ options }: IProps) {
-  const [selectedMenu, setSelectedMenu] = useState(options[0].value);
+function SelectBox({ options, selectedMenu, setSelectedMenu }: IProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (

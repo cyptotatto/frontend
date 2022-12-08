@@ -1,19 +1,49 @@
-import React, { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import styled, { css } from "styled-components";
 import SelectBox from "../atoms/SelectBox";
 import SelectImg from "../atoms/SelectImg";
 import UploadPrice from "./UploadPrice";
 import UploadSell from "./UploadSell";
-function UploadImgClassify() {
+
+interface IProps {
+  selectedOption: string;
+  setSelectedOption: Dispatch<SetStateAction<string>>;
+  selectedCategory1: string;
+  setSelectedCategory1: Dispatch<SetStateAction<string>>;
+  selectedCategory2: string;
+  setSelectedCategory2: Dispatch<SetStateAction<string>>;
+  selectedCategory3: string;
+  setSelectedCategory3: Dispatch<SetStateAction<string>>;
+  sellClassify: boolean;
+  SetSellClassify: Dispatch<SetStateAction<boolean>>;
+
+  price: number;
+  setPrice: Dispatch<SetStateAction<number>>;
+}
+function UploadImgClassify({
+  selectedOption,
+  setSelectedOption,
+  selectedCategory1,
+  setSelectedCategory1,
+  selectedCategory2,
+  setSelectedCategory2,
+  selectedCategory3,
+  setSelectedCategory3,
+  sellClassify,
+  SetSellClassify,
+  price,
+  setPrice,
+}: IProps) {
+  const [selectedMenu, setSelectedMenu] = useState(".");
   const [imgClassify, SetImgClassify] = useState(false);
-  const [sellClassify, SetSellClassify] = useState(false);
+
   const options = [
     { value: ".", name: "도안" },
     { value: ".1", name: "타투 사진" },
   ];
   const options1 = [
-    { value: "장르별", name: "도안" },
-    { value: "장르별2", name: "타투 사진" },
+    { value: "장르별", name: "장르1" },
+    { value: "장르별2", name: "장르2" },
   ];
   const options2 = [
     { value: "주제별", name: "이레즈미" },
@@ -24,11 +54,11 @@ function UploadImgClassify() {
   ];
 
   const options3 = [
-    { value: "부위별", name: "이레즈미" },
-    { value: "주제별2", name: "블랙워크" },
-    { value: "주제별3", name: "올드스쿨" },
-    { value: "주제별4", name: "뉴스쿨" },
-    { value: "주제별5", name: "장르별" },
+    { value: "부위별", name: "팔" },
+    { value: "주제별2", name: "다리" },
+    { value: "주제별3", name: "허리" },
+    { value: "주제별4", name: "쇄골" },
+    { value: "주제별5", name: "등" },
   ];
 
   const optionImg = [
@@ -41,6 +71,9 @@ function UploadImgClassify() {
   useEffect(() => {
     console.log(sellClassify);
   }, [sellClassify]);
+  useEffect(() => {
+    console.log(selectedCategory1);
+  }, [selectedCategory1]);
   return (
     <>
       <div>
@@ -53,10 +86,26 @@ function UploadImgClassify() {
       </div>
       <div>
         <StyledTitle>카테고리</StyledTitle>
-        <SelectBox options={options1} />
-        <SelectBox options={options2} />
+        <SelectBox
+          options={options1}
+          selectedMenu={selectedCategory1}
+          setSelectedMenu={setSelectedCategory1}
+        />
+        <SelectBox
+          options={options2}
+          selectedMenu={selectedCategory2}
+          setSelectedMenu={setSelectedCategory2}
+        />
 
-        {imgClassify ? <SelectBox options={options3} /> : <></>}
+        {imgClassify ? (
+          <SelectBox
+            options={options3}
+            selectedMenu={selectedCategory3}
+            setSelectedMenu={setSelectedCategory3}
+          />
+        ) : (
+          <></>
+        )}
 
         <>
           <UploadSell
@@ -64,7 +113,11 @@ function UploadImgClassify() {
             openValue={sellClassify}
             setOpenValue={SetSellClassify}
           />
-          {sellClassify ? <UploadPrice /> : <></>}
+          {sellClassify ? (
+            <UploadPrice price={price} setPrice={setPrice} />
+          ) : (
+            <></>
+          )}
         </>
       </div>
     </>

@@ -17,7 +17,27 @@ function CreateTemplate() {
   const [title, setTitle] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const [descript, setDescript] = useState<string>("");
-  const onSubmit = () => {};
+  const [selectedOption, setSelectedOption] = useState(".");
+  const [selectedCategory1, setSelectedCategory1] = useState(".");
+  const [selectedCategory2, setSelectedCategory2] = useState(".");
+  const [selectedCategory3, setSelectedCategory3] = useState(".");
+  const [sellClassify, SetSellClassify] = useState(false);
+  const [price, setPrice] = useState(0);
+  const onSubmit = () => {
+    console.log({
+      img,
+      imgSrc,
+      title,
+      link,
+      descript,
+      selectedOption,
+      selectedCategory1,
+      selectedCategory2,
+      selectedCategory3,
+      sellClassify,
+      price,
+    });
+  };
 
   return (
     <Wrap>
@@ -36,7 +56,21 @@ function CreateTemplate() {
         descript={descript}
         setDescript={setDescript}
       ></UploadDescript>
-      <UploadImgClassify />
+
+      <UploadImgClassify
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
+        selectedCategory1={selectedCategory1}
+        setSelectedCategory1={setSelectedCategory1}
+        selectedCategory2={selectedCategory2}
+        setSelectedCategory2={setSelectedCategory2}
+        selectedCategory3={selectedCategory3}
+        setSelectedCategory3={setSelectedCategory3}
+        sellClassify={sellClassify}
+        SetSellClassify={SetSellClassify}
+        price={price}
+        setPrice={setPrice}
+      />
 
       <StyledBtn onClick={onSubmit}>Create</StyledBtn>
     </Wrap>
