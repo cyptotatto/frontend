@@ -12,6 +12,8 @@ import UploadImgClassify from "../blocks/UploadImgClassify";
 
 //create
 function CreateTemplate() {
+  const axios = require("axios");
+
   const [img, setImage] = useState<any>();
   const [imgSrc, setImgSrc] = useState<any>("");
   const [title, setTitle] = useState<string>("");
@@ -37,6 +39,28 @@ function CreateTemplate() {
       sellClassify,
       price,
     });
+    /*
+    axios
+      .post("/api/endpoint", {
+        img,
+        imgSrc,
+        title,
+        link,
+        descript,
+        selectedOption,
+        selectedCategory1,
+        selectedCategory2,
+        selectedCategory3,
+        sellClassify,
+        price,
+      })
+      .then({
+        // 해당 요청에 대한 응답 처리
+      })
+      .catch({
+        // 오류 처리
+      });
+      */
   };
 
   return (
