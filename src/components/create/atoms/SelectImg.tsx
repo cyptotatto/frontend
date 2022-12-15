@@ -7,6 +7,8 @@ interface IProps {
   options: option[];
   openValue: boolean;
   setOpenValue: Dispatch<SetStateAction<boolean>>;
+  selectedOption: string;
+  setSelectedOption: Dispatch<SetStateAction<string>>;
 }
 
 type option = {
@@ -14,14 +16,20 @@ type option = {
   name: string;
 };
 
-function SelectImg({ options, openValue, setOpenValue }: IProps) {
+function SelectImg({
+  options,
+  openValue,
+  setOpenValue,
+  selectedOption,
+  setSelectedOption,
+}: IProps) {
   const [selectedMenu, setSelectedMenu] = useState(options[0].value);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <Box onClick={() => setIsMenuOpen((prev) => !prev)}>
       <Select>
-        <Text>{isMenuOpen ? options[0].value : selectedMenu}</Text>
+        <Text>{isMenuOpen ? options[0].value : selectedOption}</Text>
         <ArrowIcon isopen={isMenuOpen.toString()} />
       </Select>
       {isMenuOpen && (
@@ -29,7 +37,7 @@ function SelectImg({ options, openValue, setOpenValue }: IProps) {
           <Opt
             key={options[0].value}
             onClick={() => {
-              setSelectedMenu(options[0].name);
+              setSelectedOption(options[0].name);
               setOpenValue(false);
               console.log(open);
             }}
@@ -39,7 +47,7 @@ function SelectImg({ options, openValue, setOpenValue }: IProps) {
           <Opt
             key={options[1].value}
             onClick={() => {
-              setSelectedMenu(options[1].name);
+              setSelectedOption(options[1].name);
               setOpenValue(true);
               console.log(open);
             }}

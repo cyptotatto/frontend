@@ -82,6 +82,8 @@ function UploadImgClassify({
           options={options}
           openValue={imgClassify}
           setOpenValue={SetImgClassify}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
         />
       </div>
       <div>

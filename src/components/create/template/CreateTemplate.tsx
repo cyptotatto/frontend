@@ -9,6 +9,7 @@ import SelectBox from "../atoms/SelectBox";
 import UploadCategory from "../blocks/UploadCategory";
 import UploadSell from "../blocks/UploadSell";
 import UploadImgClassify from "../blocks/UploadImgClassify";
+import CreateAPI from "../../../api/create";
 
 //create
 function CreateTemplate() {
@@ -39,28 +40,19 @@ function CreateTemplate() {
       sellClassify,
       price,
     });
-    /*
-    axios
-      .post("/api/endpoint", {
-        img,
-        imgSrc,
-        title,
-        link,
-        descript,
-        selectedOption,
-        selectedCategory1,
-        selectedCategory2,
-        selectedCategory3,
-        sellClassify,
-        price,
-      })
-      .then({
-        // 해당 요청에 대한 응답 처리
-      })
-      .catch({
-        // 오류 처리
-      });
-      */
+
+    CreateAPI.createNft({
+      file: imgSrc,
+      title: title,
+      link: link,
+      explanation: descript,
+      sort: selectedOption,
+      genre: selectedCategory1,
+      theme: selectedCategory2,
+      part: selectedCategory3,
+      sale: sellClassify,
+      price: price,
+    });
   };
 
   return (
