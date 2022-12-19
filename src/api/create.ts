@@ -1,5 +1,5 @@
 import api from "./api";
-const url = "/create/illustration";
+const url = "/nft/create";
 
 const CreateAPI = {
   createNft: async (data: any) => {

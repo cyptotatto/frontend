@@ -20,6 +20,7 @@ function CreateTemplate() {
   const [title, setTitle] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const [descript, setDescript] = useState<string>("");
+  const [imgClassify, SetImgClassify] = useState(false);
   const [selectedOption, setSelectedOption] = useState(".");
   const [selectedCategory1, setSelectedCategory1] = useState(".");
   const [selectedCategory2, setSelectedCategory2] = useState(".");
@@ -42,16 +43,17 @@ function CreateTemplate() {
     });
 
     CreateAPI.createNft({
-      file: imgSrc,
+      image: imgSrc,
       title: title,
       link: link,
       explanation: descript,
-      sort: selectedOption,
+      tattooDesign: imgClassify,
       genre: selectedCategory1,
       theme: selectedCategory2,
       part: selectedCategory3,
       sale: sellClassify,
       price: price,
+      userAccount: "user1",
     });
   };
 
@@ -74,6 +76,8 @@ function CreateTemplate() {
       ></UploadDescript>
 
       <UploadImgClassify
+        imgClassify={imgClassify}
+        setImgClassify={SetImgClassify}
         selectedOption={selectedOption}
         setSelectedOption={setSelectedOption}
         selectedCategory1={selectedCategory1}

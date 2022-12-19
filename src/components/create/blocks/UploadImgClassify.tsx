@@ -6,6 +6,8 @@ import UploadPrice from "./UploadPrice";
 import UploadSell from "./UploadSell";
 
 interface IProps {
+  imgClassify: boolean;
+  setImgClassify: Dispatch<SetStateAction<boolean>>;
   selectedOption: string;
   setSelectedOption: Dispatch<SetStateAction<string>>;
   selectedCategory1: string;
@@ -21,6 +23,8 @@ interface IProps {
   setPrice: Dispatch<SetStateAction<number>>;
 }
 function UploadImgClassify({
+  imgClassify,
+  setImgClassify,
   selectedOption,
   setSelectedOption,
   selectedCategory1,
@@ -35,7 +39,6 @@ function UploadImgClassify({
   setPrice,
 }: IProps) {
   const [selectedMenu, setSelectedMenu] = useState(".");
-  const [imgClassify, SetImgClassify] = useState(false);
 
   const options = [
     { value: ".", name: "도안" },
@@ -81,7 +84,7 @@ function UploadImgClassify({
         <SelectImg
           options={options}
           openValue={imgClassify}
-          setOpenValue={SetImgClassify}
+          setOpenValue={setImgClassify}
           selectedOption={selectedOption}
           setSelectedOption={setSelectedOption}
         />
