@@ -3,9 +3,13 @@ const url = "/create/illustration";
 
 const CreateAPI = {
   createNft: async (data: any) => {
-    await api.post(`${url}`, data).catch((err) => {
-      console.log(err);
-    });
+    await api
+      .post(`${url}`, data, {
+        withCredentials: true,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
 };
 

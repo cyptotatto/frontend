@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import styled, { css } from "styled-components";
 import SelectBox from "../atoms/SelectBox";
 import SelectImg from "../atoms/SelectImg";
@@ -14,6 +14,7 @@ type option = {
   name: string;
 };
 function UploadSell({ options, openValue, setOpenValue }: IProps) {
+  const [selectedOption, setSelectedOption] = useState("");
   return (
     <div>
       <StyledTitle>판매 등록 여부</StyledTitle>
@@ -21,6 +22,8 @@ function UploadSell({ options, openValue, setOpenValue }: IProps) {
         options={options}
         openValue={openValue}
         setOpenValue={setOpenValue}
+        selectedOption={selectedOption}
+        setSelectedOption={setSelectedOption}
       />
     </div>
   );
