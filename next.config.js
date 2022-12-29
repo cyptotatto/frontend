@@ -4,6 +4,7 @@ const nextConfig = {
     domains: ["ipfs.infura.io"],
   },
   reactStrictMode: true,
+
   swcMinify: true,
   compiler: {
     styledComponents: true,

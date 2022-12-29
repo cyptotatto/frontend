@@ -35,6 +35,7 @@ function CreateTemplate() {
       link,
       descript,
       selectedOption,
+      imgClassify,
       selectedCategory1,
       selectedCategory2,
       selectedCategory3,
@@ -43,7 +44,7 @@ function CreateTemplate() {
     });
 
     CreateAPI.createNft({
-      image: imgSrc,
+      image: img,
       title: title,
       link: link,
       explanation: descript,
