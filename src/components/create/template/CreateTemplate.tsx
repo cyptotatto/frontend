@@ -10,6 +10,7 @@ import UploadCategory from "../blocks/UploadCategory";
 import UploadSell from "../blocks/UploadSell";
 import UploadImgClassify from "../blocks/UploadImgClassify";
 import CreateAPI from "../../../api/create";
+import { createReadStream } from "fs";
 
 //create
 function CreateTemplate() {
@@ -27,6 +28,7 @@ function CreateTemplate() {
   const [selectedCategory3, setSelectedCategory3] = useState(".");
   const [sellClassify, SetSellClassify] = useState(false);
   const [price, setPrice] = useState(0);
+
   const onSubmit = () => {
     console.log({
       img,
@@ -42,8 +44,23 @@ function CreateTemplate() {
       sellClassify,
       price,
     });
+    const data = new FormData();
+
+    data.append("image", img);
+    data.append("title", "2022-12-21-2");
+    data.append("link", "http://");
+    data.append("explanation", "blah");
+    data.append("tattooDesign", "true");
+    data.append("genre", "이레즈미");
+    data.append("theme", "꽃");
+    data.append("part", "다리");
+    data.append("sale", "true");
+    data.append("price", "5000");
+    data.append("userAccount", "12345678");
 
     CreateAPI.createNft({
+      data,
+      /*
       image: img,
       title: title,
       link: link,
@@ -55,6 +72,7 @@ function CreateTemplate() {
       sale: sellClassify,
       price: price,
       userAccount: "user1",
+      */
     });
   };
 

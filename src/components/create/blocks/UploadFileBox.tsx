@@ -28,6 +28,7 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
     return new Promise((resolve: any) => {
       reader.onload = async () => {
         console.log(reader.result);
+        console.log(img);
         setImgSrc(reader.result);
         resolve();
       };
