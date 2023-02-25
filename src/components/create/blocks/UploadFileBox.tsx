@@ -10,8 +10,8 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
 
   const [uploadFile, setUploadFile] = useState<boolean>(false);
 
-  const clickInput = () => {
-    Ref.current.click();
+  const handleFileSelectClick = () => {
+    document.getElementById("fileInput")?.click();
   };
 
   const imgUpload = (e: any, data: any) => {
@@ -42,6 +42,7 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
   useEffect(() => {
     if (!Ref) return;
     Ref.current.addEventListener("dragover", (e: any) => e.preventDefault());
+
     Ref.current.addEventListener("drop", (e: any) =>
       imgUpload(e, e.dataTransfer)
     );
@@ -54,11 +55,12 @@ function UploadFileBox({ img, setImage, imgSrc, setImgSrc }: any) {
       {imgSrc ? (
         <Image alt="사진" src={imgSrc} width="100" height="100" />
       ) : (
-        <StyledUploadBox ref={Ref}>
+        <StyledUploadBox ref={Ref} onClick={handleFileSelectClick}>
           <Image src={addImage} width="40" height="40" layout="fixed" />
           <StyledInput
             accept="image/"
             type="file"
+            id="fileInput"
             onChange={(e) => imgUpload(e, e.target)}
           ></StyledInput>
         </StyledUploadBox>
