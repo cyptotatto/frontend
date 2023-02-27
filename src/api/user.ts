@@ -48,6 +48,15 @@ const UserAPI = {
         console.log(err);
       });
   },
+  getLikedUser: async (data: any) => {
+    await api
+      .get(`${url}/liked`, {
+        withCredentials: true,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
 };
 
 export default UserAPI;

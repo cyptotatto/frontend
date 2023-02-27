@@ -8,14 +8,17 @@ import Card from "../../common/Card";
 
 function TattoBox() {
   const selectedMenu = useRecoilValue(selectedMenuAtom);
-  const type = selectedMenu === "도안" ? "art" : "artist";
+  const type = selectedMenu === "Artists" ? "artist" : "art";
 
   return (
     <Box>
       <Card type={type} />
       <Card type={type} />
-      <Card />
-      <Card />
+      <Card type={type} />
+      <Card type={type} />
+      <Card type={type} />
+      <Card type={type} />
+      <Card type={type} />
     </Box>
   );
 }

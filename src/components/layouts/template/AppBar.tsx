@@ -29,6 +29,10 @@ function AppBar() {
   console.log(connectors);
 
   useEffect(() => {
+    console.log("isConnected", isConnected);
+  }, [isConnected]);
+
+  useEffect(() => {
     setMenu("");
   }, [setMenu, router]);
 
@@ -71,7 +75,7 @@ function AppBar() {
             </>
           ) : (
             <Login onClick={() => connect({ connector: connectors[0] })}>
-              로그인
+              Log In
             </Login>
           )}
         </div>

@@ -7,7 +7,7 @@ import CustomNavBar from "../../common/CustomNavBar";
 import FilterTabMenuBox from "./Filter/FilterTabMenuBox";
 import SelectMenuBox from "../../common/CustomNavBar/blocks/SelectMenuBox";
 
-const exploreMenu = ["도안", "아티스트", "타투 이미지"];
+const exploreMenu = ["Designs", "Artists", "Images"];
 
 function NavBar() {
   const [selectedMenuIdx, setSelectedMenuIdx] = useState(0);

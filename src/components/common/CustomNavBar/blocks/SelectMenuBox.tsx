@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
@@ -20,10 +21,13 @@ type UnderLinePropsType = {
 function SelectMenuBox({ menu, selectedMenuIdx, setSelectedMenuIdx }: IProps) {
   const [lineWidth, setLineWidth] = useState(87);
   const [linePos, setLinePos] = useState(0);
+  const router = useRouter();
 
   const onChangeMenu = (e: React.MouseEvent<HTMLButtonElement>) => {
     const menuName = e.currentTarget.innerText;
+
     const idx = menu.indexOf(menuName);
+    console.log(idx);
     setSelectedMenuIdx(idx);
     setLineWidth(e.currentTarget.offsetWidth);
     setLinePos(e.currentTarget.offsetLeft);

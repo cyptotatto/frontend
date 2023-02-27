@@ -4,11 +4,11 @@ import styled from "styled-components";
 function Text() {
   return (
     <Wrap>
-      Cryptattoo는 타투이스트들의 도안을 메타버스에 블록체인 기술을 통하여
+      Cryptattoo helps tattoo artists expand their designs into digital art
       <br />
-      디지털 아트로의 확장을 돕습니다. <br />
-      지금 바로 <span className="gradient">Cryptattoo</span>에서 NFT 기술로
-      자신의 예술을 알리세요.
+      through blockchain technology in the metaverse. <br />
+      Showcase your art using NFT technology on
+      <span className="gradient"> Cryptattoo</span> now.
     </Wrap>
   );
 }
