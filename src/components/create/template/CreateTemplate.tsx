@@ -73,6 +73,8 @@ function CreateTemplate() {
       price: price,
       userAccount: "user1",
       */
+    }).then((res) => {
+      console.log(res);
     });
   };
 

@@ -8,7 +8,7 @@ const CreateAPI = {
         withCredentials: true,
       })
       .catch((err) => {
-        console.log(err);
+        console.log("ERROR", err);
       });
   },
 };
