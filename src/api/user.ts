@@ -2,8 +2,8 @@ import api from "./api";
 const url = "/user";
 const UserAPI = {
   createUser: async (data: any) => {
-    await api
-      .post(`${url}`, data, {
+    return api
+      .post(`${url}/register/${data}`, {
         withCredentials: true,
       })
       .catch((err) => {
