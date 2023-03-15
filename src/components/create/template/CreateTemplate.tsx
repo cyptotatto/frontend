@@ -44,19 +44,36 @@ function CreateTemplate() {
       sellClassify,
       price,
     });
+    /*
     const data = new FormData();
 
     data.append("image", img);
-    data.append("title", "2022-12-21-2");
-    data.append("link", "http://");
-    data.append("explanation", "blah");
-    data.append("tattooDesign", "true");
-    data.append("genre", "이레즈미");
-    data.append("theme", "꽃");
-    data.append("part", "다리");
-    data.append("sale", "true");
-    data.append("price", "5000");
+    data.append("title", title);
+    data.append("link", link);
+    data.append("explanation", descript);
+    data.append("tattooDesign", selectedOption);
+    data.append("genre", selectedCategory1);
+    data.append("theme", selectedCategory2);
+    data.append("part", selectedCategory3);
+    data.append("sale", `${sellClassify}`);
+    data.append("price", `${price}`);
     data.append("userAccount", "12345678");
+    console.log(data);
+    */
+
+    const data = {
+      image: img,
+      title: title,
+      link: link,
+      explanation: descript,
+      tattooDesign: imgClassify,
+      genre: selectedCategory1,
+      theme: selectedCategory2,
+      part: selectedCategory3,
+      sale: sellClassify,
+      price: price,
+      userAccount: "user1",
+    };
 
     CreateAPI.createNft({
       data,
@@ -74,6 +91,7 @@ function CreateTemplate() {
       userAccount: "user1",
       */
     }).then((res) => {
+      console.log(data);
       console.log(res);
     });
   };

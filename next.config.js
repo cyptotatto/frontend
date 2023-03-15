@@ -9,7 +9,7 @@ const nextConfig = {
       {
         source: "/api",
         destination:
-          "http://ec2-3-39-28-20.ap-northeast-2.compute.amazonaws.com:80/api", // 프록시될 경로와 포트를 명시
+          "http://ec2-3-39-28-20.ap-northeast-2.compute.amazonaws.com:80", // 프록시될 경로와 포트를 명시
       },
     ];
   },

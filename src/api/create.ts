@@ -4,9 +4,7 @@ const url = "/nft/create";
 const CreateAPI = {
   createNft: async (data: any) => {
     try {
-      const response = await api.post(`${url}`, data, {
-        withCredentials: true,
-      });
+      const response = await api.post(`${url}`, data, {});
       return response;
     } catch (err) {
       console.log("ERROR", err);

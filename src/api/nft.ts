@@ -7,7 +7,7 @@ const nftAPI = {
       console.log(err);
     });
   },
-  getAllNfts: () => {
+  getAllNfts: async () => {
     return api.get(`${url}/search`).catch((err) => {
       console.log(err);
     });

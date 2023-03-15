@@ -2,13 +2,12 @@ import api from "./api";
 const url = "/user";
 const UserAPI = {
   createUser: async (data: any) => {
-    return api
-      .post(`${url}/register/${data}`, {
-        withCredentials: true,
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      const response = await api.post(`${url}/register`, data, {});
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
   },
   getTop100Users: async (data: any) => {
     await api

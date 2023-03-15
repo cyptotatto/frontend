@@ -14,7 +14,10 @@ function DesignBox() {
     console.log(await nftAPI.getAllNfts());
   };
   const createUser = async () => {
-    const res = await UserAPI.createUser("12345");
+    const data = {
+      account: "1234567",
+    };
+    const res = await UserAPI.createUser(data);
     console.log(res);
   };
 
