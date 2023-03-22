@@ -15,7 +15,7 @@ function DesignBox() {
   };
   const createUser = async () => {
     const data = {
-      account: "1234567",
+      account: "우리잘수있는거죠",
     };
     const res = await UserAPI.createUser(data);
     console.log(res);
