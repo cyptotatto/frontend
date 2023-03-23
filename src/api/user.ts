@@ -9,24 +9,16 @@ const UserAPI = {
       console.log(err);
     }
   },
-  getTop100Users: async (data: any) => {
-    await api
-      .get(`${url}/top100`, {
-        withCredentials: true,
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  getRankingUsers: async () => {
+    return api.get(`${url}/ranking`).catch((err) => {
+      console.log(err);
+    });
   },
-  getAllUsers: async (data: any) => {
-    await api
 
-      .get(`${url}/all`, {
-        withCredentials: true,
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  getAllUsers: async () => {
+    return api.get(`${url}/artist/search`).catch((err) => {
+      console.log(err);
+    });
   },
 
   getUser: async (data: any) => {

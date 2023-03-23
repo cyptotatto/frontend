@@ -16,7 +16,6 @@ function ArtistRanking() {
       </DescriptionWrap>
       <BoxWrap>
         <RankingBox />
-        <RankingBox />
       </BoxWrap>
     </Wrap>
   );
