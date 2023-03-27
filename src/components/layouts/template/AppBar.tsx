@@ -53,7 +53,9 @@ function AppBar() {
       <Responsive>
         <div className="when-wide">
           <Create onClick={() => router.push("/create")}>Create</Create>
-          <Explore onClick={() => router.push("/explore")}>Explore</Explore>
+          <Explore onClick={() => router.push("/explore/designs")}>
+            Explore
+          </Explore>
           {isConnected ? (
             <>
               <Mypage onClick={() => router.push("/mypage")}>
