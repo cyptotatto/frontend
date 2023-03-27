@@ -1,4 +1,5 @@
 import React from "react";
+
 import styled from "styled-components";
 import HomeTitle from "../../common/HomeTitle";
 import RankingBox from "../block/ArtistRanking/RankingBox";
