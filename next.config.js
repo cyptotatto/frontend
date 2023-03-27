@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["ipfs.infura.io"],
+    domains: ["ipfs.infura.io", "cryptotattoo.s3.ap-northeast-2.amazonaws.com"],
   },
   reactStrictMode: true,
   async rewrites() {

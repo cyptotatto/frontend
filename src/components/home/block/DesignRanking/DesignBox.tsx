@@ -4,12 +4,43 @@ import Card from "../../../common/Card";
 import nftAPI from "../../../../api/nft";
 import UserAPI from "../../../../api/user";
 import { ContractMethodNoResultError } from "wagmi";
+
+type InfoType = {
+  name: string;
+  artist: string;
+  artistImgUrl: string;
+  tattooImgUrl: string;
+  price: number;
+  percentage: number;
+  heartCnt: number;
+  isHeart: boolean;
+  sign: string;
+  detailUrl: string;
+};
+
 function DesignBox() {
   const [rankingNfts, setRankingNfts] = useState<any>([]);
-
+  const [top100Nfts, setTop100Nfts] = useState<InfoType[]>([]);
   const getRanking = async () => {
     const res = await nftAPI.getRankingNfts();
-    console.log(res?.data);
+    const nftDatas = res?.data.nftTop100;
+    nftDatas.map((nftData: any) => {
+      const nft = {
+        name: nftData.title,
+        artist: nftData.artistId,
+        artistImgUrl: null,
+        tattooImgUrl: nftData.awsUrl,
+        price: null,
+        percentage: null,
+        heartCnt: nftData.likeCount,
+        isHeart: null,
+        sign: null,
+        detailUrl: null,
+      };
+      console.log(nft);
+      setTop100Nfts((prev: any) => [...prev, nft]);
+    });
+    console.log(nftDatas);
     return res?.data;
   };
   useEffect(() => {
@@ -17,32 +48,21 @@ function DesignBox() {
     setRankingNfts(res);
   }, []);
 
-  /*
-  const getAllNfts = async () => {
-    const res = await nftAPI.getAllNfts();
-    console.log(res);
-  };
-  const createUser = async () => {
-    const data = {
-      account: "우리잘수있는거죠",
-    };
-    const res = await UserAPI.createUser(data);
-    console.log(res);
-  };
-  */
-
   return (
     <Wrap>
-      <button onClick={getRanking}>랭킹</button>
       {/*
         <button onClick={getAllNfts}>전체</button>
       <button onClick={createUser}>유저생성</button>
   */}
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
+      {top100Nfts.map((nft: any) => {
+        if (nft?.tattooImgUrl) {
+          return (
+            <>
+              <Card nftInfo={nft} />
+            </>
+          );
+        }
+      })}
     </Wrap>
   );
 }

@@ -36,23 +36,28 @@ const tattooInfo: InfoType = {
 
 interface IProps {
   type?: string;
+  nftInfo?: InfoType;
 }
 
-function Card({ type }: IProps) {
+function Card({ type, nftInfo }: IProps) {
   return (
     <Link href={tattooInfo.detailUrl}>
       <Container>
         <a>
           <ImgBox
-            imgUrl={tattooInfo.tattooImgUrl}
+            imgUrl={
+              nftInfo?.tattooImgUrl
+                ? nftInfo.tattooImgUrl
+                : tattooInfo.tattooImgUrl
+            }
             isHeart={tattooInfo.isHeart}
           />
           <Content>
             <TopContent>
               <TattooInfoBox
                 type={type || ""}
-                name={tattooInfo.name}
-                artist={tattooInfo.artist}
+                name={nftInfo?.name ? nftInfo.name : tattooInfo.name}
+                artist={nftInfo?.artist ? nftInfo.artist : tattooInfo.artist}
                 artistImgUrl={tattooInfo.artistImgUrl}
               />
               {type === "art" && (
