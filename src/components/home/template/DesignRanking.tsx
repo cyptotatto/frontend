@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+
 import styled from "styled-components";
 import HomeTitle from "../../common/HomeTitle";
 import DesignBox from "../block/DesignRanking/DesignBox";
@@ -6,7 +8,11 @@ import DesignBox from "../block/DesignRanking/DesignBox";
 function DesignRanking() {
   return (
     <Wrap>
-      <HomeTitle>도안 Top100 🔥</HomeTitle>
+      <Link href="/explore/designs">
+        <a>
+          <HomeTitle>도안 Top100 🔥</HomeTitle>
+        </a>
+      </Link>
       <DesignBox />
     </Wrap>
   );
