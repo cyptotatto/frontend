@@ -1,14 +1,12 @@
 import React from "react";
+import { useRouter } from "next/router";
 import styled from "styled-components";
-
-import { useRecoilValue } from "recoil";
-import { selectedMenuAtom } from "../../../recoil/menu";
 
 import Card from "../../common/Card";
 
 function TattoBox() {
-  const selectedMenu = useRecoilValue(selectedMenuAtom);
-  const type = selectedMenu === "Artists" ? "artist" : "art";
+  const { query } = useRouter();
+  const type = query.menu === "artists" ? "artist" : "art";
 
   return (
     <Box>
