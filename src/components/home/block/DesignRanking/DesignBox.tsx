@@ -4,6 +4,7 @@ import Card from "../../../common/Card";
 import nftAPI from "../../../../api/nft";
 import UserAPI from "../../../../api/user";
 import { ContractMethodNoResultError } from "wagmi";
+import TattooImg from "../../../../../public/assets/tattoo_img.png";
 
 type InfoType = {
   name: string;
@@ -18,35 +19,68 @@ type InfoType = {
   detailUrl: string;
 };
 
+const top100Nfts = [
+  {
+    name: "tattoo1",
+    artist: "artist1",
+    artistImgUrl: null,
+    tattooImgUrl: { TattooImg },
+  },
+  {
+    name: "tattoo1",
+    artist: "artist1",
+    artistImgUrl: null,
+    tattooImgUrl: { TattooImg },
+  },
+  {
+    name: "tattoo1",
+    artist: "artist1",
+    artistImgUrl: null,
+    tattooImgUrl: { TattooImg },
+  },
+  {
+    name: "tattoo1",
+    artist: "artist1",
+    artistImgUrl: null,
+    tattooImgUrl: { TattooImg },
+  },
+  {
+    name: "tattoo1",
+    artist: "artist1",
+    artistImgUrl: null,
+    tattooImgUrl: { TattooImg },
+  },
+];
+
 function DesignBox() {
   const [rankingNfts, setRankingNfts] = useState<any>([]);
-  const [top100Nfts, setTop100Nfts] = useState<InfoType[]>([]);
-  const getRanking = async () => {
-    const res = await nftAPI.getRankingNfts();
-    const nftDatas = res?.data.nftTop100;
-    nftDatas.map((nftData: any) => {
-      const nft = {
-        name: nftData.title,
-        artist: nftData.artistId,
-        artistImgUrl: null,
-        tattooImgUrl: nftData.awsUrl,
-        price: null,
-        percentage: null,
-        heartCnt: nftData.likeCount,
-        isHeart: null,
-        sign: null,
-        detailUrl: null,
-      };
-      console.log(nft);
-      setTop100Nfts((prev: any) => [...prev, nft]);
-    });
-    console.log(nftDatas);
-    return res?.data;
-  };
-  useEffect(() => {
-    const res = getRanking();
-    setRankingNfts(res);
-  }, []);
+  // const [top100Nfts, setTop100Nfts] = useState<InfoType[]>([]);
+  // const getRanking = async () => {
+  //   const res = await nftAPI.getRankingNfts();
+  //   const nftDatas = res?.data.nftTop100;
+  //   nftDatas.map((nftData: any) => {
+  //     const nft = {
+  //       name: nftData.title,
+  //       artist: nftData.artistId,
+  //       artistImgUrl: null,
+  //       tattooImgUrl: nftData.awsUrl,
+  //       price: null,
+  //       percentage: null,
+  //       heartCnt: nftData.likeCount,
+  //       isHeart: null,
+  //       sign: null,
+  //       detailUrl: null,
+  //     };
+  //     console.log(nft);
+  //     setTop100Nfts((prev: any) => [...prev, nft]);
+  //   });
+  //   console.log(nftDatas);
+  //   return res?.data;
+  // };
+  // useEffect(() => {
+  //   const res = getRanking();
+  //   setRankingNfts(res);
+  // }, []);
 
   return (
     <Wrap>

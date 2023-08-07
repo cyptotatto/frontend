@@ -6,19 +6,19 @@ import RankingBar from "../../atom/RankingBox.tsx/RankingBar";
 
 function RankingBox() {
   const [rankingUsers, setRankingUsers] = useState<any>([]);
-  const getRankingUsers = async () => {
-    const res = await UserAPI.getRankingUsers();
-    console.log(res?.data);
-    return res;
-  };
-  useEffect(() => {
-    const res = getRankingUsers();
-    setRankingUsers(res);
-  }, []);
+  // const getRankingUsers = async () => {
+  //   const res = await UserAPI.getRankingUsers();
+  //   console.log(res?.data);
+  //   return res;
+  // };
+  // useEffect(() => {
+  //   const res = getRankingUsers();
+  //   setRankingUsers(res);
+  // }, []);
 
   return (
     <Wrap>
-      <button onClick={getRankingUsers}>랭킹유저</button>
+      {/* <button onClick={getRankingUsers}>랭킹유저</button> */}
       <RankingBar rank="1" artist="Jane Cooper" type="올드스쿨, 뉴스쿨" />
       <RankingBar rank="1" artist="Jane Cooper" type="올드스쿨, 뉴스쿨" />
       <RankingBar rank="1" artist="Jane Cooper" type="올드스쿨, 뉴스쿨" />

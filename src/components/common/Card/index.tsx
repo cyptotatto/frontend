@@ -45,11 +45,7 @@ function Card({ type, nftInfo }: IProps) {
       <Container>
         <a>
           <ImgBox
-            imgUrl={
-              nftInfo?.tattooImgUrl
-                ? nftInfo.tattooImgUrl
-                : tattooInfo.tattooImgUrl
-            }
+            imgUrl={tattooInfo.tattooImgUrl}
             isHeart={tattooInfo.isHeart}
           />
           <Content>
